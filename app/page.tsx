@@ -6,8 +6,8 @@ export default function HomePage() {
   return (
     <div className="flex gap-4 w-full max-w-5xl m-4">
 
-      <div className="flex-[1_1_33%]">
-        <AspectRatio ratio={9 / 16}>
+      <div className="w-1/3">
+        {/* <AspectRatio ratio={9 / 12}> */}
           <Image
             src="/img/profilepic.jpg"
             alt="Picture of the myself playing pokemon trading card game at EUIC London 2023"
@@ -15,10 +15,10 @@ export default function HomePage() {
             width={4370}
             className="rounded-3xl object-cover"
           />
-        </AspectRatio>
+        {/* </AspectRatio> */}
       </div>
 
-      <div className="flex-[2_1_66%] px-6 py-3 bg-foreground/80 rounded-3xl shadow-md shadow-shadowtheme text-background">
+      <div className=" w-10 flex-grow px-6 py-3 bg-foreground/80 rounded-3xl shadow-md shadow-shadowtheme text-background">
         <h1>Matt Vandersluys</h1>
         <h2>UX Focused Full Stack Web Developer</h2>
         <p>Hey! I&apos;m a full stack web developer with a particular interest in creating engaging and intuitive user experiences. My core ethos is that users having a smooth and intuitive experience should be the #1 priority when creating applications.</p>
