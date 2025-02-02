@@ -6,7 +6,7 @@ import { CircleUserRound, MonitorSmartphone, BookImage, Music, BookUser, AtSign 
 export default function NavDesktop() {
 
   return (
-    <nav className="hidden md:flex justify-center mt-6">
+    <nav className="hidden md:flex justify-center mt-6 mb-1">
 
       <NavDesktopLink href="/" label="intro">
         <CircleUserRound size={18} />

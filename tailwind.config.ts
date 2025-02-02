@@ -31,7 +31,9 @@ const config: Config = {
 			},
 			cs: {
 				'1': 'hsl(var(--cs-1))',
+				'1-muted': 'hsl(var(--cs-1-muted))',
 				'2': 'hsl(var(--cs-2))',
+				'2-muted': 'hsl(var(--cs-2-muted))',
 				'3': 'hsl(var(--cs-3))',
 				'4': 'hsl(var(--cs-4))',
 				'5': 'hsl(var(--cs-5))',

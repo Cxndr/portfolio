@@ -19,14 +19,14 @@ export default function RootLayout({
     <html lang="en">
       <body
         className={`
-          flex flex-col h-svh
+          flex flex-col h-svh 
           ${inter.className}
         `}
       >
 
         <Header/>
 
-        <main className="flex-grow flex justify-center items-center">
+        <main className="flex-grow overflow-hidden">
           {children}
         </main>
 
