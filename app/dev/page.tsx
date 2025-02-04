@@ -14,10 +14,17 @@ export default function DevPage() {
       <DynamicBackground>
         <div className="w-full max-w-[1600px] h-full  flex flex-col items-center p-4">
 
-          <div className="w-full flex flex-row justify-center ">
-            <BsArrowLeftCircle className="text-4xl text-zinc-50" />
-            <h2 className="text-3xl font-bold text-zinc-50"> OPTCG Sim Themer </h2>
-            <BsArrowRightCircle className="text-4xl text-zinc-50" />
+          <div className="w-full px-5 flex flex-row justify-center items-center gap-4 ">
+            <BsArrowLeftCircle className="text-4xl text-zinc-700" />
+            <div className="h-24 w-full flex flex-row">
+              <Image className="w-1/6 h-full" src="/img/optcgsimthemer.png" alt="One Piece TCG Sim Themer" height={96} width={192} />
+              <Image className="w-1/6 h-full" src="/img/optcgsimthemer.png" alt="One Piece TCG Sim Themer" height={96} width={192} />
+              <Image className="w-1/6 h-full" src="/img/optcgsimthemer.png" alt="One Piece TCG Sim Themer" height={96} width={192} />
+              <Image className="w-1/6 h-full" src="/img/optcgsimthemer.png" alt="One Piece TCG Sim Themer" height={96} width={192} />
+              <Image className="w-1/6 h-full" src="/img/optcgsimthemer.png" alt="One Piece TCG Sim Themer" height={96} width={192} />
+              <Image className="w-1/6 h-full" src="/img/optcgsimthemer.png" alt="One Piece TCG Sim Themer" height={96} width={192} />
+            </div>
+            <BsArrowRightCircle className="text-4xl text-zinc-700" />
           </div>
 
           <div className="flex-grow w-full flex gap-4 ">
@@ -69,7 +76,9 @@ export default function DevPage() {
               
             </div>
 
-            <div className="w-2/5 overflow-auto flex flex-col bg-zinc-50/85 rounded-xl p-4 shadow-shadowtheme shadow-2xl">
+            <div className="h-full w-2/5 overflow-auto flex flex-col bg-zinc-50/85 rounded-xl p-4 shadow-shadowtheme shadow-2xl">
+
+              <h2 className="mt-2 mb-4 text-3xl font-bold text-center">One Piece TCG Sim Themer</h2>
 
               <h4 className="font-semibold text-cs-1-muted">
                 A web app that allows users to generate custom themes for the One Piece Trading Card Game Simulator.
