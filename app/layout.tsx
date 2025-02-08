@@ -26,7 +26,7 @@ export default function RootLayout({
 
         <Header/>
 
-        <main className="flex-grow overflow-hidden">
+        <main className="grow overflow-hidden">
           {children}
         </main>
 

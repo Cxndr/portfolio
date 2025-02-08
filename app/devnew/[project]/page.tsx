@@ -16,7 +16,7 @@ export default function DevPage({ params }: { params: { project: string } }) {
             {currentProject.title}
           </h1>
 
-          <div className="flex-grow w-full flex flex-row">
+          <div className="grow w-full flex flex-row">
 
             <div className="h-full w-1/3">
 

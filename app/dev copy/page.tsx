@@ -27,12 +27,12 @@ export default function DevPage() {
             <BsArrowRightCircle className="text-4xl text-zinc-700" />
           </div>
 
-          <div className="h-0 flex-grow w-full flex gap-4">
+          <div className="h-0 grow w-full flex gap-4">
             <div className="h-full w-1/2 flex flex-col gap-4">
 
               <Image src="/img/optcgsimthemer.png" alt="Screenshot of my OPTCG Sim Themer web app" height={958} width={1920} className="rounded-xl object-cover" />
 
-              <div className="flex-grow flex flex-row items-start justify-center gap-4">
+              <div className="grow flex flex-row items-start justify-center gap-4">
 
                 <div className="flex flex-row gap-4">
                   <div className="w-1/3 flex flex-col gap-2 p-4 pt-3 bg-zinc-50/85 rounded-xl shadow-shadowtheme shadow-2xl">
@@ -48,7 +48,7 @@ export default function DevPage() {
 
                   <div className="w-2/3 flex flex-col gap-1 px-2 bg-zinc-50/85 rounded-xl p-4 shadow-shadowtheme shadow-2xl">
                     <h3 className="text-lg font-bold text-center">Skills Gained</h3>
-                    <ul className="list-none gap-2 flex-grow flex flex-col items-start justify-start pl-6">
+                    <ul className="list-none gap-2 grow flex flex-col items-start justify-start pl-6">
                       <li>🖼️ Image Manipulation Algorithms.</li>
                       <li>👤 Real-world User Base.</li>
                       <li>🖱️ Client-Side Focused Development.</li>

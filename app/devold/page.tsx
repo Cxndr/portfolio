@@ -20,7 +20,7 @@ export default function DevPage() {
           </div>
 
 
-          <div className="h-0 flex-grow flex flex-row items-start justify-center rounded-3xl">
+          <div className="h-0 grow flex flex-row items-start justify-center rounded-3xl">
 
             <div className="h-full w-full max-w-full flex flex-col items-center justify-between bg-zinc-50/85 text-zinc-900 rounded-2xl p-6 shadow-shadowtheme shadow-2xl overflow-auto">
               
@@ -66,7 +66,7 @@ export default function DevPage() {
 
               <div className="flex flex-col gap-1 px-2 bg-zinc-50/85 rounded-xl p-4 shadow-shadowtheme shadow-2xl">
                 <h3 className="text-lg font-bold text-center">Core Technologies</h3>
-                <div className="flex-grow flex flex-row flex-wrap items-start justify-start gap-2">
+                <div className="grow flex flex-row flex-wrap items-start justify-start gap-2">
                   <Badge className="bg-orange-400">JIMP</Badge>
                   <Badge className="bg-blue-400">Next.js</Badge>
                   <Badge className="bg-pink-400">DaisyUI</Badge>
@@ -77,7 +77,7 @@ export default function DevPage() {
 
               <div className="flex flex-col gap-1 px-2 bg-zinc-50/85 rounded-xl p-4 shadow-shadowtheme shadow-2xl">
                 <h3 className="text-lg font-bold text-center">Skills Gained</h3>
-                <ul className="list-disc gap-2 flex-grow flex flex-row flex-wrap items-start justify-start pl-6">
+                <ul className="list-disc gap-2 grow flex flex-row flex-wrap items-start justify-start pl-6">
                   <li>Image Manipulation Algorithms.</li>
                   <li>Real-world User Base.</li>
                   <li>Client-Side Focused Development.</li>
