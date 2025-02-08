@@ -21,7 +21,7 @@ export default function ProjectPane({project}: {project: DevProject}) {
       <div className="w-full flex flex-row items-center justify-center">
         <NavArrow direction="left" size="small"/>
         {project.imagesSrc.map((image, index) => (
-          <Image key={index} src={image} alt={project.title} width={1920} height={1080} className="w-2/3 object-cover" />
+          <Image key={index} src={image} alt={project.title} width={1920} height={1080} className="w-2/3 object-cover rounded-xl shadow-md shadow-shadowtheme" />
         ))}
         <NavArrow direction="right" size="small"/>
       </div>
