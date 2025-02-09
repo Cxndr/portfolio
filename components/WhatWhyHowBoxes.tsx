@@ -10,12 +10,12 @@ type WhatWhyHowProps = {
 export default function WhatWhyHow({project, seperation}: WhatWhyHowProps) {
 
   const seperationClassName = seperation === "box" ? 
-    " bg-zinc-100/80 rounded-xl shadow-zinc-900 shadow-2xl py-4 px-6" 
+    " bg-zinc-50/90 rounded-xl shadow-zinc-900 shadow-xl py-4 px-6" 
     : 
     " ";
 
   return (
-    <div className="w-full h-full px-12 text-sm flex flex-row items-start justify-start gap-10">
+    <div className="w-full h-full text-sm flex flex-row items-start justify-start gap-10">
 
       <div className={`w-1/3 h-full flex flex-col items-center justify-start ${seperationClassName}`}>
         <h4 className="text-2xl font-bold mb-2 text-cs-1-muted">what</h4>

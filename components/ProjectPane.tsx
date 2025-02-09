@@ -26,7 +26,7 @@ export default function ProjectPane({project}: {project: DevProject}) {
         <NavArrow direction="right" size="small"/>
       </div>
 
-      <WhatWhyHow project={project} />
+      <WhatWhyHow project={project} seperation="line" />
 
       <Button onClick={() => setShowMore(!showMore)}>
         <span className="flex flex-row items-center justify-center gap-2">
