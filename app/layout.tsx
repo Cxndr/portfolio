@@ -2,6 +2,7 @@ import "./globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google"
 import Header from "@/components/Header";
+import { ViewTransitions } from "next-view-transitions";
 
 const inter = Inter({ subsets: ['latin']})
 
@@ -16,21 +17,23 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`
-          flex flex-col h-svh 
-          ${inter.className}
-        `}
-      >
+    <ViewTransitions>
+      <html lang="en">
+        <body
+          className={`
+            flex flex-col h-svh 
+            ${inter.className}
+          `}
+        >
 
-        <Header/>
+          <Header/>
 
-        <main className="grow overflow-hidden">
-          {children}
-        </main>
+          <main className="grow overflow-hidden">
+            {children}
+          </main>
 
-      </body>
-    </html>
+        </body>
+      </html>
+    </ViewTransitions>
   );
 }
