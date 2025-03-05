@@ -16,29 +16,30 @@ export type DevProject = {
   skillsGained: string[],
   liveSiteLink: string,
   githubLink: string,
-  longDescription: string
+  longDescription: string,
+  imageSrc: string,
 }
 
 
 export const devProjects: DevProject[] = [
   {
-    title: "One Piece TCG Sim Themer",
+    title: "OPTCG Sim Themer",
     imagesSrc: ["/img/optcgsimthemer.png"],
     whatList: [
-      "Create themes for One Piece TCG Sim.",
+      "Create themes for <b>One Piece TCG Sim.</b>",
       "Intuitive for non-technical users.",
-      "Free to deliver to 10k users.",
-      "Desktop-first UI.",
+      "Free to deliver to 10k target userbase.",
+      "<b><i>Desktop-first</i></b> UI.",
     ],
     whyList: [
       "Default visuals are not aesthetically focused.",
       "Creating themes with Photoshop/GIMP is slow and technical.",
-      "Real-world user base.",
+      "<b><i>Real-world</i></b> user base to develop for.",
     ],
     howList: [
-      "JIMP (Javascript Image Manipulation Program).",
-      "Web workers for image manipulation.",
-      "Client-side focused development.",
+      "<b>JIMP</b> (Javascript Image Manipulation Program).",
+      "Web workers for <b><i>speedy and unintrusive</i></b> image manipulation tasks in browser.",
+      "<b><i>Client-side</i></b> focused development.",
     ],
     technologies: ["JIMP", "Next.js", "DaisyUI", "Tailwind", "TypeScript"],
     skillsGained: [
@@ -49,7 +50,39 @@ export const devProjects: DevProject[] = [
     ],
     liveSiteLink: "https://optcgsimthemer.com",
     githubLink: "https://github.com/Cxndr/optcgsim-themer",
-    longDescription: "get this from the dev copy page"
+    longDescription: "get this from the dev copy page",
+    imageSrc: "/img/optcgsimthemer.png",
+  },
+  {
+    title: "OPTCG Sim Themer",
+    imagesSrc: ["/img/optcgsimthemer.png"],
+    whatList: [
+      "Create themes for <b>One Piece TCG Sim.</b>",
+      "Intuitive for non-technical users.",
+      "Free to deliver to 10k target userbase.",
+      "<b><i>Desktop-first</i></b> UI.",
+    ],
+    whyList: [
+      "Default visuals are not aesthetically focused.",
+      "Creating themes with Photoshop/GIMP is slow and technical.",
+      "<b><i>Real-world</i></b> user base to develop for.",
+    ],
+    howList: [
+      "<b>JIMP</b> (Javascript Image Manipulation Program).",
+      "Web workers for <b><i>speedy and unintrusive</i></b> image manipulation tasks in browser.",
+      "<b><i>Client-side</i></b> focused development.",
+    ],
+    technologies: ["JIMP", "Next.js", "DaisyUI", "Tailwind", "TypeScript"],
+    skillsGained: [
+      "🖼️ Image Manipulation Algorithms.",
+      "👤 Real-World User Base.",
+      "🖱️ Client-Side Development.",
+      "🖥️ Desktop-First Design.",
+    ],
+    liveSiteLink: "https://optcgsimthemer.com",
+    githubLink: "https://github.com/Cxndr/optcgsim-themer",
+    longDescription: "get this from the dev copy page",
+    imageSrc: "/img/optcgsimthemer.png",
   }
 ]
 

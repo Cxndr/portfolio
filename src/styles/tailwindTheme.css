@@ -1,0 +1,70 @@
+@theme {
+  /* breakpoints */
+  --breakpoint-*: initial;
+  --breakpoint-sm: 375px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1216px;
+	--width-mobile: 375px;
+	--width-tablet: 768px;
+	--width-desktop: 1216px;
+
+  /* shadows */
+  --shadow-th: 19px 15px 0px;
+
+  /* colors */  
+  --color-th-neutral-50: rgba(245, 244, 244, 1);
+	--color-th-neutral-100: rgba(232, 231, 231, 1);
+	--color-th-neutral-200: rgba(219, 219, 219, 1);
+	--color-th-neutral-300: rgba(205, 204, 206, 1);
+	--color-th-neutral-400: rgba(165, 164, 167, 1);
+	--color-th-neutral-500: rgba(125, 124, 129, 1);
+	--color-th-neutral-600: rgba(104, 103, 107, 1);
+	--color-th-neutral-700: rgba(83, 82, 85, 1);
+	--color-th-neutral-800: rgba(61, 61, 63, 1);
+	--color-th-neutral-900: rgba(40, 40, 41, 1);
+	--color-th-neutral-950: rgba(19, 19, 19, 1);
+	--color-th-midnight-50: rgba(246, 247, 249, 1);
+	--color-th-midnight-100: rgba(236, 238, 242, 1);
+	--color-th-midnight-200: rgba(214, 217, 225, 1);
+	--color-th-midnight-300: rgba(178, 185, 199, 1);
+	--color-th-midnight-400: rgba(136, 147, 168, 1);
+	--color-th-midnight-500: rgba(105, 118, 142, 1);
+	--color-th-midnight-600: rgba(84, 94, 117, 1);
+	--color-th-midnight-700: rgba(69, 77, 95, 1);
+	--color-th-midnight-800: rgba(59, 65, 81, 1);
+	--color-th-midnight-900: rgba(53, 57, 69, 1);
+	--color-th-midnight-950: rgba(38, 41, 50, 1);
+	--color-th-yellow-50: rgba(255, 249, 234, 1);
+	--color-th-yellow-100: rgba(255, 245, 222, 1);
+	--color-th-yellow-200: rgba(255, 235, 187, 1);
+	--color-th-yellow-300: rgba(255, 220, 138, 1);
+	--color-th-yellow-400: rgba(255, 206, 92, 1);
+	--color-th-yellow-500: rgba(255, 179, 0, 1);
+	--color-th-yellow-600: rgba(209, 147, 0, 1);
+	--color-th-yellow-700: rgba(163, 115, 0, 1);
+	--color-th-yellow-800: rgba(117, 82, 0, 1);
+	--color-th-yellow-900: rgba(71, 50, 0, 1);
+	--color-th-yellow-950: rgba(49, 34, 0, 1);
+	--color-th-pink-50: rgba(255, 241, 243, 1);
+	--color-th-pink-100: rgba(254, 229, 233, 1);
+	--color-th-pink-200: rgba(253, 206, 215, 1);
+	--color-th-pink-300: rgba(250, 167, 182, 1);
+	--color-th-pink-400: rgba(247, 117, 144, 1);
+	--color-th-pink-500: rgba(239, 72, 111, 1);
+	--color-th-pink-600: rgba(219, 35, 86, 1);
+	--color-th-pink-700: rgba(185, 23, 73, 1);
+	--color-th-pink-800: rgba(155, 22, 67, 1);
+	--color-th-pink-900: rgba(133, 22, 63, 1);
+	--color-th-pink-950: rgba(74, 7, 30, 1);
+	--color-th-blue-50: rgba(237, 252, 254, 1);
+	--color-th-blue-100: rgba(215, 241, 250, 1);
+	--color-th-blue-200: rgba(177, 232, 251, 1);
+	--color-th-blue-300: rgba(124, 216, 246, 1);
+	--color-th-blue-400: rgba(92, 195, 229, 1);
+	--color-th-blue-500: rgba(15, 166, 203, 1);
+	--color-th-blue-600: rgba(16, 137, 177, 1);
+	--color-th-blue-700: rgba(20, 107, 138, 1);
+	--color-th-blue-800: rgba(25, 87, 113, 1);
+	--color-th-blue-900: rgba(25, 72, 96, 1);
+	--color-th-blue-950: rgba(11, 47, 65, 1);
+}

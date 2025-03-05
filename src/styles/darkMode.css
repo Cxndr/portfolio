@@ -1,0 +1,16 @@
+:root {
+  --foreground: var(--color-th-neutral-950);
+  --background: var(--color-th-neutral-50);
+}
+
+@media (prefers-color-scheme: dark) { /* no dark mode implementation for now, really want to default to light mode regardless of system so should probably implement using context anyway */
+  /* :root {
+    --foreground: var(--color-th-neutral-50);
+    --background: var(--color-th-neutral-950);
+  } */
+}
+
+@theme {
+  --color-foreground: var(--foreground);
+  --color-background: var(--background);
+}

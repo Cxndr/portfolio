@@ -1,6 +1,6 @@
 "use client"
 
-import { Link } from 'next-view-transitions'
+import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
 type NavDesktopLinkProps = {
@@ -12,7 +12,7 @@ type NavDesktopLinkProps = {
 export default function NavDesktopLink({ href, label, children }:NavDesktopLinkProps) {
 
   const pathname = usePathname();
-  const isActive = (href:string) => pathname === href;
+  const isActive = pathname === href;
 
   return (
     <Link 
@@ -20,9 +20,9 @@ export default function NavDesktopLink({ href, label, children }:NavDesktopLinkP
       className={`
         w-[4.75rem] pt-3 pb-1 rounded-3xl
         flex flex-col items-center gap-2
-        hover:bg-foreground/5 hover:text-cs-4
+        hover:bg-foreground/5 hover:text-th-blue-500
         transition-all duration-300
-        ${isActive(href) ? "text-cs-1" : "text-foreground/65"}
+        ${isActive ? "text-th-pink-500" : "text-foreground/65"}
       `}
     >
       
@@ -31,7 +31,7 @@ export default function NavDesktopLink({ href, label, children }:NavDesktopLinkP
       <span 
         className={`
           text-xs font-medium pb-1.5 px-0
-          ${isActive(href) ? "border-b-2 border-cs-1/50" : "border-b-2 border-background/0"}
+          ${isActive ? "border-b-2 border-th-pink-500/50" : "border-b-2 border-background/0"}
         `}>
         {label}
       </span>

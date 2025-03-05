@@ -1,17 +1,106 @@
+import Card from "@/components/Card";
 import DynamicBackground from "@/components/DynamicBackground";
-import { devProjects } from "@/lib/devProjects";
-
+import { devProjects, techColors } from "@/lib/devProjects";
+import { BsGithub } from "react-icons/bs";
+import { GrLanguage } from "react-icons/gr";
+import Image from "next/image";
+import ProjectNavButton from "@/components/ProjectNavButton";
 export default function DevPage({ params }: { params: { project: string } }) {
   const projectId = Number(params.project);
   const currentProject = devProjects[projectId];
+  
 
-  return (
-    <div className="h-full w-svw">
-      <DynamicBackground>
-        <div className="h-full w-full pt-4 flex flex-row items-center justify-center">
-          {currentProject.title}
+  
+    return (
+    <DynamicBackground>
+      <div className="h-full w-full flex flex-col items-center justify-center overflow-hidden">
+        <div className="h-full w-desktop">
+          <div className="h-full flex flex-row gap-12">
+
+            <div className="h-full w-5/12 flex flex-col gap-12 justify-center">
+
+              <Card className="p-6.5 pt-4.5 shadow-th-pink-500 flex flex-col gap-3">
+                <h2>What</h2>
+                <ul>
+                  {currentProject.whatList.map((item, index) => (
+                    <li key={index} dangerouslySetInnerHTML={{ __html: item }} />
+                  ))}
+                </ul>
+              </Card>
+
+              <Card className="p-6.5 pt-4.5 shadow-th-blue-500 flex flex-col gap-3">
+                <h2>Why</h2>
+                <ul>
+                  {currentProject.whyList.map((item, index) => (
+                    <li key={index} dangerouslySetInnerHTML={{ __html: item }} />
+                  ))}
+                </ul>
+              </Card>
+
+              <Card className="p-6.5 pt-4.5 shadow-th-yellow-500 flex flex-col gap-3">
+                <h2>How</h2>
+                <ul>
+                  {currentProject.howList.map((item, index) => (
+                    <li key={index} dangerouslySetInnerHTML={{ __html: item }} />
+                  ))}
+                </ul>
+              </Card>
+
+            </div>
+
+            <div className="w-7/12 flex flex-col justify-between items-center perspective-normal">
+              
+              <div 
+                className="mt-24 w-full flex flex-row justify-center items-center gap-8 translate-z-0 -rotate-y-10 -rotate-x-1">
+
+                <ProjectNavButton direction="previous" projectId={projectId} totalProjects={devProjects.length}/>
+
+                <div className="w-full flex flex-col justify-center items-center gap-3 bg-th-neutral-900 px-4 py-3 rounded-3xl shadow-th shadow-th-pink-500">
+
+                  <h3>{currentProject.title}</h3>
+
+                  <Image 
+                    src={currentProject.imageSrc} 
+                    alt={`image of live site for ${currentProject.title}`} 
+                    width={1000} 
+                    height={1000} 
+                    className="rounded-xl"
+                  />
+
+                  <div className="flex flex-row gap-2">
+                    {currentProject.technologies.map((technology) => (
+                      <div key={technology} className={`badge ${techColors[technology as keyof typeof techColors]}`}>
+                        {technology}
+                      </div>
+                    ))}
+                  </div>
+
+                </div>
+
+                <ProjectNavButton direction="next" projectId={projectId} totalProjects={devProjects.length}/>
+
+              </div>
+
+              <div className="w-full flex-grow flex flex-col justify-center items-center gap-8">
+                {/* could we have these popout a iframe of the link you're visiting */}
+
+                <button className="button"> 
+                  <GrLanguage />
+                  View Live Site
+                </button>
+
+                <button className="button">
+                  <BsGithub />
+                  Github Repo
+                </button>
+
+              </div>
+
+            </div>
+
+          </div>
         </div>
-      </DynamicBackground>
-    </div>
+      </div>
+    </DynamicBackground>
   )
 }
