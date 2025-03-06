@@ -9,6 +9,11 @@ export default function SlothCSS({ className }: { className?: string }) {
       <div className="absolute top-0 left-1/2 -translate-x-20 translate-y-10 w-24 h-24 bg-[#FFEFE9] z-20 rounded-full" />
       <div className="absolute top-0 right-1/2 translate-x-20 translate-y-10 w-24 h-24 bg-[#FFEFE9] z-20 rounded-full" />
 
+      {/* hair tufts */}
+      <div className="absolute -rotate-42 top-0 left-1/2 -translate-x-7 -translate-y-1 w-8 h-3 bg-[#D79E78] z-20 rounded-r-[100%]" />
+      <div className="absolute -rotate-34 top-0 left-1/2 -translate-x-3 -translate-y-1.5 w-8 h-3 bg-[#D79E78] z-20 rounded-r-[100%]" />
+
+
       {/* eye patches */}
       <div className="absolute top-0 left-1/2 -translate-x-23 translate-y-14 w-20 h-14 bg-[#AC6C44] -rotate-16 z-20 rounded-r-full rounded-tl-full" />
       <div className="absolute top-0 right-1/2 translate-x-23 translate-y-14 w-20 h-14 bg-[#AC6C44] rotate-16 z-20 rounded-l-full rounded-tr-full" />
