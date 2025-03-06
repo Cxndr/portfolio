@@ -1,9 +1,5 @@
 import DynamicBackground from "@/components/DynamicBackground";
-import { FaArrowUp, FaEnvelope, FaGithub, FaTwitter, FaLinkedinIn } from "react-icons/fa";
-import Card from "@/components/Card";
-import { SiReaddotcv } from "react-icons/si";
-import IconButton from "@/components/IconButton";
-import SlothCSS from "@/components/SlothCSS";
+import { FaArrowUp } from "react-icons/fa";
 import GetInTouchCard from "@/components/GetInTouchCard";
 
 export default function ContactPage() {

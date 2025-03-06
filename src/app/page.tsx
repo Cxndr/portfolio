@@ -1,6 +1,6 @@
 import Card from "@/components/Card";
 import DynamicBackground from "@/components/DynamicBackground";
-import Image from "next/image";
+import ProfileImage from "@/components/ProfileImage";
 import { FaArrowDown } from "react-icons/fa";
 
 export default function HomePage() {
@@ -9,15 +9,7 @@ export default function HomePage() {
       <div className="h-full w-full flex flex-col items-center justify-center overflow-hidden">
           <div className="h-full w-desktop">
 
-            <div className="h-[100%] aspect-square fixed -right-[9%] -bottom-[22%] rounded-full overflow-hidden border-24 border-th-blue-500">
-              <Image 
-                src="/img/profilepic.jpg" 
-                alt="Matt Vandersluys playing Pokemon TCG at European International Championships 2022" 
-                width={2185}
-                height={2576} 
-                className="-scale-x-100 object-cover -translate-y-16"
-              />
-            </div>
+            <ProfileImage />
 
             <div className="flex flex-col gap-12 relative z-10">
 
