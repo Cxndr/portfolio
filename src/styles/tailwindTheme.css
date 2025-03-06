@@ -10,6 +10,8 @@
 
   /* shadows */
   --shadow-th: 19px 15px 0px;
+	--shadow-th-sm: 10px 8px 0px;
+	--shadow-th-sm-hover: 12px 10px 0px;
 
   /* colors */  
   --color-th-neutral-50: rgba(245, 244, 244, 1);

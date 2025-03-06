@@ -20,7 +20,7 @@ export default function DynamicBackground({
 
   return (
     <div
-      className="h-full w-full"
+      className="h-full w-full relative z-0"
       style={{
         backgroundImage: bgSvgDataUri ? `url("${bgSvgDataUri}")` : 'none',
         backgroundRepeat: "repeat",
