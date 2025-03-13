@@ -17,7 +17,8 @@ export type DevProject = {
   liveSiteLink: string,
   githubLink: string,
   longDescription: string,
-  imageSrc: string,
+  imageSrcDesktop: string,
+  imageSrcMobile: string,
 }
 
 
@@ -51,7 +52,8 @@ export const devProjects: DevProject[] = [
     liveSiteLink: "https://optcgsimthemer.com",
     githubLink: "https://github.com/Cxndr/optcgsim-themer",
     longDescription: "get this from the dev copy page",
-    imageSrc: "/img/optcgsimthemer.png",
+    imageSrcDesktop: "/img/optcgsimthemer.png",
+    imageSrcMobile: "/img/optcgsimthemer-mobile.png"
   },
   {
     title: "OPTCG Sim Themer",
@@ -82,7 +84,8 @@ export const devProjects: DevProject[] = [
     liveSiteLink: "https://optcgsimthemer.com",
     githubLink: "https://github.com/Cxndr/optcgsim-themer",
     longDescription: "get this from the dev copy page",
-    imageSrc: "/img/optcgsimthemer.png",
+    imageSrcDesktop: "/img/optcgsimthemer.png",
+    imageSrcMobile: "/img/optcgsimthemer-mobile.png"
   }
 ]
 

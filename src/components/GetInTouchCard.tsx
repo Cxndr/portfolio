@@ -9,6 +9,7 @@ import SlothCSS from "./SlothCSS";
 import { FaEnvelope } from "react-icons/fa";
 import IconButton from "./IconButton";
 import { useState } from "react";
+import Button from "./Button";
 
 
 export default function GetInTouchCard() {
@@ -29,14 +30,22 @@ export default function GetInTouchCard() {
       <div className="w-full h-64 flex flex-row justify-evenlyitems-center">
 
         <div className="w-1/3 flex flex-col gap-8 justify-center items-center">
-          <button className="button" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+          <Button 
+            href="#"
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+          >
             <SiReaddotcv />
             View CV
-          </button>
-          <button className="button" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+          </Button>
+          <Button
+            href="#"
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+          >
             <FaEnvelope />
             Email Me
-          </button>
+          </Button>
         </div>
 
         <div className="w-2/3 flex flex-row gap-10 flex-wrap justify-center items-center">

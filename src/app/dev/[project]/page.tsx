@@ -5,6 +5,8 @@ import { BsGithub } from "react-icons/bs";
 import { GrLanguage } from "react-icons/gr";
 import Image from "next/image";
 import ProjectNavButton from "@/components/ProjectNavButton";
+import Button from "@/components/Button";
+
 export default function DevPage({ params }: { params: { project: string } }) {
   const projectId = Number(params.project);
   const currentProject = devProjects[projectId];
@@ -55,16 +57,24 @@ export default function DevPage({ params }: { params: { project: string } }) {
 
                 <ProjectNavButton direction="previous" projectId={projectId} totalProjects={devProjects.length}/>
 
-                <div className="w-full flex flex-col justify-center items-center gap-3 bg-th-neutral-900 px-4 py-3 rounded-3xl shadow-th shadow-th-pink-500">
+                <div className="w-full flex flex-col justify-center items-center gap-3 bg-th-neutral-900 px-4 py-3 rounded-3xl shadow-th shadow-th-pink-500 relative">
 
                   <h3>{currentProject.title}</h3>
 
                   <Image 
-                    src={currentProject.imageSrc} 
-                    alt={`image of live site for ${currentProject.title}`} 
+                    src={currentProject.imageSrcDesktop} 
+                    alt={`image of live site for ${currentProject.title} on desktop`} 
                     width={1000} 
                     height={1000} 
                     className="rounded-xl"
+                  />
+
+                  <Image
+                    src={currentProject.imageSrcMobile}
+                    alt={`image of live site for ${currentProject.title} on mobile`} 
+                    width={375}
+                    height={668}
+                    className="rounded-lg absolute -right-10 -bottom-10 h-2/3 w-auto shadow-md shadow-black/40"
                   />
 
                   <div className="flex flex-row gap-2">
@@ -84,15 +94,21 @@ export default function DevPage({ params }: { params: { project: string } }) {
               <div className="w-full flex-grow flex flex-col justify-center items-center gap-8">
                 {/* could we have these popout a iframe of the link you're visiting */}
 
-                <button className="button"> 
+                <Button 
+                  href={currentProject.liveSiteLink}
+                  className="hover:shadow-th-blue-500"
+                > 
                   <GrLanguage />
                   View Live Site
-                </button>
+                </Button>
 
-                <button className="button">
+                <Button 
+                  href={currentProject.githubLink}
+                  className="hover:shadow-th-yellow-500"
+                >
                   <BsGithub />
                   Github Repo
-                </button>
+                </Button>
 
               </div>
 
