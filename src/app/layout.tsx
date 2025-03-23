@@ -25,7 +25,7 @@ export default function RootLayout({
         `}
       >
         <Header/>
-        <ViewTransition>
+        <ViewTransition name="main">
           {children}
         </ViewTransition>
       </body>
