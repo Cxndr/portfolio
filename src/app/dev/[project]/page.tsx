@@ -7,11 +7,10 @@ import Image from "next/image";
 import ProjectNavButton from "@/components/ProjectNavButton";
 import Button from "@/components/Button";
 
-export default function DevPage({ params }: { params: { project: string } }) {
-  const projectId = Number(params.project);
+export default async function DevPage({ params }: { params: Promise<{ project: string }> }) {
+  const { project } = await params;
+  const projectId = Number(project);
   const currentProject = devProjects[projectId];
-  
-
   
     return (
     <DynamicBackground>

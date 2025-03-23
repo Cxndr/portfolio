@@ -15,8 +15,8 @@ export default function ProfileImage({ size = 'large' }: ProfileImageProps) {
       <Image 
         src="/img/profilepic.jpg" 
         alt="Matt Vandersluys playing Pokemon TCG at European International Championships 2022" 
-        width={2185}
-        height={2576} 
+        width={1440}
+        height={1440} 
         className="-scale-x-100 object-cover -translate-y-16"
       />
     </div>

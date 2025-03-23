@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import Header from "@/components/Header";
 import "./globals.css";
-import { PageTransition } from "@/components/PageTransition";
+import { unstable_ViewTransition as ViewTransition } from "react";
+
 const inter = Inter({ subsets: ['latin']})
 
 export const metadata: Metadata = {
@@ -24,10 +25,11 @@ export default function RootLayout({
         `}
       >
         <Header/>
-        <PageTransition>
+        <ViewTransition>
           {children}
-        </PageTransition>
+        </ViewTransition>
       </body>
     </html>
   );
 }
+
