@@ -1,9 +1,9 @@
 "use client"
 
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { FaPlay, FaSpotify, FaSoundcloud, FaHandPointer, FaInfoCircle, FaSearch } from "react-icons/fa";
+import { FaPlay, FaSpotify, FaSoundcloud, FaHandPointer } from "react-icons/fa";
 
 interface AlbumInfo {
   id: string;
@@ -25,6 +25,12 @@ interface AlbumCoverProps {
 // Individual Album Cover Component
 function AlbumCover({ album, className = "", shadowColor = "shadow-th-blue-500", onSelect }: AlbumCoverProps) {
   const [isHovered, setIsHovered] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
+  
+  // Only run on client-side
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
   
   return (
     <div 
@@ -42,14 +48,12 @@ function AlbumCover({ album, className = "", shadowColor = "shadow-th-blue-500",
           className={`rounded-lg border-2 border-th-neutral-950 shadow-th-sm ${shadowColor}`}
         />
         
-        {/* Diagonal obi strip */}
+        {/* Album info label - styled like GetInTouchCard */}
         {isHovered && (
-          <div className="absolute inset-0 overflow-hidden rounded-lg">
-            <div className="absolute top-0 left-0 w-[200%] h-6 bg-th-neutral-900 rotate-[-45deg] translate-x-[-35%] translate-y-[25%]">
-              <span className="absolute top-1/2 left-[30%] -translate-y-1/2 text-th-yellow-500 text-xs font-bold whitespace-nowrap px-1 flex items-center gap-1">
-                <FaHandPointer className="text-sm" /> for info!
-              </span>
-            </div>
+          <div className="absolute -rotate-8 -top-5 -left-5 px-3 py-1.5 bg-th-yellow-500 rounded-lg shadow-md shadow-th-neutral-950/50">
+            <span className="text-th-neutral-50 text-xs font-bold flex items-center gap-1">
+              {isMounted && <FaHandPointer className="text-sm" aria-hidden="true" />} for info!
+            </span>
           </div>
         )}
       </div>
