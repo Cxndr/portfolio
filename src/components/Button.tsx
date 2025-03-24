@@ -17,7 +17,7 @@ export default function Button({children, href, className, onMouseEnter, onMouse
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
     >
-      <a href={href} className="flex flex-row gap-2">
+      <a href={href} className="flex flex-row gap-2 items-center">
         {children}
       </a>
     

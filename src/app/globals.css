@@ -1,4 +1,4 @@
-@import "tailwindcss";
+
 @import "../styles/tailwindTheme.css";
 @import "../styles/typography.css";
 @import "../styles/darkMode.css";
@@ -37,3 +37,5 @@ button {
   padding: 0.25rem 0.6rem;
   border-radius: 99px;
 }
+
+@import "tailwindcss";
