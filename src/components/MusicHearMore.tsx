@@ -13,7 +13,7 @@ export default function MusicHearMore() {
 
   return (
     <div 
-      className="absolute right-[32.5%] bottom-[6%] -translate-x-1/2"
+      className="relative"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
