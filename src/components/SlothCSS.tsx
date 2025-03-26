@@ -50,9 +50,27 @@ export default function SlothCSS({ className, isButtonHovered = false, musicPlay
       
       setMouseActive(true);
 
-      // Calculate mouse position relative to container
-      const mouseX = e.clientX - rect.left;
-      const mouseY = e.clientY - rect.top;
+      // Get the component's rotation from the className
+      const rotationMatch = className?.match(/rotate-(\d+)/);
+      const staticRotation = rotationMatch ? parseInt(rotationMatch[1]) : 0;
+      const totalRotation = staticRotation + rotation;
+
+      // Calculate the center of the container
+      const centerX = rect.left + rect.width / 2;
+      const centerY = rect.top + rect.height / 2;
+
+      // Transform mouse coordinates to be relative to the center
+      const mouseX = e.clientX - centerX;
+      const mouseY = e.clientY - centerY;
+
+      // Rotate the coordinates back to the unrotated space
+      const angleRad = (totalRotation * Math.PI) / 180;
+      const rotatedX = mouseX * Math.cos(-angleRad) - mouseY * Math.sin(-angleRad);
+      const rotatedY = mouseX * Math.sin(-angleRad) + mouseY * Math.cos(-angleRad);
+
+      // Convert back to container-relative coordinates
+      const containerX = rotatedX + rect.width / 2;
+      const containerY = rotatedY + rect.height / 2;
 
       // Calculate center points of eyes
       const leftEyeCenter = { x: rect.width * 0.35, y: rect.height * 0.35 };
@@ -76,15 +94,15 @@ export default function SlothCSS({ className, isButtonHovered = false, musicPlay
         };
       };
 
-      const leftPupil = calculatePupilOffset(mouseX, mouseY, leftEyeCenter);
-      const rightPupil = calculatePupilOffset(mouseX, mouseY, rightEyeCenter);
+      const leftPupil = calculatePupilOffset(containerX, containerY, leftEyeCenter);
+      const rightPupil = calculatePupilOffset(containerX, containerY, rightEyeCenter);
 
       setPupilPositions({ left: leftPupil, right: rightPupil });
     };
 
     window.addEventListener('mousemove', handleMouseMove);
     return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, [musicPlaying]);
+  }, [musicPlaying, className, rotation]);
 
   return (
     <div 

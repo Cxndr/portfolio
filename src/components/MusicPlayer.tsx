@@ -51,8 +51,8 @@ export default function MusicPlayer() {
   }, []);
 
   return (
-    <div className="relative right-9 flex items-center justify-center h-full w-0 -z-10 rotate-42 -top-0 scale-50">
-      <SlothCSS className="absolute" musicPlaying={isPlaying}/>
+    <div className="relative right-9 flex items-center justify-center h-full w-0 -z-10 -top-0 scale-50">
+      <SlothCSS className="absolute rotate-42" musicPlaying={isPlaying}/>
     </div>
   );
 } 
