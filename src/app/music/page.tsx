@@ -2,7 +2,7 @@ import AlbumCovers from "@/components/AlbumCovers";
 import DynamicBackground from "@/components/DynamicBackground";
 import { FaArrowDown } from "react-icons/fa";
 import MusicHearMore from "@/components/MusicHearMore";
-import SlothCSS from "@/components/SlothCSS";
+import MusicPlayer from "@/components/MusicPlayer";
 
 export default function MusicPage() {
   return (
@@ -36,25 +36,23 @@ export default function MusicPage() {
               <div className="h-full w-3/4 flex flex-col gap-8 items-center justify-between">
                 
                 <iframe 
-                  src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1803408114&color=%23FFB300&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false"
+                  src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1803408114&color=%23FFB300&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false&enable_api=true"
                   className="w-full h-full max-h-44 min-h-2 rounded-md border-2 border-th-neutral-950 shadow-th-md shadow-th-pink-500 transition-all duration-300"
                 />
 
                 <iframe 
                   className="w-full h-full max-h-44 min-h-2 rounded-md border-2 border-th-neutral-950 shadow-th-md shadow-th-yellow-500 transition-all duration-300"
-                  src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1677732198&color=%231089b1&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false"
+                  src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1677732198&color=%231089b1&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false&enable_api=true"
                 />
 
                 <iframe 
                   className="w-full h-full max-h-44 min-h-2 rounded-md border-2 border-th-neutral-950 shadow-th-md shadow-th-blue-500 transition-all duration-300"
-                  src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1326529426&color=%23ef486f&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false"
+                  src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1326529426&color=%23ef486f&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false&enable_api=true"
                 />
 
               </div>
 
-              <div className="relative right-9 flex items-center justify-center h-full w-0 -z-10 rotate-42 -top-0 scale-50">
-                  <SlothCSS className="absolute"/>
-                </div>
+              <MusicPlayer />
 
             </div>
 

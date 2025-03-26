@@ -1,8 +1,16 @@
-
 @import "../styles/tailwindTheme.css";
 @import "../styles/typography.css";
 @import "../styles/darkMode.css";
 @import "../styles/viewTransitions.css";
+
+@keyframes bob {
+  0%, 100% { transform: rotate(0deg); }
+  50% { transform: rotate(5deg); }
+}
+
+.animate-bob {
+  animation: bob 2s ease-in-out infinite;
+}
 
 html, body {
   height: 100%;
