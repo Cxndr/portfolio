@@ -57,7 +57,7 @@ function AlbumCover({ album, className = "", shadowColor = "shadow-th-blue-500",
           </span>
         </div>
       </div>
-      <span className="label text-center mt-3 !font-medium text-th-neutral-950">{album.title}</span>
+      <span className="label text-center mt-3 !font-semibold text-th-neutral-950">{album.title}</span>
     </div>
   );
 }

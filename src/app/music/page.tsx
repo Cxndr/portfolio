@@ -8,7 +8,7 @@ export default function MusicPage() {
   return (
     <DynamicBackground>
       <div className="h-full w-full flex flex-col items-center justify-center overflow-hidden">
-        <div className="h-full w-desktop">
+        <div className="h-full w-desktop max-w-11/12">
           <div className="h-full w-full flex flex-col items-end">
 
             <div className="h-[77%] w-full mt-16 flex flex-row gap-16">
@@ -36,18 +36,18 @@ export default function MusicPage() {
               <div className="h-full w-3/4 flex flex-col gap-8 items-center justify-between">
                 
                 <iframe 
-                  src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1803408114&color=%23FFB300&auto_play=false&hide_related=true&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"
+                  src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1803408114&color=%23FFB300&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false"
                   className="w-full h-full max-h-44 min-h-2 rounded-md border-2 border-th-neutral-950 shadow-th-md shadow-th-pink-500 transition-all duration-300"
                 />
 
                 <iframe 
                   className="w-full h-full max-h-44 min-h-2 rounded-md border-2 border-th-neutral-950 shadow-th-md shadow-th-yellow-500 transition-all duration-300"
-                  src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1677732198&color=%231089b1&auto_play=false&hide_related=true&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"
+                  src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1677732198&color=%231089b1&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false"
                 />
 
                 <iframe 
                   className="w-full h-full max-h-44 min-h-2 rounded-md border-2 border-th-neutral-950 shadow-th-md shadow-th-blue-500 transition-all duration-300"
-                  src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1326529426&color=%23ef486f&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"
+                  src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1326529426&color=%23ef486f&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false"
                 />
 
               </div>

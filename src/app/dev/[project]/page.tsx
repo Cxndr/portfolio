@@ -95,7 +95,7 @@ export default async function DevPage({ params }: { params: Promise<{ project: s
 
                 <Button 
                   href={currentProject.liveSiteLink}
-                  className="hover:shadow-th-blue-500"
+                  className="hover:shadow-th-neutral-800"
                 > 
                   <GrLanguage />
                   View Live Site
@@ -103,7 +103,7 @@ export default async function DevPage({ params }: { params: Promise<{ project: s
 
                 <Button 
                   href={currentProject.githubLink}
-                  className="hover:shadow-th-yellow-500"
+                  className="hover:shadow-th-neutral-800"
                 >
                   <BsGithub />
                   Github Repo
