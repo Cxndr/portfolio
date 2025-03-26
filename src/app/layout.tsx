@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import Header from "@/components/Header";
+import ScrollNavigator from "@/components/ScrollNavigator";
+import ViewTransitionWrapper from "@/components/ViewTransitionWrapper";
 import "./globals.css";
-import { unstable_ViewTransition as ViewTransition } from "react";
 
 const inter = Inter({ subsets: ['latin']})
 
@@ -25,9 +26,10 @@ export default function RootLayout({
         `}
       >
         <Header/>
-        <ViewTransition name="main">
+        <ScrollNavigator />
+        <ViewTransitionWrapper>
           {children}
-        </ViewTransition>
+        </ViewTransitionWrapper>
       </body>
     </html>
   );

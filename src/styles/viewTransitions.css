@@ -1,24 +1,56 @@
-::view-transition-group(main) {
+/* Slide down transition */
+::view-transition-group(slide-down) {
   animation-duration: 1.2s;
   animation-timing-function: ease-in;
 }
-::view-transition-old(main) {
-  animation-name: slide-out;
+
+::view-transition-old(slide-down) {
+  animation-name: slide-out-up;
   opacity: 1;
 }
-::view-transition-new(main) {
-  animation-name: slide-in;
+
+::view-transition-new(slide-down) {
+  animation-name: slide-in-down;
 }
 
-@keyframes slide-out {
+/* Slide up transition */
+::view-transition-group(slide-up) {
+  animation-duration: 1.2s;
+  animation-timing-function: ease-in;
+}
+
+::view-transition-old(slide-up) {
+  animation-name: slide-out-down;
+  opacity: 1;
+}
+
+::view-transition-new(slide-up) {
+  animation-name: slide-in-up;
+}
+
+@keyframes slide-out-up {
   to {
     transform: translateY(-100svh);
     opacity: 0;
   }
 }
-@keyframes slide-in {
+
+@keyframes slide-in-down {
   from {
     transform: translateY(100svh);
+  }
+}
+
+@keyframes slide-out-down {
+  to {
+    transform: translateY(100svh);
+    opacity: 0;
+  }
+}
+
+@keyframes slide-in-up {
+  from {
+    transform: translateY(-100svh);
   }
 }
 
