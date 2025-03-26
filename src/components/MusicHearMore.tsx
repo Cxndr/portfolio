@@ -13,11 +13,10 @@ export default function MusicHearMore() {
 
   return (
     <div 
-      className="relative"
+      className="relative top-6 left-6"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-                  
       <button
         className="button relative z-30 transition-all duration-300 pointer-events-none"
         style={{

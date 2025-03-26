@@ -15,7 +15,7 @@ export default function MusicPage() {
               
               <div className="h-full w-1/4 flex flex-col items-center justify-start gap-16">
 
-                <div className="h-1/3 w-full">
+                <div className="h-1/3 w-full mt-6">
                   <AlbumCovers/>
                 </div>
 
@@ -27,7 +27,7 @@ export default function MusicPage() {
                   </div>
                 </div>
                 
-                <div className="h-1/3 w-full">
+                <div className="h-1/3 w-full flex items-center justify-center">
                   <MusicHearMore />
                 </div>
 
