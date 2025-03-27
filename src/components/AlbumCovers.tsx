@@ -65,7 +65,6 @@ function AlbumCover({ album, className = "", shadowColor = "shadow-th-blue-500",
 export default function AlbumCovers() {
   const [selectedAlbum, setSelectedAlbum] = useState<string | null>(null);
   const [previousAlbum, setPreviousAlbum] = useState<string | null>(null);
-  const [navigationDirection, setNavigationDirection] = useState<'left' | 'right' | null>(null);
 
   const albums: Record<string, AlbumInfo> = {
     feelgoodbad: {
@@ -93,27 +92,10 @@ export default function AlbumCovers() {
   const handleClose = () => {
     setSelectedAlbum(null);
     setPreviousAlbum(null);
-    setNavigationDirection(null);
-  };
-
-  const handleNavigation = (direction: 'left' | 'right') => {
-    const albumIds = Object.keys(albums);
-    const currentIndex = albumIds.indexOf(selectedAlbum!);
-    
-    if (direction === 'left' && currentIndex < albumIds.length - 1) {
-      setPreviousAlbum(selectedAlbum);
-      setNavigationDirection('left');
-      setSelectedAlbum(albumIds[currentIndex + 1]);
-    } else if (direction === 'right' && currentIndex > 0) {
-      setPreviousAlbum(selectedAlbum);
-      setNavigationDirection('right');
-      setSelectedAlbum(albumIds[currentIndex - 1]);
-    }
   };
 
   const handleAlbumClick = (albumId: string) => {
     setPreviousAlbum(null);
-    setNavigationDirection(null);
     setSelectedAlbum(albumId);
   };
 
@@ -138,12 +120,6 @@ export default function AlbumCovers() {
       <Modal
         isOpen={selectedAlbum !== null}
         onClose={handleClose}
-        isNavigating={isNavigating}
-        navigationDirection={navigationDirection}
-        onNavigate={handleNavigation}
-        showLeftNav={selectedAlbum !== Object.keys(albums)[0]}
-        showRightNav={selectedAlbum !== Object.keys(albums)[Object.keys(albums).length - 1]}
-        itemId={selectedAlbum || undefined}
       >
         <div className="flex flex-col items-center">
           {/* Album image */}

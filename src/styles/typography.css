@@ -3,6 +3,14 @@ body {
   background: var(--color-th-neutral-900);
   font-family: 'Inter';
 }
+
+.font-caveat {
+  font-family: var(--font-caveat);
+  font-weight: 700;
+  color: #000000;
+  text-shadow: 0.5px 0.5px 0px rgba(0, 0, 0, 0.1);
+}
+
 h1 { 
   font-weight: 800;
   font-size: 3.5rem;

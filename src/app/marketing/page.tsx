@@ -1,8 +1,14 @@
+import DynamicBackground from "@/components/DynamicBackground";
+import ScatteredPhotos from "@/components/ScatteredPhotos";
 
 export default function MarketingPage() {
   return (
-    <div className="w-full h-full flex justify-center items-center bg-red-500">
-      Marketing
-    </div>
+    <DynamicBackground>
+      <div className="h-full w-full flex flex-col items-center justify-center overflow-hidden">
+        <div className="h-full w-desktop">
+          <ScatteredPhotos />
+        </div>
+      </div>
+    </DynamicBackground>
   )
 }
