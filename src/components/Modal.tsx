@@ -25,37 +25,38 @@ const modalVariants = {
 export default function Modal({ children, handleClose, modalOpen }: ModalProps) {
   return (
     <Backdrop onClick={handleClose}>
-        <motion.div
-          onClick={(e) => e.stopPropagation()}
-          className="
-            w-[clamp(50%,700px,90%)]
-            h-[min(50%, 300px]
-            bg-neutral-50
-            m-auto
-            p-8
-            rounded-lg
-            flex flex-column 
-            items-center
-            justify-center
-            relative
-            "
-          variants={modalVariants}
-          initial="hidden"
-          animate="visible"
-          exit="exit"
-          transition={{ duration: 0.3 }}
-        >
-          <div className="absolute top-0 right-0 m-2 p-2">
-            <button 
-              className="bg-neutral-200 p-2 rounded-full"
-              onClick={handleClose}
-            >
-              X
-            </button>
-          </div>
+      <motion.div
+        onClick={(e) => e.stopPropagation()}
+        className="
+          max-h-10/12
+          w-5xl
+          max-w-10/12
+          bg-neutral-50
+          rounded-lg
+          flex flex-column 
+          items-center
+          justify-center
+          relative
+          border-4 border-lime-500
+          "
+        variants={modalVariants}
+        initial="hidden"
+        animate="visible"
+        exit="exit"
+        transition={{ duration: 0.3 }}
+      >
+        {modalOpen && children}
 
-          {modalOpen && children}
-        </motion.div>
+        <div className="absolute top-0 right-0 m-2 p-2">
+          <button 
+            className="bg-neutral-200 p-2 rounded-full"
+            onClick={handleClose}
+          >
+            X
+          </button>
+        </div>
+
+      </motion.div>
     </Backdrop>
   );
 }

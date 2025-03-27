@@ -12,15 +12,19 @@
   animation: bob 2s ease-in-out infinite;
 }
 
-html, body {
+html {
   height: 100%;
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
 }
 
 body {
   background-color: var(--color-background);
-  box-sizing: border-box;
   display: flex;
   flex-direction: column;
+  height: 100%;
 }
 
 main {
