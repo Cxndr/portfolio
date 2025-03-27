@@ -6,6 +6,7 @@ import { GrLanguage } from "react-icons/gr";
 import Image from "next/image";
 import ProjectNavButton from "@/components/ProjectNavButton";
 import Button from "@/components/Button";
+import CardLabel from "@/components/CardLabel";
 
 export default async function DevPage({ params }: { params: Promise<{ project: string }> }) {
   const { project } = await params;
@@ -18,29 +19,29 @@ export default async function DevPage({ params }: { params: Promise<{ project: s
         <div className="h-full w-desktop">
           <div className="h-full flex flex-row gap-12">
 
-            <div className="h-full w-5/12 flex flex-col gap-12 justify-center">
+            <div className="h-full w-5/12 flex flex-col gap-20 justify-center">
 
-              <Card className="p-6.5 pt-4.5 shadow-th-pink-500 flex flex-col gap-3">
-                <h2>What</h2>
-                <ul>
+              <Card className="p-6.5 pt-4.5 shadow-th-pink-500 flex flex-col gap-3 relative">
+                <CardLabel label="What" color="pink" className="-top-10" />
+                <ul className="mt-2 flex flex-col gap-1">
                   {currentProject.whatList.map((item, index) => (
                     <li key={index} dangerouslySetInnerHTML={{ __html: item }} />
                   ))}
                 </ul>
               </Card>
 
-              <Card className="p-6.5 pt-4.5 shadow-th-blue-500 flex flex-col gap-3">
-                <h2>Why</h2>
-                <ul>
+              <Card className="p-6.5 pt-4.5 shadow-th-blue-500 flex flex-col gap-3 relative">
+                <CardLabel label="Why" color="blue" className="-top-10" />
+                <ul className="mt-2 flex flex-col gap-1">
                   {currentProject.whyList.map((item, index) => (
                     <li key={index} dangerouslySetInnerHTML={{ __html: item }} />
                   ))}
                 </ul>
               </Card>
 
-              <Card className="p-6.5 pt-4.5 shadow-th-yellow-500 flex flex-col gap-3">
-                <h2>How</h2>
-                <ul>
+              <Card className="p-6.5 pt-4.5 shadow-th-yellow-500 flex flex-col gap-3 relative">
+                <CardLabel label="How" color="yellow" className="-top-10" />
+                <ul className="mt-2 flex flex-col gap-1">
                   {currentProject.howList.map((item, index) => (
                     <li key={index} dangerouslySetInnerHTML={{ __html: item }} />
                   ))}

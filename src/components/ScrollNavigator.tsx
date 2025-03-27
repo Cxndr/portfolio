@@ -6,7 +6,7 @@ import { useNavigationState } from '@/lib/navigationState';
 
 const PAGES = [
   { path: '/', name: 'intro' },
-  { path: '/dev/0', name: 'dev' },
+  { path: '/dev', name: 'dev' },
   { path: '/marketing', name: 'marketing' },
   { path: '/music', name: 'music' },
   { path: '/contact', name: 'contact' },

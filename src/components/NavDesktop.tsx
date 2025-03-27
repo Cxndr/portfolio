@@ -12,7 +12,7 @@ export default function NavDesktop() {
         <LuCircleUserRound size={18} />
       </NavDesktopLink>
 
-      <NavDesktopLink href="/dev/0" label="dev">
+      <NavDesktopLink href="/dev" label="dev">
         <LuMonitorSmartphone size={18}  />
       </NavDesktopLink>
 

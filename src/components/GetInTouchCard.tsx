@@ -10,6 +10,7 @@ import { FaEnvelope } from "react-icons/fa";
 import IconButton from "./IconButton";
 import { useState } from "react";
 import Button from "./Button";
+import CardLabel from "./CardLabel";
 
 
 export default function GetInTouchCard() {
@@ -23,9 +24,7 @@ export default function GetInTouchCard() {
     <Card className="w-2xl p-8 shadow-th-pink-500 relative">
       <SlothCSS className="absolute -top-36 right-14 -z-1" isButtonHovered={isButtonHovered}/>
 
-      <div className="absolute -rotate-8 -top-5 -left-5 px-4 py-3 bg-th-yellow-500 rounded-lg shadow-md shadow-th-neutral-950/50">
-        <h3 className="text-th-neutral-50">Get in touch!</h3>
-      </div>
+      <CardLabel label="Get in touch!" color="yellow" />
 
       <div className="w-full h-64 flex flex-row justify-evenlyitems-center">
 

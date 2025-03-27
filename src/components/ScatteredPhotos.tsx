@@ -100,22 +100,28 @@ export default function ScatteredPhotos() {
   const modalItems = photos.map(photo => ({
     id: photo.src,
     content: (
-      <div className="w-full h-full flex flex-col items-center justify-start">
+      <div className="w-full h-full flex flex-col items-center justify-center">
 
-        <p className="text-center text-neutral-950">
-          Test Description
-        </p>
-
-        <div className="w-full">
+        <div className="w-full grow flex justify-center items-center">
           <Image
             src={photo.src}
             alt="Marketing photo"
-            className="p-8 object-contain position-[unset] relative w-full h-full"
-            width={1080}
-            height={1080}
+            className="
+              object-contain position-[unset] relative 
+              shadow-md shadow-th-neutral-950/50 
+              rounded-lg
+              max-h-10/12
+              max-w-10/12
+              "
+            height={1000}
+            width={1000}
             priority
           />
         </div>
+
+        <p className="text-center text-neutral-950 font-caveat !text-3xl mt-4">
+          Test Description
+        </p>
 
       </div>
     )

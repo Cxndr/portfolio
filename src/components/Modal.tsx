@@ -28,16 +28,18 @@ export default function Modal({ children, handleClose, modalOpen }: ModalProps) 
       <motion.div
         onClick={(e) => e.stopPropagation()}
         className="
+          h-[64rem]
           max-h-10/12
           w-5xl
           max-w-10/12
+          p-8
           bg-neutral-50
           rounded-lg
           flex flex-column 
           items-center
           justify-center
           relative
-          border-4 border-lime-500
+          shadow-md shadow-th-neutral-950/50
           "
         variants={modalVariants}
         initial="hidden"

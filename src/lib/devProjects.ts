@@ -16,6 +16,7 @@ export type DevProject = {
   skillsGained: string[],
   liveSiteLink: string,
   githubLink: string,
+  shortDescription: string,
   longDescription: string,
   imageSrcDesktop: string,
   imageSrcMobile: string,
@@ -51,6 +52,7 @@ export const devProjects: DevProject[] = [
     ],
     liveSiteLink: "https://optcgsimthemer.com",
     githubLink: "https://github.com/Cxndr/optcgsim-themer",
+    shortDescription: "Create themes for <b>One Piece TCG Sim.</b>",
     longDescription: "get this from the dev copy page",
     imageSrcDesktop: "/img/optcgsimthemer.png",
     imageSrcMobile: "/img/optcgsimthemer-mobile.png"
@@ -83,6 +85,7 @@ export const devProjects: DevProject[] = [
     ],
     liveSiteLink: "https://optcgsimthemer.com",
     githubLink: "https://github.com/Cxndr/optcgsim-themer",
+    shortDescription: "Create themes for <b>One Piece TCG Sim.</b>",
     longDescription: "get this from the dev copy page",
     imageSrcDesktop: "/img/optcgsimthemer.png",
     imageSrcMobile: "/img/optcgsimthemer-mobile.png"
