@@ -13,11 +13,11 @@ export default function ProfileImage({ size = 'large' }: ProfileImageProps) {
       style={{ height: sizeValue }}
     >
       <Image 
-        src="/img/profilepic.jpg" 
+        src="/img/cartoonprofile01.png" 
         alt="Matt Vandersluys playing Pokemon TCG at European International Championships 2022" 
         width={1440}
         height={1440} 
-        className="-scale-x-100 object-cover -translate-y-16"
+        className="object-cover -translate-y-16 -translate-x-20"
       />
     </div>
   )
