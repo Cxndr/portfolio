@@ -20,6 +20,7 @@ export type DevProject = {
   longDescription: string,
   imageSrcDesktop: string,
   imageSrcMobile: string,
+  thumbnailSrc: string,
 }
 
 
@@ -27,6 +28,7 @@ export const devProjects: DevProject[] = [
   {
     title: "OPTCG Sim Themer",
     imagesSrc: ["/img/optcgsimthemer.png"],
+    thumbnailSrc: "/img/dev/optcgsimthemer.png",
     whatList: [
       "Create themes for <b>One Piece TCG Sim.</b>",
       "Intuitive for non-technical users.",
@@ -61,6 +63,7 @@ export const devProjects: DevProject[] = [
   {
     title: "Twich Auto-Clipper",
     imagesSrc: ["/img/optcgsimthemer.png"],
+    thumbnailSrc: "/img/dev/twitchclips.png",
     whatList: [
       "Automatically generate <b>Twitch clips</b> based on chat activity.",
       "Run on multiple channels with a single instance.",
@@ -95,6 +98,7 @@ export const devProjects: DevProject[] = [
   {
     title: "Twitch-Tok",
     imagesSrc: ["/img/optcgsimthemer.png"],
+    thumbnailSrc: "/img/dev/twitchtok.png",
     whatList: [
       "Tik-Tok style web app for twitch clips.",
       "Follow channels and categories to generate a feed of clips.",
@@ -124,6 +128,7 @@ export const devProjects: DevProject[] = [
   {
     title: "Promptr",
     imagesSrc: ["/img/optcgsimthemer.png"],
+    thumbnailSrc: "/img/dev/promptr.png",
     whatList: [
       "Word game web app inspired by <b>Ransom Notes</b> board game and <b>Dark Souls</b> message system",
       "Create humourous responses to prompts using only a randomly generated list of words",
@@ -152,6 +157,7 @@ export const devProjects: DevProject[] = [
   {
     title: "clouds&waves",
     imagesSrc: ["/img/optcgsimthemer.png"],
+    thumbnailSrc: "/img/dev/cloudsandwaves.png",
     whatList: [
       "Social media web app for sharing and discovering music in niche internet genres",
       "Stylized to market aesthetics",
@@ -180,6 +186,7 @@ export const devProjects: DevProject[] = [
   {
     title: "PokeRogue",
     imagesSrc: ["/img/optcgsimthemer.png"],
+    thumbnailSrc: "/img/dev/poke-rogue.png",
     whatList: [
       "Pokemon rouge-like auto-battler web game",
       "Gameplay inspired by <b>Balatro</b>, <b>The Bazaar</b> and <b>Pokemon</b> battle systems.",
@@ -208,6 +215,7 @@ export const devProjects: DevProject[] = [
   {
     title: "Pomodoro Timer",
     imagesSrc: ["/img/optcgsimthemer.png"],
+    thumbnailSrc: "/img/dev/pomodoro.gif",
     whatList: [
       "Simple and easy to usePomodoro timer web app",
       "Youtube playlist integration for seperate work and break music",
@@ -236,6 +244,7 @@ export const devProjects: DevProject[] = [
   {
     title: "MAHS (Auction House Software)",
     imagesSrc: ["/img/optcgsimthemer.png"],
+    thumbnailSrc: "/img/dev/mahs.gif",
     whatList: [
       "All in one auction house software for managing and running all aspects of an auction house business",
       "Manage items, catalogues, vendors and buyers",
@@ -264,6 +273,7 @@ export const devProjects: DevProject[] = [
   {
     title: "Item Shop Game",
     imagesSrc: ["/img/optcgsimthemer.png"],
+    thumbnailSrc: "/img/dev/itemshop.png",
     whatList: [
       "Item shop game loosely inspired by <b>Recettear</b> in a 2D pixel art style.",
       "Sell to customers who visit your shop in a rotating day cycle.",

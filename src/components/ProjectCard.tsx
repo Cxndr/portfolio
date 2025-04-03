@@ -26,7 +26,7 @@ export default function ProjectCard({ project, index }: { project: typeof devPro
       `}
     >
       <Image
-        src={project.imageSrcDesktop}
+        src={project.thumbnailSrc}
         alt={project.title}
         fill
         className="
