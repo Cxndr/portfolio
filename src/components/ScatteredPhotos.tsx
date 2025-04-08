@@ -163,9 +163,12 @@ export default function ScatteredPhotos() {
 
       <AnimatePresence>
         {modalOpen && (
-          <Modal modalOpen={modalOpen} handleClose={closeModal}>
-            {modalItems.find(item => item.id === selectedPhotoId)?.content}
-          </Modal>
+          <Modal 
+            modalOpen={modalOpen}
+            handleClose={closeModal} 
+            contentArray={modalItems.map(item => item.content)} 
+            contentIndex={modalItems.findIndex(item => item.id === selectedPhotoId)} 
+          />
         )}
       </AnimatePresence>
 
