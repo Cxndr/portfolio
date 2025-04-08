@@ -102,21 +102,20 @@ export default function ScatteredPhotos() {
     content: (
       <div className="w-full h-full flex flex-col items-center justify-center">
 
-        <div className="w-full grow flex justify-center items-center">
-          <Image
-            src={photo.src}
-            alt="Marketing photo"
-            className="
-              object-contain position-[unset] relative 
-              shadow-md shadow-th-neutral-950/50 
-              rounded-lg
-              max-h-10/12
-              max-w-10/12
+        <div className="flex justify-center items-center h-10/12 w-10/12 relative">
+          <div className="w-full h-full">
+            <Image
+              src={photo.src}
+              alt="Marketing photo"
+              className="
+                drop-shadow-lg drop-shadow-th-neutral-950
+                object-contain
+                relative
               "
-            height={1000}
-            width={1000}
-            priority
-          />
+              fill
+              priority
+            />
+          </div>
         </div>
 
         <p className="text-center text-neutral-950 font-caveat !text-3xl mt-4">
