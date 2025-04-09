@@ -1,6 +1,6 @@
 /* Slide down transition */
 ::view-transition-group(slide-down) {
-  animation-duration: 1.2s;
+  animation-duration: 0.9s;
   animation-timing-function: ease-in;
 }
 
@@ -15,7 +15,7 @@
 
 /* Slide up transition */
 ::view-transition-group(slide-up) {
-  animation-duration: 1.2s;
+  animation-duration: 0.9s;
   animation-timing-function: ease-in;
 }
 

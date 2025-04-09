@@ -2,7 +2,7 @@
 
 import type React from "react"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useCallback } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { FaX } from "react-icons/fa6";
 
@@ -66,26 +66,51 @@ export default function Modal({ contentArray, contentIndex, handleClose, modalOp
     }
   }, [modalOpen, contentIndex])
 
-  const handlePrev = (e: React.MouseEvent) => {
+  const handlePrev = useCallback((e: React.MouseEvent | KeyboardEvent) => {
     e.stopPropagation()
     if (currentIndex > 0) {
       setDirection(-1)
       setCurrentIndex(currentIndex - 1)
     }
-  }
+  }, [currentIndex])
 
-  const handleNext = (e: React.MouseEvent) => {
+  const handleNext = useCallback((e: React.MouseEvent | KeyboardEvent) => {
     e.stopPropagation()
     if (currentIndex < contentArray.length - 1) {
       setDirection(1)
       setCurrentIndex(currentIndex + 1)
     }
-  }
+  }, [currentIndex, contentArray.length])
 
   const handleExitClick = (e: React.MouseEvent) => {
     e.stopPropagation()
     handleClose()
   }
+
+  // Keyboard navigation effect
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (!modalOpen) return; // Only handle keys if modal is open
+
+      if (e.key === "ArrowLeft") {
+        // Simulate a click event object to satisfy handlePrev/handleNext type
+        const simulatedEvent = { stopPropagation: () => {} } as React.MouseEvent; 
+        handlePrev(simulatedEvent);
+      } else if (e.key === "ArrowRight") {
+        const simulatedEvent = { stopPropagation: () => {} } as React.MouseEvent;
+        handleNext(simulatedEvent);
+      } else if (e.key === "Escape") {
+        handleClose(); // Close the modal on Escape key press
+      }
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+
+    // Cleanup function
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [modalOpen, handlePrev, handleNext, handleClose]); // Add handleClose to dependencies
 
   return (
 
@@ -95,10 +120,10 @@ export default function Modal({ contentArray, contentIndex, handleClose, modalOp
         onClick={(e) => e.stopPropagation()}
         className="
           w-full h-full 
-          grid grid-cols-[minmax(8rem,auto)_minmax(0,theme(maxWidth.5xl))_minmax(8rem,auto)] /* Stable side cols */
-          gap-x-8 /* Add horizontal gap between columns */
-          px-8 /* Add padding to prevent buttons sticking to edges */
-          py-8 /* Add vertical padding */
+          grid grid-cols-[minmax(8rem,auto)_minmax(0,theme(maxWidth.5xl))_minmax(8rem,auto)]
+          gap-x-8
+          px-8
+          py-8
           pointer-events-none
         "
         variants={modalVariants}
@@ -115,11 +140,11 @@ export default function Modal({ contentArray, contentIndex, handleClose, modalOp
 
         <div
           className="
-            col-start-2 /* Place in second (center) column */
-            justify-self-center /* Center itself within the column */
+            col-start-2
+            justify-self-center
             relative
-            max-h-full /* Allow taking full height up to parent padding */
-            w-full /* Let grid column control max-width */
+            max-h-full
+            w-full
             overflow-hidden
             pointer-events-auto
             bg-neutral-50

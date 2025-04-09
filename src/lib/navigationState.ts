@@ -7,7 +7,7 @@ type NavigationState = {
   setDirection: (direction: 'up' | 'down' | null) => void
 }
 
-export const useNavigationState = create<NavigationState>((set: any) => ({
+export const useNavigationState = create<NavigationState>((set) => ({
   direction: null,
   setDirection: (direction: 'up' | 'down' | null) => set({ direction }),
-})) 
+}))
