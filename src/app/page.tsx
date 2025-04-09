@@ -1,6 +1,7 @@
 import Card from "@/components/Card";
 import DynamicBackground from "@/components/DynamicBackground";
 import ProfileImage from "@/components/ProfileImage";
+import SubtitleAnim from "@/components/SubtitleAnim";
 import { FaArrowDown } from "react-icons/fa";
 
 export default function HomePage() {
@@ -15,7 +16,7 @@ export default function HomePage() {
 
               <Card className="w-5/12 mt-16 p-4 pt-2 shadow-th-yellow-500">
                 <h1>Matt Vandersluys</h1>
-                <h3 className="text-th-pink-500">Web Developer</h3>
+                <SubtitleAnim values={["Web Development", "Digital Marketing", "Electronic Music"]} />
               </Card>
 
               <Card className="w-5/12 ml-18 p-8 flex flex-col gap-6 shadow-th-pink-500">

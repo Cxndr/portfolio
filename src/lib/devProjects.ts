@@ -242,7 +242,7 @@ export const devProjects: DevProject[] = [
   },
   
   {
-    title: "MAHS (Auction House Software)",
+    title: "MAHS Auction House",
     imagesSrc: ["/img/optcgsimthemer.png"],
     thumbnailSrc: "/img/dev/mahs.gif",
     whatList: [
