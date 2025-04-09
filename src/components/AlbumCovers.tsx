@@ -57,7 +57,7 @@ function AlbumCover({ album, className = "", shadowColor = "shadow-th-blue-500",
           </span>
         </div>
       </div>
-      <span className="label text-center mt-3 !font-semibold text-th-neutral-950">{album.title}</span>
+      <span className="label text-center mt-3 !font-semibold text-th-neutral-950 shadow-th-fade shadow-th-neutral-50 bg-th-neutral-50 rounded-full">{album.title}</span>
     </div>
   );
 }
@@ -135,7 +135,7 @@ export default function AlbumCovers() {
           transition={{ delay: isNavigating ? 0 : 0.3, duration: 0.25 }}
           className="text-th-neutral-950 text-center mb-8"
         >
-          <p className="mb-4">{album.description}</p>
+          <p className="mb-4 max-w-prose">{album.description}</p>
           <p className="text-sm">Released: {album.releaseDate}</p>
         </motion.div>
         

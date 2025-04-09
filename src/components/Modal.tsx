@@ -128,7 +128,15 @@ export default function Modal({ contentArray, contentIndex, handleClose, modalOp
           "
         >
           <div className="absolute top-0 right-0 m-2 p-2 z-20 pointer-events-auto">
-            <div className="text-2xl font-bold bg-th-pink-500 text-th-neutral-50 p-3 rounded-full hover:bg-th-pink-600 hover:scale-105 transition-all duration-300 cursor-pointer" onClick={handleExitClick}>
+            <div 
+              className="
+                text-2xl font-bold text-th-pink-500 hover:text-th-pink-400
+                bg-none p-3 rounded-full hover:bg-th-neutral-100 
+                hover:scale-110 transition-all duration-300 
+                cursor-pointer
+                " 
+              onClick={handleExitClick}
+            >
               <FaX />
             </div>
           </div>
