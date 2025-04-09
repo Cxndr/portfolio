@@ -1,7 +1,10 @@
 "use client"
 
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
+import { useNavigationState } from '@/lib/navigationState';
+import { findSiteMapKey, getNavigationDirection, siteMap } from '@/lib/navigationUtils';
+import React from 'react';
 
 type NavDesktopLinkProps = {
   href: string;
@@ -9,14 +12,36 @@ type NavDesktopLinkProps = {
   children: React.ReactNode;
 }
 
-export default function NavDesktopLink({ href, label, children }:NavDesktopLinkProps) {
+export default function NavDesktopLink({ href, label, children }: NavDesktopLinkProps) {
 
   const pathname = usePathname();
+  const router = useRouter();
+  const setDirection = useNavigationState((state) => state.setDirection);
   const isActive = pathname === href;
 
+  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+
+    const currentPathKey = findSiteMapKey(pathname, siteMap);
+    const targetPathKey = findSiteMapKey(href, siteMap);
+
+    if (currentPathKey === targetPathKey || !currentPathKey || !targetPathKey) {
+      console.log("Navigation prevented: already on page or path key not found.");
+      return;
+    }
+
+    const direction = getNavigationDirection(currentPathKey, targetPathKey);
+    console.log(`NavDesktopLink Click: ${currentPathKey} -> ${targetPathKey}, Direction: ${direction}`);
+
+    setDirection(direction);
+
+    router.push(href);
+  };
+
   return (
-    <Link 
-      href={href} 
+    <Link
+      href={href}
+      onClick={handleClick}
       className={`
         w-[4.75rem] pt-3 pb-1 rounded-3xl
         flex flex-col items-center gap-2

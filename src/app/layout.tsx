@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { Caveat } from "next/font/google";
 import Header from "@/components/Header";
-import ScrollNavigator from "@/components/ScrollNavigator";
+import PageNavigator from "@/components/PageNavigator";
 import ViewTransitionWrapper from "@/components/ViewTransitionWrapper";
 import "./globals.css";
 
@@ -33,7 +33,7 @@ export default function RootLayout({
         `}
       >
         <Header/>
-        <ScrollNavigator />
+        <PageNavigator />
         <ViewTransitionWrapper>
           {children}
         </ViewTransitionWrapper>

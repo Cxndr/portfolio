@@ -2,14 +2,38 @@
 
 import { devProjects, techColors } from "@/lib/devProjects";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
+import { useNavigationState } from "@/lib/navigationState";
+import { findSiteMapKey, getNavigationDirection, siteMap } from "@/lib/navigationUtils";
+import React from "react";
 
 export default function ProjectCard({ project, index }: { project: typeof devProjects[number], index: number }) {
 
   const router = useRouter();
+  const pathname = usePathname();
+  const setDirection = useNavigationState((state) => state.setDirection);
 
-  const handleClick = () => {
-    router.push(`/dev/${index}`);
+  const handleClick = (/* e: React.MouseEvent<HTMLDivElement> */) => {
+    const targetHref = `/dev/${index}`;
+    const currentPathKey = findSiteMapKey(pathname, siteMap);
+    const targetPathKey = findSiteMapKey(targetHref, siteMap);
+
+    if (!currentPathKey || !targetPathKey) {
+      console.error("ProjectCard Click: Path key not found for navigation.", { currentPathKey, targetPathKey });
+      router.push(targetHref);
+      return;
+    }
+    if (currentPathKey === targetPathKey && pathname === targetHref) {
+      console.log("ProjectCard Click: Navigation prevented, already on target page.");
+      return;
+    }
+
+    const direction = getNavigationDirection(currentPathKey, targetPathKey);
+    console.log(`ProjectCard Click: ${currentPathKey} -> ${targetPathKey}, Direction: ${direction}`);
+
+    setDirection(direction);
+
+    router.push(targetHref);
   }
 
   return (

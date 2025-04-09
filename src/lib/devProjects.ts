@@ -115,7 +115,7 @@ export const devProjects: DevProject[] = [
       "Utilizes <b>Twitch API</b> to trigger clips and retrieve chat activity.",
       "Monitors chat activity and triggers clips based on a spike in activity compared to a running average threshold.",
     ],
-    technologies: ["NextJS" ,"Tailwind", "Tailwind", "Typescript", "Postgres", "Supabase"],
+    technologies: ["NextJS" , "Tailwind", "Typescript", "Postgres", "Supabase"],
     skillsGained: [],
     liveSiteLink: "twitchtok.com",
     githubLink: "https://github.com/Cxndr/twitch-tok",
