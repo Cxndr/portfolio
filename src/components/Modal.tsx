@@ -95,8 +95,7 @@ export default function Modal({ contentArray, contentIndex, handleClose, modalOp
         onClick={(e) => e.stopPropagation()}
         className="
           w-full h-full 
-          grid grid-cols-[auto_minmax(0,theme(maxWidth.5xl))_auto] 
-          justify-center /* Keep horizontal centering */ 
+          grid grid-cols-[minmax(8rem,auto)_minmax(0,theme(maxWidth.5xl))_minmax(8rem,auto)] /* Stable side cols */
           gap-x-8 /* Add horizontal gap between columns */
           px-8 /* Add padding to prevent buttons sticking to edges */
           py-8 /* Add vertical padding */
@@ -107,11 +106,12 @@ export default function Modal({ contentArray, contentIndex, handleClose, modalOp
         animate="visible"
         exit="exit"
       >
-        {currentIndex > 0 && (
-          <div className="col-start-1 self-center justify-self-end pointer-events-auto"> {/* Vertically center button */}
+        {/* Left Button Area (always present grid cell) */}
+        <div className="col-start-1 self-center justify-self-end pointer-events-auto"> 
+          {currentIndex > 0 && ( 
             <ModalNavButton onClick={handlePrev} direction="left" />
-          </div>
-        )}
+          )}
+        </div>
 
         <div
           className="
@@ -161,11 +161,12 @@ export default function Modal({ contentArray, contentIndex, handleClose, modalOp
           </AnimatePresence>
         </div>
 
-        {currentIndex < contentArray.length - 1 && (
-          <div className="col-start-3 self-center justify-self-start pointer-events-auto"> {/* Vertically center button */}
+        {/* Right Button Area (always present grid cell) */}
+        <div className="col-start-3 self-center justify-self-start pointer-events-auto">
+          {currentIndex < contentArray.length - 1 && (
             <ModalNavButton onClick={handleNext} direction="right" />
-          </div>
-        )}
+          )}
+        </div>
       </motion.div>
     </Backdrop>
   )
