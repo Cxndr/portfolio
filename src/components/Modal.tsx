@@ -80,19 +80,18 @@ export default function Modal({ contentArray, contentIndex, handleClose, modalOp
     switch (animationState) {
       case "opening":
         return {
-          initial: { y: 100, opacity: 0 },
+          initial: { y: "100svh", opacity: 0 },
           animate: { y: 0, opacity: 1 },
           transition: {
-            type: "spring",
-            stiffness: 300,
-            damping: 30,
+            type: "tween",
+            ease: "easeInOut",
             duration: 0.5,
           },
         }
       case "closing":
         return {
           initial: { y: 0, opacity: 1 },
-          animate: { y: 1000, opacity: 0 },
+          animate: { y: "100svh", opacity: 0 },
           transition: {
             type: "tween",
             ease: "easeInOut",
@@ -101,12 +100,11 @@ export default function Modal({ contentArray, contentIndex, handleClose, modalOp
         }
       case "navigating":
         return {
-          initial: { x: direction * 300, opacity: 0 },
+          initial: { x: direction * 100 + "svw", opacity: 0 },
           animate: { x: 0, opacity: 1 },
           transition: {
-            type: "spring",
-            stiffness: 300,
-            damping: 30,
+            type: "tween",
+            ease: "easeInOut",
             duration: 0.5,
           },
         }
