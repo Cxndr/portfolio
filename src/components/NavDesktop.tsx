@@ -6,7 +6,14 @@ import { LuCircleUserRound, LuMonitorSmartphone, LuBookImage, LuMusic, LuAtSign 
 export default function NavDesktop() {
 
   return (
-    <nav className="hidden md:flex justify-center mt-6 mb-1">
+    <nav 
+      className="
+        hidden md:flex justify-center
+        pt-6 pb-2 
+        relative z-10 persist-nav 
+        bg-background
+      "
+    >
 
       <NavDesktopLink href="/" label="intro">
         <LuCircleUserRound size={18} />

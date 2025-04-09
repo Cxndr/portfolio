@@ -7,7 +7,7 @@
   0%, 100% { transform: rotate(0deg); }
   50% { transform: rotate(5deg); }
 }
-
+  
 .animate-bob {
   animation: bob 2s ease-in-out infinite;
 }
@@ -51,3 +51,11 @@ button {
 }
 
 @import "tailwindcss";
+
+@layer components {
+  .persist-nav {
+    view-transition-name: main-nav;
+  }
+
+  /* ... any other custom components ... */
+}

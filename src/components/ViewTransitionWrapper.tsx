@@ -24,7 +24,10 @@ export default function ViewTransitionWrapper({
 
   return (
     <ViewTransition name={getTransitionName()}>
-      {children}
+      {/* Wrap children in a div with relative z-0 to establish a lower stacking context */}
+      <div className="relative z-0 h-full"> 
+        {children}
+      </div>
     </ViewTransition>
   );
 } 
