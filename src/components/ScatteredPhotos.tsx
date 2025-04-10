@@ -7,6 +7,8 @@ import { AnimatePresence } from "framer-motion";
 
 interface Photo {
   src: string;
+  client: string;
+  description: string;
   position: {
     x: number;
     y: number;
@@ -26,34 +28,64 @@ const truncateDescription = (description: string, maxLength: number = 20) => {
 };
 
 const calculateGridPositions = (numPhotos: number) => {
-  // Calculate grid dimensions based on number of photos
+  if (numPhotos === 0) return [];
+
+  // --- Calculate grid based on 0-100% space ---
+  const fullWidth = 100;
+  const fullHeight = 100;
   const gridCols = Math.ceil(Math.sqrt(numPhotos));
   const gridRows = Math.ceil(numPhotos / gridCols);
-  
-  // Calculate cell size
-  const cellWidth = 100 / gridCols;
-  const cellHeight = 100 / gridRows;
-  
-  // Generate positions
+  const fullCellWidth = fullWidth / gridCols;
+  const fullCellHeight = fullHeight / gridRows;
+
+  const photosInLastRow = numPhotos % gridCols || gridCols;
+  const isLastRowIncomplete = photosInLastRow !== gridCols;
+  const lastRowIndex = gridRows - 1;
+
+  // --- Define target boundaries and range ---
+  const boundaryMin = 13;
+  const boundaryMax = 87;
+  const availableRange = boundaryMax - boundaryMin;
+
   const positions = [];
   for (let i = 0; i < numPhotos; i++) {
     const row = Math.floor(i / gridCols);
     const col = i % gridCols;
-    
-    // Base position in the center of the cell
-    const baseX = (col * cellWidth) + (cellWidth / 2);
-    const baseY = (row * cellHeight) + (cellHeight / 2);
-    
-    // Add some randomization within the cell
-    const randomX = baseX + (Math.random() - 0.5) * (cellWidth * 0.4);
-    const randomY = baseY + (Math.random() - 0.5) * (cellHeight * 0.4);
-    
+
+    // Calculate ideal center in 0-100% grid
+    let idealX_0_100: number;
+    const idealY_0_100 = (row * fullCellHeight) + (fullCellHeight / 2);
+
+    if (row === lastRowIndex && isLastRowIncomplete) {
+      // Distribute evenly in the last row (0-100% space)
+      const effectiveFullCellWidth = fullWidth / photosInLastRow;
+      idealX_0_100 = (col * effectiveFullCellWidth) + (effectiveFullCellWidth / 2);
+    } else {
+      // Standard grid center (0-100% space)
+      idealX_0_100 = (col * fullCellWidth) + (fullCellWidth / 2);
+    }
+
+    // Map the 0-100% ideal center to the 20-80% range
+    const baseX = boundaryMin + (idealX_0_100 / 100) * availableRange;
+    const baseY = boundaryMin + (idealY_0_100 / 100) * availableRange;
+
+    // Calculate randomization based on the *scaled* cell size in the 20-80 range
+    const scaledCellWidth = (fullCellWidth / 100) * availableRange;
+    const scaledCellHeight = (fullCellHeight / 100) * availableRange;
+    const randomizationFactor = 0.15;
+    const randomOffsetX = (Math.random() - 0.5) * (scaledCellWidth * randomizationFactor);
+    const randomOffsetY = (Math.random() - 0.5) * (scaledCellHeight * randomizationFactor);
+
+    const finalX = baseX + randomOffsetX;
+    const finalY = baseY + randomOffsetY;
+
+    // Clamp final position to the 13-87 boundaries
     positions.push({
-      x: Math.max(15, Math.min(85, randomX)), // Ensure within bounds
-      y: Math.max(15, Math.min(85, randomY)), // Ensure within bounds
+      x: Math.max(boundaryMin, Math.min(boundaryMax, finalX)),
+      y: Math.max(boundaryMin, Math.min(boundaryMax, finalY)),
     });
   }
-  
+
   return positions;
 };
 
@@ -72,16 +104,37 @@ export default function ScatteredPhotos() {
         const response = await fetch('/api/photos');
         const data: PhotoData[] = await response.json();
         
-        // Generate grid positions
+        // Generate positions using the refined grid logic
         const positions = calculateGridPositions(data.length);
+
+        // Create and shuffle indices for random assignment
+        const indices = Array.from({ length: data.length }, (_, k) => k);
+        for (let i = indices.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [indices[i], indices[j]] = [indices[j], indices[i]]; // Swap
+        }
         
-        // Generate random positions and rotations for each photo
-        const photosWithLayout = data.map((photo, index) => ({
-          src: photo.src,
-          position: positions[index],
-          rotation: Math.random() * 70 - 35, // -35 to 35 degrees
-          zIndex: index
-        }));
+        // Assign shuffled positions, z-indices, and parse filename
+        const photosWithLayout = data.map((photo, index) => {
+          const shuffledIndex = indices[index];
+
+          const filenameWithExtension = photo.src.split('/').pop() || '';
+          const filename = filenameWithExtension.replace(/\.[^/.]+$/, ''); // Remove extension
+          const cleanedFilename = decodeURIComponent(filename).replace(/_/g, ' '); // Decode URL encoding and replace underscores
+          
+          const parts = cleanedFilename.split(' - ');
+          const client = parts.length > 1 ? parts[0].trim() : 'Unknown Client'; // Fallback
+          const description = parts.length > 1 ? parts.slice(1).join(' - ').trim()+'.' : cleanedFilename; // Fallback
+
+          return {
+            src: photo.src,
+            client,
+            description,
+            position: positions[shuffledIndex],
+            rotation: Math.random() * 70 - 35, // -35 to 35 degrees
+            zIndex: shuffledIndex // Use shuffled index for z-order too
+          };
+        });
 
         setPhotos(photosWithLayout);
       } catch (error) {
@@ -118,9 +171,16 @@ export default function ScatteredPhotos() {
           </div>
         </div>
 
-        <p className="text-center text-neutral-950 font-caveat !text-3xl mt-4">
-          Test Description
+        <p className="text-center text-neutral-950 mt-4 !text-lg max-w-prose">
+          {photo.description}
         </p>
+        {photo.client && 
+          <div className="gap-2 text-neutral-950 font-semibold mt-2">
+            <span className="text-xl italic">
+              {photo.client}
+            </span>
+          </div>
+        }
 
       </div>
     )
@@ -154,7 +214,7 @@ export default function ScatteredPhotos() {
                 />
               </div>
               <p className="mt-2 text-center font-caveat text-sm whitespace-nowrap overflow-hidden text-ellipsis max-w-[192px]">
-                {truncateDescription(photo.src.split('/').pop()?.replace(/\.[^/.]+$/, "") || "")}
+                {truncateDescription(photo.description || "", 25)}
               </p>
             </div>
           </div>
