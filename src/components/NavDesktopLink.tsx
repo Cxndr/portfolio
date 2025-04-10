@@ -17,7 +17,7 @@ export default function NavDesktopLink({ href, label, children }: NavDesktopLink
   const pathname = usePathname();
   const router = useRouter();
   const setDirection = useNavigationState((state) => state.setDirection);
-  const isActive = pathname === href;
+  const isActive = pathname === href || (href === "/dev" && pathname.startsWith("/dev/"));
 
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();

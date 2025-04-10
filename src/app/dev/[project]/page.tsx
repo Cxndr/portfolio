@@ -7,6 +7,8 @@ import Image from "next/image";
 import ProjectNavButton from "@/components/ProjectNavButton";
 import Button from "@/components/Button";
 import CardLabel from "@/components/CardLabel";
+import InternalLink from "@/components/InternalLink";
+import { LuArrowLeft } from "react-icons/lu";
 
 export default async function DevPage({ params }: { params: Promise<{ project: string }> }) {
   const { project } = await params;
@@ -17,11 +19,34 @@ export default async function DevPage({ params }: { params: Promise<{ project: s
     <DynamicBackground>
       <div className="h-full w-full flex flex-col items-center justify-center overflow-hidden">
         <div className="h-full w-desktop">
-          <div className="h-full flex flex-row gap-12">
+
+          <div 
+            className="
+              button
+              px-3 py-2 my-3 rounded-3xl
+              -translate-x-8
+              inline-block
+              bg-th-neutral-50
+              text-foreground/65
+              hover:bg-th-neutral-100
+              hover:text-th-blue-500
+              transition-all duration-300
+              cursor-pointer
+              
+            "
+          >
+            <InternalLink href="/dev">
+              <span className="flex flex-row items-center gap-2 text-md">
+                <LuArrowLeft size={24}/> All Dev Projects
+              </span>
+            </InternalLink>
+          </div>
+
+          <div className="grow flex flex-row gap-12">
 
             <div className="h-full w-5/12 flex flex-col gap-20 justify-center">
 
-              <Card className="p-6.5 pt-4.5 shadow-th-pink-500 flex flex-col gap-3 relative">
+              <Card className="mt-12 p-6.5 pt-4.5 shadow-th-pink-500 flex flex-col gap-3 relative">
                 <CardLabel label="What" color="pink" className="-top-10" />
                 <ul className="mt-2 flex flex-col gap-1">
                   {currentProject.whatList.map((item, index) => (
