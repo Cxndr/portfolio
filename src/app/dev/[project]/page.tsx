@@ -1,21 +1,69 @@
 import Card from "@/components/Card";
 import DynamicBackground from "@/components/DynamicBackground";
-import { devProjects, techColors } from "@/lib/devProjects";
+import { devProjects } from "@/lib/devProjects";
 import { BsGithub } from "react-icons/bs";
 import { GrLanguage } from "react-icons/gr";
-import Image from "next/image";
-import ProjectNavButton from "@/components/ProjectNavButton";
 import Button from "@/components/Button";
 import CardLabel from "@/components/CardLabel";
 import InternalLink from "@/components/InternalLink";
 import { LuArrowLeft } from "react-icons/lu";
+import ImageCarousel from "@/components/ImageCarousel";
+import fs from 'fs';
+import path from 'path';
+
+async function getImagePaths(dirPath: string | undefined): Promise<string[] | undefined> {
+  if (!dirPath) return undefined;
+
+  const normalizedDirPath = dirPath.startsWith('/') ? dirPath : `/${dirPath}`;
+  const fullPath = path.join(process.cwd(), 'public', normalizedDirPath);
+
+  try {
+    await fs.promises.access(fullPath);
+    const filenames = await fs.promises.readdir(fullPath);
+
+    const imageFiles = filenames
+      .filter(name => /\.(jpg|jpeg|png|gif|webp)$/i.test(name))
+      .map(name => path.join(normalizedDirPath, name).replace(/\\/g, '/'));
+
+    const numericalSort = (a: string, b: string) => {
+        const baseA = path.basename(a).split('.')[0];
+        const baseB = path.basename(b).split('.')[0];
+        const numA = parseInt(baseA, 10);
+        const numB = parseInt(baseB, 10);
+        return (!isNaN(numA) && !isNaN(numB)) ? numA - numB : baseA.localeCompare(baseB);
+    };
+
+    return imageFiles.sort(numericalSort);
+
+  } catch (error: unknown) {
+    const isNodeError = (err: unknown): err is NodeJS.ErrnoException => err instanceof Error;
+
+    if (isNodeError(error) && error.code !== 'ENOENT') {
+        console.error(`Error reading directory ${fullPath}:`, error);
+    } else if (!isNodeError(error) || (isNodeError(error) && error.code === 'ENOENT')) {
+        console.log(`Directory not found or non-Node error, skipping: ${fullPath}`);
+    }
+    return undefined;
+  }
+}
 
 export default async function DevPage({ params }: { params: Promise<{ project: string }> }) {
   const { project } = await params;
   const projectId = Number(project);
+  if (isNaN(projectId) || projectId < 0 || projectId >= devProjects.length) {
+    console.error("Invalid project ID:", project);
+    return <div>Project not found</div>;
+  }
   const currentProject = devProjects[projectId];
-  
-    return (
+
+  const desktopImagePaths = await getImagePaths(currentProject.imageDir) ?? [];
+  const mobileImagePaths = await getImagePaths(currentProject.imageDirMobile);
+
+  console.log(`Project: ${currentProject.title}`);
+  console.log(`Desktop Dir: ${currentProject.imageDir}, Paths:`, desktopImagePaths);
+  console.log(`Mobile Dir: ${currentProject.imageDirMobile}, Paths:`, mobileImagePaths);
+
+  return (
     <DynamicBackground>
       <div className="h-full w-full flex flex-col items-center justify-center overflow-hidden">
         <div className="h-full w-desktop">
@@ -77,59 +125,26 @@ export default async function DevPage({ params }: { params: Promise<{ project: s
 
             <div className="w-7/12 flex flex-col justify-between items-center perspective-normal">
               
-              <div 
-                className="mt-24 w-full flex flex-row justify-center items-center gap-8 translate-z-0 -rotate-y-10 -rotate-x-1">
-
-                <ProjectNavButton direction="previous" projectId={projectId} totalProjects={devProjects.length}/>
-
-                <div className="w-full flex flex-col justify-center items-center gap-3 bg-th-neutral-900 px-4 py-3 rounded-3xl shadow-th shadow-th-pink-500 relative">
-
-                  <h3>{currentProject.title}</h3>
-
-                  <Image 
-                    src={currentProject.imageSrcDesktop} 
-                    alt={`image of live site for ${currentProject.title} on desktop`} 
-                    width={1000} 
-                    height={1000} 
-                    className="rounded-xl"
-                  />
-
-                  <Image
-                    src={currentProject.imageSrcMobile}
-                    alt={`image of live site for ${currentProject.title} on mobile`} 
-                    width={375}
-                    height={668}
-                    className="rounded-lg absolute -right-10 -bottom-10 h-2/3 w-auto shadow-md shadow-black/40"
-                  />
-
-                  <div className="flex flex-row gap-2">
-                    {currentProject.technologies.map((technology) => (
-                      <div key={technology} className={`badge ${techColors[technology as keyof typeof techColors]}`}>
-                        {technology}
-                      </div>
-                    ))}
-                  </div>
-
-                </div>
-
-                <ProjectNavButton direction="next" projectId={projectId} totalProjects={devProjects.length}/>
-
-              </div>
+              <ImageCarousel
+                project={currentProject}
+                desktopImagePaths={desktopImagePaths}
+                mobileImagePaths={mobileImagePaths}
+              />
 
               <div className="w-full flex-grow flex flex-col justify-center items-center gap-8">
-                {/* could we have these popout a iframe of the link you're visiting */}
-
-                <Button 
+                <Button
                   href={currentProject.liveSiteLink}
                   className="hover:shadow-th-neutral-800"
-                > 
+                  disabled={!currentProject.liveSiteLink}
+                >
                   <GrLanguage />
                   View Live Site
                 </Button>
 
-                <Button 
+                <Button
                   href={currentProject.githubLink}
                   className="hover:shadow-th-neutral-800"
+                  disabled={!currentProject.githubLink}
                 >
                   <BsGithub />
                   Github Repo

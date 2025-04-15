@@ -43,7 +43,8 @@ export default function ProjectCard({ project, index }: { project: typeof devPro
         w-full flex flex-col items-center justify-center
         aspect-[16/8]
         shadow-th-neutral-950/50 shadow-lg
-        rounded-2xl overflow-hidden
+        rounded-2xl overflow-hidden    imageSrcDesktop: "/img/optcgsimthemer.png",
+    imageSrcMobile: "/img/optcgsimthemer-mobile.png"
         relative
         group
         cursor-pointer

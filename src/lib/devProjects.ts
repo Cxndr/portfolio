@@ -19,7 +19,8 @@ export const techColors = {
 
 export type DevProject = {
   title: string,
-  imagesSrc: string[],
+  imageDir: string,
+  imageDirMobile?: string,
   whatList: string[],
   whyList: string[],
   howList: string[],
@@ -29,8 +30,6 @@ export type DevProject = {
   githubLink: string,
   shortDescription: string,
   longDescription: string,
-  imageSrcDesktop: string,
-  imageSrcMobile: string,
   thumbnailSrc: string,
 }
 
@@ -38,7 +37,8 @@ export type DevProject = {
 export const devProjects: DevProject[] = [
   {
     title: "OPTCG Sim Themer",
-    imagesSrc: ["/img/optcgsimthemer.png"],
+    imageDir: "/img/dev/optcgsimthemer",
+    imageDirMobile: "/img/dev/optcgsimthemer/mobile",
     thumbnailSrc: "/img/dev/optcgsimthemer.png",
     whatList: [
       "Create themes for <b>One Piece TCG Sim.</b>",
@@ -67,13 +67,12 @@ export const devProjects: DevProject[] = [
     githubLink: "https://github.com/Cxndr/optcgsim-themer",
     shortDescription: "Create themes for <b>One Piece TCG Sim.</b>",
     longDescription: "get this from the dev copy page",
-    imageSrcDesktop: "/img/optcgsimthemer.png",
-    imageSrcMobile: "/img/optcgsimthemer-mobile.png"
   },
 
   {
     title: "Twich Auto-Clipper",
-    imagesSrc: ["/img/optcgsimthemer.png"],
+    imageDir: "/img/dev/twitchclips",
+    imageDirMobile: "/img/dev/twitchclips/mobile",
     thumbnailSrc: "/img/dev/twitchclips.png",
     whatList: [
       "Automatically generate <b>Twitch clips</b> based on chat activity.",
@@ -102,13 +101,12 @@ export const devProjects: DevProject[] = [
     githubLink: "https://github.com/Cxndr/TwitchAutoClipper",
     shortDescription: "Automatically generate <b>Twitch clips</b> based on spikes in chat activity.",
     longDescription: "get this from the dev copy page",
-    imageSrcDesktop: "/img/optcgsimthemer.png",
-    imageSrcMobile: "/img/optcgsimthemer-mobile.png"
   },
 
   {
     title: "Twitch-Tok",
-    imagesSrc: ["/img/optcgsimthemer.png"],
+    imageDir: "/img/dev/twitchtok",
+    imageDirMobile: "/img/dev/twitchtok/mobile",
     thumbnailSrc: "/img/dev/twitchtok.png",
     whatList: [
       "Tik-Tok style web app for twitch clips.",
@@ -132,13 +130,12 @@ export const devProjects: DevProject[] = [
     githubLink: "https://github.com/Cxndr/twitch-tok",
     shortDescription: "Tik-Tok style web app for twitch clips.",
     longDescription: "",
-    imageSrcDesktop: "",
-    imageSrcMobile: "",
   },
 
   {
     title: "Promptr",
-    imagesSrc: ["/img/optcgsimthemer.png"],
+    imageDir: "/img/dev/promptr",
+    imageDirMobile: "/img/dev/promptr/mobile",
     thumbnailSrc: "/img/dev/promptr.png",
     whatList: [
       "Word game web app inspired by <b>Ransom Notes</b> board game and <b>Dark Souls</b> message system",
@@ -161,13 +158,12 @@ export const devProjects: DevProject[] = [
     githubLink: "https://github.com/Cxndr/promptr",
     shortDescription: "Word game web app inspired by <b>Ransom Notes</b> and <b>Dark Souls</b>.",
     longDescription: "",
-    imageSrcDesktop: "",
-    imageSrcMobile: "",
   },
 
   {
     title: "clouds&waves",
-    imagesSrc: ["/img/optcgsimthemer.png"],
+    imageDir: "/img/dev/cloudsandwaves",
+    imageDirMobile: "/img/dev/cloudsandwaves/mobile",
     thumbnailSrc: "/img/dev/cloudsandwaves.png",
     whatList: [
       "Social media web app for sharing and discovering music in niche internet genres",
@@ -190,13 +186,12 @@ export const devProjects: DevProject[] = [
     githubLink: "https://github.com/Cxndr/submission-social-network",
     shortDescription: "Aesthetic driven social media site for sharing and discovering niche music.",
     longDescription: "",
-    imageSrcDesktop: "",
-    imageSrcMobile: "",
   },
 
   {
     title: "PokeRogue",
-    imagesSrc: ["/img/optcgsimthemer.png"],
+    imageDir: "/img/dev/poke-rogue",
+    imageDirMobile: "/img/dev/poke-rogue/mobile",
     thumbnailSrc: "/img/dev/poke-rogue.png",
     whatList: [
       "Pokemon rouge-like auto-battler web game",
@@ -219,13 +214,12 @@ export const devProjects: DevProject[] = [
     githubLink: "https://github.com/Cxndr/poke-rogue",
     shortDescription: "React-only Pokemon auto-battler roguelike game that doesn't use canvas, webgl or similar technologies.",
     longDescription: "",
-    imageSrcDesktop: "",
-    imageSrcMobile: "",
   }, 
 
   {
     title: "Pomodoro Timer",
-    imagesSrc: ["/img/optcgsimthemer.png"],
+    imageDir: "/img/dev/pomodoro",
+    imageDirMobile: "/img/dev/pomodoro/mobile",
     thumbnailSrc: "/img/dev/pomodoro.gif",
     whatList: [
       "Simple and easy to usePomodoro timer web app",
@@ -248,13 +242,12 @@ export const devProjects: DevProject[] = [
     githubLink: "https://github.com/Cxndr/PomodoroTimer",
     shortDescription: "Simple and aethetically focused Pomodoro Timer web application.",
     longDescription: "",
-    imageSrcDesktop: "",
-    imageSrcMobile: "",
   },
   
   {
     title: "MAHS Auction House",
-    imagesSrc: ["/img/optcgsimthemer.png"],
+    imageDir: "/img/dev/mahs",
+    imageDirMobile: "/img/dev/mahs/mobile",
     thumbnailSrc: "/img/dev/mahs.gif",
     whatList: [
       "All in one auction house software for managing and running all aspects of an auction house business",
@@ -277,13 +270,12 @@ export const devProjects: DevProject[] = [
     githubLink: "",
     shortDescription: "All-in-one auction house software for managing and running all aspects of an auction house business.",
     longDescription: "",
-    imageSrcDesktop: "",
-    imageSrcMobile: "",
   },
 
   {
     title: "Item Shop Game",
-    imagesSrc: ["/img/optcgsimthemer.png"],
+    imageDir: "/img/dev/itemshop",
+    imageDirMobile: "/img/dev/itemshop/mobile",
     thumbnailSrc: "/img/dev/itemshop.png",
     whatList: [
       "Item shop game loosely inspired by <b>Recettear</b> in a 2D pixel art style.",
@@ -306,8 +298,6 @@ export const devProjects: DevProject[] = [
     githubLink: "",
     shortDescription: "Item shop game loosely inspired by <b>Recettear</b> in a 2D pixel art style.",
     longDescription: "",
-    imageSrcDesktop: "",
-    imageSrcMobile: "",
   }
 ]
 
