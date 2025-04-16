@@ -3,6 +3,7 @@ import DynamicBackground from "@/components/DynamicBackground";
 import { FaArrowDown } from "react-icons/fa";
 import MusicHearMore from "@/components/MusicHearMore";
 import MusicPlayer from "@/components/MusicPlayer";
+import TapeCollection from "@/components/TapeCollection";
 
 export default function MusicPage() {
   return (
@@ -18,17 +19,13 @@ export default function MusicPage() {
                 <div className="h-1/3 w-full mt-6">
                   <AlbumCovers/>
                 </div>
-
-                <div className="h-1/3 w-full flex flex-col items-center justify-center">
-                  <div className="text-th-neutral-950 text-lg -rotate-6 text-center !font-bold bg-th-yellow-500 p-6 rounded-full">
-                    PUT SOMETHING
-                    <br />
-                    COOL HERE! 
-                  </div>
-                </div>
                 
-                <div className="h-1/3 w-full flex items-center justify-center">
+                <div className="h-1/3 w-full flex items-center justify-center -translate-x-4">
                   <MusicHearMore />
+                </div>
+
+                <div className="h-1/3 w-full flex items-center justify-center -translate-y-12 translate-x-2 -rotate-3">
+                  <TapeCollection />
                 </div>
 
               </div>
