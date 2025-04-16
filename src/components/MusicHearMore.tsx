@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useState } from "react";
 
 export default function MusicHearMore() {
@@ -50,8 +51,10 @@ export default function MusicHearMore() {
           width: isHovered ? '13rem' : '0rem',
         }}
       >
-        soundcloud.com/<br />
-        livewellandmakethings
+        <Link href="https://soundcloud.com/livewellandmakethings" target="_blank">
+          soundcloud.com/<br />
+          livewellandmakethings
+        </Link>
       </div>
 
       <Image 
@@ -76,9 +79,39 @@ export default function MusicHearMore() {
           width: isHovered ? '10.5rem' : '0rem',
         }}
       >
-        d-x-u-b.
-        <br />
-        bandcamp.com
+        <Link href="https://d-x-u-b.bandcamp.com" target="_blank">
+          d-x-u-b.
+          <br />
+          bandcamp.com
+        </Link>
+      </div>
+
+      <Image 
+        src="/img/logo-spotify-tilt.png" alt="spotify logo" 
+        width={256} height={256} 
+        className="absolute left-0 top-0 z-0 transition-all duration-300"
+        style={{
+          transform: isHovered
+            ? 'translate(-1rem, 5rem) rotate(-22.6deg)'
+            : 'translate(4.25rem, -2.25rem)',
+          height: isHovered ? '60px' : '56px',
+          width: isHovered ? '60px' : '56px'
+        }}
+      />
+      <div 
+        className="label h-[52px] px-4 py-0 pl-[64px] flex justify-start items-center text-th-neutral-50 absolute left-[4px] top-[4px] -z-5 transition-all duration-500 bg-th-neutral-900 rounded-full "
+        style={{
+          transform: isHovered
+            ? 'translate(-1rem, 5rem)'
+            : 'translate(1.5rem, -2.75rem)',
+          opacity: isHovered ? 1 : 0,
+          width: isHovered ? '9.75rem' : '0rem',
+        }}
+      >
+        <Link href="https://open.spotify.com/artist/6y3H0nniFgJGfHRD17zZhI" target="_blank">
+          spotify.com/<br />
+          cxndr
+        </Link>
       </div>
 
     </div>
