@@ -132,14 +132,16 @@ export default async function DevPage({ params }: { params: Promise<{ project: s
               />
 
               <div className="w-full flex-grow flex flex-col justify-center items-center gap-8">
-                <Button
-                  href={currentProject.liveSiteLink}
-                  className="hover:shadow-th-neutral-800"
-                  disabled={!currentProject.liveSiteLink}
+                {currentProject.liveSiteLink && (
+                  <Button
+                    href={currentProject.liveSiteLink}
+                    className="hover:shadow-th-neutral-800"
+                    disabled={!currentProject.liveSiteLink}
                 >
                   <GrLanguage />
-                  View Live Site
-                </Button>
+                    View Live Site
+                  </Button>
+                )}
 
                 <Button
                   href={currentProject.githubLink}
