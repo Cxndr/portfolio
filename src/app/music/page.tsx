@@ -23,7 +23,7 @@ export default function MusicPage() {
                   <div className="text-th-neutral-950 text-lg -rotate-6 text-center !font-bold bg-th-yellow-500 p-6 rounded-full">
                     PUT SOMETHING
                     <br />
-                    COOL HERE!
+                    COOL HERE! 
                   </div>
                 </div>
                 
