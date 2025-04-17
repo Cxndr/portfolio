@@ -1,6 +1,5 @@
 import AlbumCovers from "@/components/AlbumCovers";
 import DynamicBackground from "@/components/DynamicBackground";
-import { FaArrowDown } from "react-icons/fa";
 import MusicHearMore from "@/components/MusicHearMore";
 import MusicPlayer from "@/components/MusicPlayer";
 import TapeCollection from "@/components/TapeCollection";

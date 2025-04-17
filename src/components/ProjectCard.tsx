@@ -13,7 +13,7 @@ export default function ProjectCard({ project, index }: { project: typeof devPro
   const pathname = usePathname();
   const setDirection = useNavigationState((state) => state.setDirection);
 
-  const handleClick = (/* e: React.MouseEvent<HTMLDivElement> */) => {
+  const handleClick = () => {
     const targetHref = `/dev/${index}`;
     const currentPathKey = findSiteMapKey(pathname, siteMap);
     const targetPathKey = findSiteMapKey(targetHref, siteMap);
@@ -40,7 +40,7 @@ export default function ProjectCard({ project, index }: { project: typeof devPro
     <div 
       onClick={handleClick}
       className={`
-        w-full flex flex-col items-center justify-center
+        w-full flex flex-col items-center justify-between
         aspect-[16/8]
         shadow-th-neutral-950/50 shadow-lg
         rounded-2xl overflow-hidden    imageSrcDesktop: "/img/optcgsimthemer.png",
@@ -83,7 +83,8 @@ export default function ProjectCard({ project, index }: { project: typeof devPro
         whitespace-nowrap
         leading-none
         h-fit
-        group-hover:translate-y-[-290%] group-hover:left-1/2 group-hover:-translate-x-1/2 
+        group-hover:bottom-full group-hover:translate-y-[112%]
+        group-hover:left-1/2 group-hover:-translate-x-1/2
         group-hover:rounded-2xl 
         group-hover:bg-neutral-950/0 group-hover:backdrop-blur-none 
         group-hover:m-auto
@@ -92,18 +93,19 @@ export default function ProjectCard({ project, index }: { project: typeof devPro
         {project.title}
       </h3>
 
-      <p 
+      <div
         className="
+        h-full w-full flex flex-col items-center justify-center
         text-th-neutral-50/0 text-md
-        absolute top-3/4 w-full p-2 text-center
+        relative top-3/4 p-2 text-center
         group-hover:text-th-neutral-50/100
-        group-hover:top-1/2 group-hover:-translate-y-[30%]
+        group-hover:top-0 group-hover:-translate-y-0
         z-10
         transition-all duration-600
         "
       >
-        <span dangerouslySetInnerHTML={{ __html: project.shortDescription }} />
-      </p>
+        <p dangerouslySetInnerHTML={{ __html: project.shortDescription }} />
+      </div>
 
       <div 
         className="
