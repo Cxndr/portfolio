@@ -7,7 +7,7 @@ interface ProfileImageProps {
 export default function ProfileImage({ size = 'large' }: ProfileImageProps) {
   const sizeValue = size === 'medium' ? "80%" : "100%";
   
-  return (    
+  return (
     <div 
       className="
         aspect-square fixed
