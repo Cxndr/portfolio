@@ -9,7 +9,14 @@ export default function ProfileImage({ size = 'large' }: ProfileImageProps) {
   
   return (    
     <div 
-      className="aspect-square fixed -right-[9%] -bottom-[22%] rounded-full overflow-hidden border-24 border-th-blue-500"
+      className="
+        aspect-square fixed
+        scale-75 md:scale-100
+        -left-1/3 bottom-0 translate-y-2/5 md:translate-y-0
+        md:left-auto md:-right-[9%] md:-bottom-[22%] 
+        rounded-full overflow-hidden 
+        border-24 border-th-blue-500
+      "
       style={{ height: sizeValue }}
     >
       <Image 

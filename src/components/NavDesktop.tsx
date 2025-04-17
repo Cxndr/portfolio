@@ -8,8 +8,8 @@ export default function NavDesktop() {
   return (
     <nav 
       className="
-        hidden md:flex justify-center
-        pt-6 pb-2 
+        flex justify-center
+        pt-2 md:pt-6
         relative z-10 persist-nav 
         bg-background
       "
