@@ -83,7 +83,7 @@ export default function ProjectCard({ project, index }: { project: typeof devPro
         whitespace-nowrap
         leading-none
         h-fit
-        group-hover:bottom-full group-hover:translate-y-[112%]
+        group-hover:bottom-full group-hover:translate-y-[125%]
         group-hover:left-1/2 group-hover:-translate-x-1/2
         group-hover:rounded-2xl 
         group-hover:bg-neutral-950/0 group-hover:backdrop-blur-none 
