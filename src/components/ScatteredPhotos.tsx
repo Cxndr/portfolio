@@ -154,34 +154,29 @@ export default function ScatteredPhotos() {
     id: photo.src,
     content: (
       <div className="w-full h-full flex flex-col items-center justify-center">
-
-        <div className="flex justify-center items-center h-10/12 w-10/12 relative">
-          <div className="w-full h-full">
-            <Image
-              src={photo.src}
-              alt="Marketing photo"
-              className="
-                drop-shadow-lg drop-shadow-th-neutral-950
-                object-contain
-                relative
-              "
-              fill
-              priority
-            />
-          </div>
+        {/* Image Container: Centered, takes significant space */}
+        <div className="relative w-10/12 h-4/6 md:h-10/12 mb-4">
+          <Image
+            src={photo.src}
+            alt={photo.description || 'Marketing photo'}
+            className="object-contain drop-shadow-lg drop-shadow-th-neutral-950"
+            fill
+            priority
+            sizes="(max-width: 768px) 80vw, 70%"
+          />
         </div>
 
-        <p className="text-center text-neutral-950 mt-4 !text-lg max-w-prose">
-          {photo.description}
-        </p>
-        {photo.client && 
-          <div className="gap-2 text-neutral-950 font-semibold mt-2">
-            <span className="text-xl italic">
+        {/* Text Content Container: Centered below image */}
+        <div className="text-center px-4 mt-auto pt-4 md:pt-0">
+          <p className="text-neutral-950 text-sm md:text-lg max-w-prose mb-2">
+            {photo.description}
+          </p>
+          {photo.client && photo.client !== 'Unknown Client' &&
+            <div className="text-neutral-950 font-semibold text-base md:text-xl italic">
               {photo.client}
-            </span>
-          </div>
-        }
-
+            </div>
+          }
+        </div>
       </div>
     )
   }));
@@ -203,17 +198,17 @@ export default function ScatteredPhotos() {
             onMouseLeave={() => setHoveredPhotoId(null)}
             onClick={() => handlePhotoClick(photo.src)}
           >
-            <div className="bg-white p-4 shadow-lg transform hover:scale-105 transition-transform duration-300">
-              <div className="relative w-[200px] h-[200px]">
+            <div className="bg-white p-2 md:p-4 shadow-lg transform hover:scale-105 transition-transform duration-300">
+              <div className="relative w-[100px] h-[100px] md:w-[200px] md:h-[200px]">
                 <Image
                   src={photo.src}
                   alt="Marketing photo"
                   fill
                   className="object-cover"
-                  sizes="200px"
+                  sizes="(min-width: 768px) 200px, 100px"
                 />
               </div>
-              <p className="mt-2 text-center font-caveat text-sm whitespace-nowrap overflow-hidden text-ellipsis max-w-[192px]">
+              <p className="mt-1 md:mt-2 text-center font-caveat text-xs md:text-sm whitespace-nowrap overflow-hidden text-ellipsis max-w-[92px] md:max-w-[192px]">
                 {truncateDescription(photo.description || "", 25)}
               </p>
             </div>

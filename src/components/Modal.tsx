@@ -120,82 +120,118 @@ export default function Modal({ contentArray, contentIndex, handleClose, modalOp
         onClick={(e) => e.stopPropagation()}
         className="
           w-full h-full 
-          grid grid-cols-[minmax(8rem,auto)_minmax(0,theme(maxWidth.5xl))_minmax(8rem,auto)]
-          gap-x-8
-          px-8
-          py-8
-          pointer-events-none
+          /* Mobile: Use flex col, pad top, center items horizontally */
+          flex flex-col items-center pt-32 /* Doubled top padding */
+          md:py-8 /* Restore vertical padding for desktop */
+          md:px-8 /* Horizontal padding only on desktop */
+          md:grid md:grid-cols-[minmax(8rem,auto)_minmax(0,theme(maxWidth.5xl))_minmax(8rem,auto)] /* Grid layout only on desktop */
+          md:gap-x-8 /* Grid gap only on desktop */
+          pointer-events-none /* Keep pointer-events none on the container */
+          relative /* Need relative positioning for absolute children */
         "
         variants={modalVariants}
         initial="hidden"
         animate="visible"
         exit="exit"
       >
-        {/* Left Button Area (always present grid cell) */}
-        <div className="col-start-1 self-center justify-self-end pointer-events-auto"> 
+        {/* Left Button Area: Absolute on mobile (below modal), Grid item on desktop */}
+        <div className="
+          absolute bottom-12 left-4 z-10 /* Mobile positioning (below modal) */
+          md:relative md:bottom-auto md:left-auto md:z-auto /* Reset for desktop */
+          md:col-start-1 md:self-center md:justify-self-end /* Desktop grid positioning */
+          pointer-events-auto /* Buttons always clickable */
+        ">
           {currentIndex > 0 && ( 
             <ModalNavButton onClick={handlePrev} direction="left" />
           )}
         </div>
 
+        {/* Modal Content Area */}
         <div
           className="
-            col-start-2
-            justify-self-center
-            relative
-            max-h-full
-            w-full
-            overflow-hidden
-            pointer-events-auto
-            bg-neutral-50
-            rounded-lg
+            /* Mobile styles: 2/3 height, flex column */
+            flex flex-col /* Use flex column layout */
+            w-11/12 /* Slightly less than full width */
+            h-2/3 /* Two-thirds screen height */
+            max-w-xl /* Max width for mobile */
+            overflow-hidden 
+            bg-neutral-50 
             shadow-md shadow-th-neutral-950/50
+            rounded-lg /* Keep rounded corners */
+            pointer-events-auto
+
+            /* Desktop overrides: grid positioning, size constraints */
+            md:block /* Revert flex layout on desktop */
+            md:relative /* Need relative for absolute children on desktop */
+            md:w-full /* Let grid control width */
+            md:h-full /* Let grid control height */
+            md:max-w-none /* Remove max width */
+            md:col-start-2 
+            md:justify-self-center 
+            md:max-h-full /* Restore max height */
           "
         >
-          <div className="absolute top-0 right-0 m-2 p-2 z-20 pointer-events-auto">
+          {/* Close Button: Flex item on mobile, Absolute on desktop */}
+          <div className="
+            w-full flex justify-end p-1 /* Mobile: occupy top, align right */
+            md:absolute md:top-1 md:right-1 md:m-2 md:p-2 md:z-20 /* Desktop: absolute positioning */
+            pointer-events-auto
+          ">
             <div 
               className="
                 text-2xl font-bold text-th-pink-500 hover:text-th-pink-400
                 bg-none p-3 rounded-full hover:bg-th-neutral-100 
                 hover:scale-110 transition-all duration-300 
                 cursor-pointer
-                " 
+              " 
               onClick={handleExitClick}
             >
               <FaX />
             </div>
           </div>
 
-          <AnimatePresence initial={false} custom={direction}>
-            <motion.div
-              key={currentIndex} // Key is crucial for AnimatePresence to detect changes
-              custom={direction}
-              variants={navigationVariants}
-              initial="enter"
-              animate="center"
-              exit="exit"
-              transition={{
-                x: { type: "tween", ease: "easeInOut", duration: 0.5 },
-                opacity: { duration: 0.2 },
-              }}
-              className="
-                absolute top-0 left-0
-                w-full h-full
-                p-8
-                flex flex-column
-                items-center
-                justify-center
-              "
-            >
-              <div className="w-full h-full overflow-y-auto">
-                {contentArray[currentIndex]}
-              </div>
-            </motion.div>
-          </AnimatePresence>
+          {/* Animated Content Area: Flex-grow on mobile, Absolute positioning on desktop */}
+          <div className="
+            flex-grow overflow-hidden relative /* Mobile: Takes remaining space, needs relative for motion div */
+            md:static md:flex-grow-0 /* Desktop: Reset flex behavior */
+          ">
+            <AnimatePresence initial={false} custom={direction}>
+              <motion.div
+                key={currentIndex} // Key is crucial for AnimatePresence to detect changes
+                custom={direction}
+                variants={navigationVariants}
+                initial="enter"
+                animate="center"
+                exit="exit"
+                transition={{
+                  x: { type: "tween", ease: "easeInOut", duration: 0.5 },
+                  opacity: { duration: 0.2 },
+                }}
+                className="
+                  /* Both Mobile & Desktop: Absolute within the container */
+                  absolute top-0 left-0 w-full h-full 
+                  p-4 md:p-8 /* Padding */
+                  flex flex-col /* Still use flex for inner centering */
+                  items-center
+                  justify-center
+                "
+              >
+                {/* Scrollable inner content */}
+                <div className="w-full h-full overflow-y-auto">
+                  {contentArray[currentIndex]}
+                </div>
+              </motion.div>
+            </AnimatePresence>
+          </div>
         </div>
 
-        {/* Right Button Area (always present grid cell) */}
-        <div className="col-start-3 self-center justify-self-start pointer-events-auto">
+        {/* Right Button Area: Absolute on mobile (below modal), Grid item on desktop */}
+        <div className="
+          absolute bottom-12 right-4 z-10 /* Mobile positioning (below modal) */
+          md:relative md:bottom-auto md:right-auto md:z-auto /* Reset for desktop */
+          md:col-start-3 md:self-center md:justify-self-start /* Desktop grid positioning */
+          pointer-events-auto /* Buttons always clickable */
+        ">
           {currentIndex < contentArray.length - 1 && (
             <ModalNavButton onClick={handleNext} direction="right" />
           )}

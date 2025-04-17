@@ -5,7 +5,7 @@ export default function MarketingPage() {
   return (
     <DynamicBackground>
       <div className="h-full w-full flex flex-col items-center justify-center overflow-hidden">
-        <div className="h-full w-desktop">
+        <div className="h-full w-full xl:w-desktop">
           <ScatteredPhotos />
         </div>
       </div>
