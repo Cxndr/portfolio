@@ -26,7 +26,7 @@ export default function GetInTouchCard() {
 
       <CardLabel label="Get in touch!" color="yellow" />
 
-      <div className="w-full h-64 flex flex-row justify-evenlyitems-center">
+      <div className="w-full h-64 flex flex-row justify-evenly items-center">
 
         <div className="w-1/3 flex flex-col gap-8 justify-center items-center">
           <Button 
@@ -38,7 +38,7 @@ export default function GetInTouchCard() {
             View CV
           </Button>
           <Button
-            href="#"
+            href="mailto:livewellandmakethings@gmail.com"
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
           >

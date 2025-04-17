@@ -12,7 +12,7 @@ export default function MusicPage() {
         <div className="h-full w-desktop max-w-11/12">
           <div className="h-full w-full flex flex-col items-end">
 
-            <div className="h-[77%] w-full mt-16 flex flex-row gap-16">
+            <div className="h-[100%] w-full mt-16 mb-28 flex flex-row gap-16">
               
               <div className="h-full w-1/4 flex flex-col items-center justify-start gap-16">
 
@@ -53,9 +53,9 @@ export default function MusicPage() {
 
             </div>
 
-            <div className="grow min-h-0 w-3/4 flex flex-row items-center justify-center">
+            {/* <div className="grow min-h-0 w-3/4 flex flex-row items-center justify-center">
               <FaArrowDown className="text-th-pink-500 text-4xl" />
-            </div>
+            </div> */}
 
           </div>
         </div>
