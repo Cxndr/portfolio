@@ -51,7 +51,11 @@ export default function MusicPlayer() {
   }, []);
 
   return (
-    <div className="relative right-9 flex items-center justify-center h-full w-0 -z-10 -top-0 scale-50">
+    // Mobile: absolute, centered top, scaled up slightly, visible
+    // Desktop: relative, original position/size/scale/z-index
+    <div className="absolute top-4 left-1/2 -translate-x-1/2 scale-75 z-10 \
+                    md:relative md:left-auto md:top-0 md:right-9 md:-translate-x-0 \
+                    md:flex md:items-center md:justify-center md:h-full md:w-0 md:-z-10 md:scale-50">
       <SlothCSS className="absolute rotate-42" musicPlaying={isPlaying}/>
     </div>
   );
