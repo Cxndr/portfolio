@@ -18,8 +18,22 @@ export default function MusicHearMore() {
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
+      <div
+        className={`
+          absolute -top-33 -left-14 w-68 h-74 rounded-r-2xl 
+          ring-4 ring-th-yellow-500 bg-th-neutral-50/80
+          ${isHovered ? 'opacity-100 block' : 'opacity-0 hidden'}
+          transition-all duration-300
+          -z-10
+          md:hidden
+          `}
+      />
+
       <button
-        className="button relative z-30 transition-all duration-300 pointer-events-none"
+        className={`
+          button relative z-30 transition-all duration-300 pointer-events-none
+          ${isHovered ? 'translate-x-4 md:translate-x-0' : 'translate-x-0'}
+        `}
         style={{
           transform: isHovered 
             ? 'rotate(0deg) translateY(-7rem)' 

@@ -104,10 +104,10 @@ export default function AlbumCovers() {
   const modalItems = Object.values(albums).map(album => ({
     id: album.id,
     content: (
-      <div className="h-full flex flex-col items-center overflow-y-hidden">
+      <div className="h-full flex flex-col items-center justify-between overflow-y-hidden">
         <motion.div
           layoutId={`album-cover-${album.id}`}
-          className="grow max-h-7/12 relative aspect-square"
+          className="grow h-0 max-w-12/12 max-h-7/12 relative aspect-square"
           transition={{ duration: 0.4 }}
         >
           <Image 
@@ -122,7 +122,7 @@ export default function AlbumCovers() {
         {/* Album title */}
         <motion.h2 
           layoutId={`album-title-${album.id}`}
-          className="text-3xl font-bold mb-6 text-th-neutral-800 mt-3"
+          className="text-3xl font-bold mb-2 md:mb-6 text-th-neutral-800 mt-3"
           transition={{ duration: 0.4 }}
         >
           {album.title}
@@ -133,15 +133,14 @@ export default function AlbumCovers() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: isNavigating ? 0 : 0.3, duration: 0.25 }}
-          className="text-th-neutral-950 text-center mb-8"
+          className="text-th-neutral-950 text-center mb-0 md:mb-8"
         >
-          <p className="mb-4 max-w-prose">{album.description}</p>
-          <p className="text-sm">Released: {album.releaseDate}</p>
+          <p className="mb-4 max-w-prose !text-xs md:!text-base">{album.description}</p>
         </motion.div>
         
         {/* Action buttons */}
         <motion.div 
-          className="flex gap-4 justify-center"
+          className="flex flex-row flex-wrap lg:flex-nowrap gap-2 md:gap-4 justify-center items-center"
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: isNavigating ? 0 : 0.4, duration: 0.3 }}
@@ -149,27 +148,27 @@ export default function AlbumCovers() {
           {album.spotifyLink && (
             <Button 
               href={album.spotifyLink}
-              className="!bg-green-500 hover:shadow-th-neutral-800"
+              className="!bg-green-500 hover:shadow-th-neutral-800 max-md:!text-sm max-md:!py-1.5 max-md:!px-2.5"
             >
-              <FaSpotify className="w-6 h-6 mr-1 -ml-1" /> Spotify
+              <FaSpotify className="w-5 h-5 md:w-6 md:h-6 -mr-0.5 md:mr-1 -ml-1" /> Spotify
             </Button>
           )}
           
           {album.soundcloudLink && (
             <Button 
               href={album.soundcloudLink}
-              className="!bg-orange-500 hover:shadow-th-neutral-800"
+              className="!bg-orange-500 hover:shadow-th-neutral-800 max-md:!text-sm max-md:!py-1.5 max-md:!px-2.5"
             >
-              <FaSoundcloud className="w-6 h-6 mr-1 -ml-1" /> SoundCloud
+              <FaSoundcloud className="w-5 h-5 md:w-6 md:h-6 -mr-0.5 md:mr-1 -ml-1" /> SoundCloud
             </Button>
           )}
 
           {album.bandcampLink && (
             <Button 
               href={album.bandcampLink}
-              className="!bg-[#629aa9] hover:shadow-th-neutral-800"
+              className="!bg-[#629aa9] hover:shadow-th-neutral-800 max-md:!text-sm max-md:!py-1.5 max-md:!px-2.5"
             >
-              <FaBandcamp className="w-6 h-6 mr-1 -ml-1" /> Bandcamp
+              <FaBandcamp className="w-5 h-5 md:w-6 md:h-6 -mr-0.5 md:mr-1 -ml-1" /> Bandcamp
             </Button>
           )}
         </motion.div>

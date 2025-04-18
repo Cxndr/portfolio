@@ -120,7 +120,7 @@ export default function Modal({ contentArray, contentIndex, handleClose, modalOp
         onClick={(e) => e.stopPropagation()}
         className="
           w-full h-full 
-          flex flex-col items-center pt-32
+          flex flex-col items-center justify-center
           md:py-8 
           md:px-8 
           md:grid md:grid-cols-[minmax(8rem,auto)_minmax(0,theme(maxWidth.5xl))_minmax(8rem,auto)] 
@@ -135,7 +135,7 @@ export default function Modal({ contentArray, contentIndex, handleClose, modalOp
       >
         {/* Left Button Area: Absolute on mobile (below modal), Grid item on desktop */}
         <div className="
-          absolute bottom-12 left-4 z-10
+          absolute bottom-4 left-4 z-10
           md:relative md:bottom-auto md:left-auto md:z-auto
           md:col-start-1 md:self-center md:justify-self-end
           pointer-events-auto 
@@ -150,7 +150,9 @@ export default function Modal({ contentArray, contentIndex, handleClose, modalOp
           className="
             flex flex-col
             w-11/12 
-            h-2/3 
+            h-9/12
+            md:mt-20
+            mb-20
             max-w-xl
             overflow-hidden 
             bg-neutral-50 
@@ -206,14 +208,14 @@ export default function Modal({ contentArray, contentIndex, handleClose, modalOp
                 }}
                 className="
                   absolute top-0 left-0 w-full h-full 
-                  p-4 md:p-8 
+                  p-4 pt-0 md:p-8 
                   flex flex-col
                   items-center
                   justify-center
                 "
               >
                 {/* Scrollable inner content */}
-                <div className="w-full h-full overflow-y-auto">
+                <div className="w-full h-full">
                   {contentArray[currentIndex]}
                 </div>
               </motion.div>
@@ -223,7 +225,7 @@ export default function Modal({ contentArray, contentIndex, handleClose, modalOp
 
         {/* Right Button Area: Absolute on mobile (below modal), Grid item on desktop */}
         <div className="
-          absolute bottom-12 right-4 z-10 /* Mobile positioning (below modal) */
+          absolute bottom-4 right-4 z-10 /* Mobile positioning (below modal) */
           md:relative md:bottom-auto md:right-auto md:z-auto /* Reset for desktop */
           md:col-start-3 md:self-center md:justify-self-start /* Desktop grid positioning */
           pointer-events-auto /* Buttons always clickable */

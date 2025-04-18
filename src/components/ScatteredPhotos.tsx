@@ -154,7 +154,6 @@ export default function ScatteredPhotos() {
     id: photo.src,
     content: (
       <div className="w-full h-full flex flex-col items-center justify-center">
-        {/* Image Container: Centered, takes significant space */}
         <div className="relative w-10/12 h-4/6 md:h-10/12 mb-4">
           <Image
             src={photo.src}
@@ -166,8 +165,7 @@ export default function ScatteredPhotos() {
           />
         </div>
 
-        {/* Text Content Container: Centered below image */}
-        <div className="text-center px-4 mt-auto pt-4 md:pt-0">
+        <div className="text-center grow px-4 mt-auto pt-4 md:pt-0 flex flex-col justify-evenly">
           <p className="text-neutral-950 text-sm md:text-lg max-w-prose mb-2">
             {photo.description}
           </p>
