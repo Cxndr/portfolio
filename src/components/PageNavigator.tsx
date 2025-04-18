@@ -1,9 +1,9 @@
 "use client"
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
 import { useNavigationState } from '@/lib/navigationState';
-import { findSiteMapKey, Page, siteMap } from '@/lib/navigationUtils'; // Removed unused getNavigationDirection
+import { findSiteMapKey, Page, siteMap } from '@/lib/navigationUtils';
 
 // *** Removed Page, PageGraph, siteMap, findSiteMapKey, getNavigationDirection definitions (moved to utils) ***
 
@@ -13,10 +13,9 @@ export default function ScrollNavigator() {
   const [isNavigating, setIsNavigating] = useState(false);
   const [touchStart, setTouchStart] = useState<number | null>(null);
   const setDirection = useNavigationState((state: { setDirection: (direction: 'up' | 'down' | 'left' | 'right' | null) => void }) => state.setDirection);
-  // *** Removed previousPathnameRef as it's no longer used ***
 
-  // Helper to find the page with a specific Y position relative to the current page
-  const findVerticalPage = (currentPathKey: string, direction: 'up' | 'down'): Page | null => {
+  // Helper wrapped in useCallback
+  const findVerticalPage = useCallback((currentPathKey: string, direction: 'up' | 'down'): Page | null => {
     const currentPage = siteMap[currentPathKey];
     if (!currentPage) return null;
 
@@ -36,9 +35,10 @@ export default function ScrollNavigator() {
     // return anyPageAtLevel || null;
 
     return null; // No page found directly above/below
-  };
+  }, []);
 
-  const navigateToPage = (targetPath: string, direction: 'up' | 'down' | 'left' | 'right' | null) => {
+  // Navigation function wrapped in useCallback
+  const navigateToPage = useCallback((targetPath: string, direction: 'up' | 'down' | 'left' | 'right' | null) => {
     const targetKey = findSiteMapKey(targetPath, siteMap);
     // Added check: Don't navigate if already on the target path
     if (!targetKey || isNavigating || findSiteMapKey(pathname, siteMap) === targetKey) return;
@@ -59,11 +59,9 @@ export default function ScrollNavigator() {
       setIsNavigating(false);
       // Direction is reset by ViewTransitionWrapper's effect
     }, 900); // Match the animation duration for isNavigating flag
-  };
+  }, [isNavigating, pathname, router, setDirection]);
 
   // Effect to handle direction changes based on pathname updates (link clicks, etc.)
-  // *** This effect is now redundant for setting direction on link clicks ***
-  // *** Link clicks should be handled directly in the navigation component (e.g., NavDesktop) ***
   /*
   useEffect(() => {
     const currentPathKey = findSiteMapKey(pathname, siteMap);
@@ -98,7 +96,8 @@ export default function ScrollNavigator() {
   }, [pathname, setDirection, isNavigating]); // Ensure isNavigating is a dependency
   */
 
-  const handleWheel = (e: WheelEvent) => {
+  // Event handlers wrapped in useCallback
+  const handleWheel = useCallback((e: WheelEvent) => {
     if (isNavigating) return;
     const currentPathKey = findSiteMapKey(pathname, siteMap);
     if (!currentPathKey) return;
@@ -114,18 +113,18 @@ export default function ScrollNavigator() {
         navigateToPage(prevPage.path, 'up');
       }
     }
-  };
+  }, [isNavigating, pathname, findVerticalPage, navigateToPage]);
 
-  const handleTouchStart = (e: TouchEvent) => {
+  const handleTouchStart = useCallback((e: TouchEvent) => {
     // Prevent scroll trigger if multiple touches (e.g., pinch zoom)
     if (e.touches.length === 1) {
         setTouchStart(e.touches[0].clientY);
     } else {
         setTouchStart(null); // Invalidate touch start if more than one finger
     }
-  };
+  }, []);
 
-  const handleTouchEnd = (e: TouchEvent) => {
+  const handleTouchEnd = useCallback((e: TouchEvent) => {
     if (!touchStart || isNavigating || e.touches.length > 0) {
         // If fingers are still on screen, or navigating, or no valid start, do nothing
         setTouchStart(null); // Reset touch start regardless
@@ -151,9 +150,9 @@ export default function ScrollNavigator() {
       }
     }
     setTouchStart(null); // Reset touch start after handling
-  };
+  }, [touchStart, isNavigating, pathname, findVerticalPage, navigateToPage]);
 
-  const handleKeyDown = (e: KeyboardEvent) => {
+  const handleKeyDown = useCallback((e: KeyboardEvent) => {
     if (isNavigating) return;
     const currentPathKey = findSiteMapKey(pathname, siteMap);
     if (!currentPathKey) return;
@@ -170,7 +169,7 @@ export default function ScrollNavigator() {
       }
     }
     // Could add ArrowLeft/Right here if needed, finding horizontal neighbors
-  };
+  }, [isNavigating, pathname, findVerticalPage, navigateToPage]);
 
   useEffect(() => {
     // Add passive: false if preventDefault() might be needed, otherwise true is fine
@@ -186,7 +185,7 @@ export default function ScrollNavigator() {
       window.removeEventListener('keydown', handleKeyDown);
     };
     // Dependencies: Re-add listeners if handlers change, which depends on these states/values
-  }, [isNavigating, touchStart, pathname]); // Added pathname dependency
+  }, [handleKeyDown, handleTouchEnd, handleTouchStart, handleWheel]); // Dependencies are now the stable useCallback handlers
 
   return null; // This component doesn't render anything itself
 } 

@@ -27,9 +27,13 @@ import { FaJava } from "react-icons/fa";
 
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
+import { IconBaseProps } from 'react-icons';
 
-// Export icons as JSX elements
-export const iconsListDev: React.ReactElement[] = [
+// Define a more specific type for react-icons elements
+type TypedIconElement = React.ReactElement<IconBaseProps>;
+
+// Export icons as JSX elements with the specific type
+export const iconsListDev: TypedIconElement[] = [
   <RiBracesFill size={24} key="braces"  />,
   <IoIosLaptop size={24} key="laptop" />,
   <FaDatabase size={24} key="database" />,
@@ -56,16 +60,19 @@ export const iconsListDev: React.ReactElement[] = [
   <FaJava size={24} key="java" />,
 ];
 
-export function getXRandomWords(words: React.ReactElement[], amount: number) {
+// Function to get random words (icons)
+export function getXRandomWords(words: TypedIconElement[], amount: number): TypedIconElement[] {
+  // Fisher-Yates shuffle
   for (let i = words.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
     [words[i], words[j]] = [words[j], words[i]];
   }
-  words = words.slice(0, amount);
-  return words;
+  // Slice and return
+  return words.slice(0, amount);
 }
 
-export function generateBg(icons: React.ReactElement[]) {
+// Function to generate the background SVG
+export function generateBg(icons: TypedIconElement[]) { // Use the specific type here too
   const svgWidth = 2000;
   const svgHeight = 2000;
   const gridSize = 70;
@@ -78,20 +85,22 @@ export function generateBg(icons: React.ReactElement[]) {
 
   const iconsPerRow = Math.floor(svgWidth / gridSize);
   for (let row = 0; row < Math.floor(svgHeight / gridSize); row++) {
+    // Ensure the input to getXRandomWords is also correctly typed if spreading
     const rowIcons = getXRandomWords([...icons], 20);
     const offset = row % rowIcons.length;
 
     for (let col = 0; col < iconsPerRow; col++) {
       const iconIndex = (col + offset) % rowIcons.length;
-      const icon = rowIcons[iconIndex];
+      const icon = rowIcons[iconIndex]; // icon is now TypedIconElement
       const x = col * gridSize + gridSize / 2;
       const y = row * gridSize + gridSize / 2;
       const rotation = Math.floor(Math.random() * 101) - 50;
 
       svgContent += `<g transform="translate(${x - iconSize/2}, ${y - iconSize/2}) rotate(${rotation}, ${iconSize/2}, ${iconSize/2})">`;
       svgContent += ReactDOMServer.renderToString(
+        // Now cloneElement should accept 'color' because 'icon' is TypedIconElement
         React.cloneElement(icon, { 
-          fill: fillColor,
+          color: fillColor, 
           style: { display: 'inline-block' }
         })
       );
