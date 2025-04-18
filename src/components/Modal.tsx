@@ -120,14 +120,13 @@ export default function Modal({ contentArray, contentIndex, handleClose, modalOp
         onClick={(e) => e.stopPropagation()}
         className="
           w-full h-full 
-          /* Mobile: Use flex col, pad top, center items horizontally */
-          flex flex-col items-center pt-32 /* Doubled top padding */
-          md:py-8 /* Restore vertical padding for desktop */
-          md:px-8 /* Horizontal padding only on desktop */
-          md:grid md:grid-cols-[minmax(8rem,auto)_minmax(0,theme(maxWidth.5xl))_minmax(8rem,auto)] /* Grid layout only on desktop */
-          md:gap-x-8 /* Grid gap only on desktop */
-          pointer-events-none /* Keep pointer-events none on the container */
-          relative /* Need relative positioning for absolute children */
+          flex flex-col items-center pt-32
+          md:py-8 
+          md:px-8 
+          md:grid md:grid-cols-[minmax(8rem,auto)_minmax(0,theme(maxWidth.5xl))_minmax(8rem,auto)] 
+          md:gap-x-8 
+          pointer-events-none
+          relative
         "
         variants={modalVariants}
         initial="hidden"
@@ -136,10 +135,10 @@ export default function Modal({ contentArray, contentIndex, handleClose, modalOp
       >
         {/* Left Button Area: Absolute on mobile (below modal), Grid item on desktop */}
         <div className="
-          absolute bottom-12 left-4 z-10 /* Mobile positioning (below modal) */
-          md:relative md:bottom-auto md:left-auto md:z-auto /* Reset for desktop */
-          md:col-start-1 md:self-center md:justify-self-end /* Desktop grid positioning */
-          pointer-events-auto /* Buttons always clickable */
+          absolute bottom-12 left-4 z-10
+          md:relative md:bottom-auto md:left-auto md:z-auto
+          md:col-start-1 md:self-center md:justify-self-end
+          pointer-events-auto 
         ">
           {currentIndex > 0 && ( 
             <ModalNavButton onClick={handlePrev} direction="left" />
@@ -149,32 +148,30 @@ export default function Modal({ contentArray, contentIndex, handleClose, modalOp
         {/* Modal Content Area */}
         <div
           className="
-            /* Mobile styles: 2/3 height, flex column */
-            flex flex-col /* Use flex column layout */
-            w-11/12 /* Slightly less than full width */
-            h-2/3 /* Two-thirds screen height */
-            max-w-xl /* Max width for mobile */
+            flex flex-col
+            w-11/12 
+            h-2/3 
+            max-w-xl
             overflow-hidden 
             bg-neutral-50 
             shadow-md shadow-th-neutral-950/50
-            rounded-lg /* Keep rounded corners */
+            rounded-lg
             pointer-events-auto
 
-            /* Desktop overrides: grid positioning, size constraints */
-            md:block /* Revert flex layout on desktop */
-            md:relative /* Need relative for absolute children on desktop */
-            md:w-full /* Let grid control width */
-            md:h-full /* Let grid control height */
-            md:max-w-none /* Remove max width */
+            md:block
+            md:relative 
+            md:w-full 
+            md:h-full 
+            md:max-w-none
             md:col-start-2 
             md:justify-self-center 
-            md:max-h-full /* Restore max height */
+            md:max-h-full
           "
         >
           {/* Close Button: Flex item on mobile, Absolute on desktop */}
           <div className="
-            w-full flex justify-end p-1 /* Mobile: occupy top, align right */
-            md:absolute md:top-1 md:right-1 md:m-2 md:p-2 md:z-20 /* Desktop: absolute positioning */
+            w-full flex justify-end p-1 
+            md:absolute md:top-1 md:right-1 md:m-2 md:p-2 md:z-20
             pointer-events-auto
           ">
             <div 
@@ -192,8 +189,8 @@ export default function Modal({ contentArray, contentIndex, handleClose, modalOp
 
           {/* Animated Content Area: Flex-grow on mobile, Absolute positioning on desktop */}
           <div className="
-            flex-grow overflow-hidden relative /* Mobile: Takes remaining space, needs relative for motion div */
-            md:static md:flex-grow-0 /* Desktop: Reset flex behavior */
+            flex-grow overflow-hidden relative
+            md:static md:flex-grow-0 
           ">
             <AnimatePresence initial={false} custom={direction}>
               <motion.div
@@ -208,10 +205,9 @@ export default function Modal({ contentArray, contentIndex, handleClose, modalOp
                   opacity: { duration: 0.2 },
                 }}
                 className="
-                  /* Both Mobile & Desktop: Absolute within the container */
                   absolute top-0 left-0 w-full h-full 
-                  p-4 md:p-8 /* Padding */
-                  flex flex-col /* Still use flex for inner centering */
+                  p-4 md:p-8 
+                  flex flex-col
                   items-center
                   justify-center
                 "
