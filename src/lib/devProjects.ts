@@ -56,7 +56,7 @@ export const devProjects: DevProject[] = [
       "Web workers for <b><i>speedy and unintrusive</i></b> image manipulation tasks in browser.",
       "<b><i>Client-side</i></b> focused development.",
     ],
-    technologies: ["JIMP", "Next.js", "DaisyUI", "Tailwind", "TypeScript"],
+    technologies: ["JIMP", "Next.js", "Tailwind", "TypeScript"],
     skillsGained: [
       "🖼️ Image Manipulation Algorithms.",
       "👤 Real-World User Base.",
@@ -210,7 +210,7 @@ export const devProjects: DevProject[] = [
     technologies: ["Next.js", "Tailwind", "TypeScript", "Postgres"],
     skillsGained: [],
     githubLink: "https://github.com/Cxndr/poke-rogue",
-    shortDescription: "React-only Pokemon auto-battler roguelike game that doesn't use canvas, webgl or similar technologies.",
+    shortDescription: "Web roguelike game that doesn't use canvas, webgl or similar technologies.",
     longDescription: "",
   }, 
 
@@ -264,7 +264,7 @@ export const devProjects: DevProject[] = [
     technologies: ["VBA", "MS Access", "Windows"],
     skillsGained: [],
     githubLink: "",
-    shortDescription: "All-in-one auction house software for managing and running all aspects of an auction house business.",
+    shortDescription: "All-in-one software for managing all aspects of an auction house.",
     longDescription: "",
   },
 
