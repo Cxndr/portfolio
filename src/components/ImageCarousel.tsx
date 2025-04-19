@@ -9,9 +9,10 @@ type ImageCarouselProps = {
   project: DevProject;
   desktopImagePaths: string[];
   mobileImagePaths?: string[];
+  className?: string;
 };
 
-export default function ImageCarousel({ project, desktopImagePaths, mobileImagePaths }: ImageCarouselProps) {
+export default function ImageCarousel({ project, desktopImagePaths, mobileImagePaths, className = "" }: ImageCarouselProps) {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   const totalDesktopImages = desktopImagePaths.length;
@@ -50,7 +51,7 @@ export default function ImageCarousel({ project, desktopImagePaths, mobileImageP
       : undefined;
 
   return (
-    <div className="mt-24 w-full flex flex-row justify-center items-center gap-8 translate-z-0 -rotate-y-10 -rotate-x-1">
+    <div className={`md:mt-16 lg:mt-24 w-full flex flex-row justify-center items-center gap-4 lg:gap-8 translate-z-0 ${className}`}>
       <ProjectNavButton
         direction="previous"
         onClick={handlePrevImage}
@@ -58,7 +59,7 @@ export default function ImageCarousel({ project, desktopImagePaths, mobileImageP
       />
 
       <div className="w-full flex flex-col justify-center items-center gap-3 bg-th-neutral-900 px-4 py-3 rounded-3xl shadow-th shadow-th-pink-500 relative">
-        <h3>{project.title}</h3>
+        <h3 className="max-md:!text-xl">{project.title}</h3>
 
         {/* Container - Reverted: No aspect-square */}
         <div className="relative w-full overflow-hidden rounded-xl bg-th-neutral-800">

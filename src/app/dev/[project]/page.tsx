@@ -1,15 +1,14 @@
-import Card from "@/components/Card";
 import DynamicBackground from "@/components/DynamicBackground";
 import { devProjects } from "@/lib/devProjects";
 import { BsGithub } from "react-icons/bs";
 import { GrLanguage } from "react-icons/gr";
 import Button from "@/components/Button";
-import CardLabel from "@/components/CardLabel";
 import InternalLink from "@/components/InternalLink";
 import { LuArrowLeft } from "react-icons/lu";
 import ImageCarousel from "@/components/ImageCarousel";
 import fs from 'fs';
 import path from 'path';
+import WhatWhyHowCards from "@/components/WhatWhyHowCards";
 
 async function getImagePaths(dirPath: string | undefined): Promise<string[] | undefined> {
   if (!dirPath) return undefined;
@@ -65,14 +64,14 @@ export default async function DevPage({ params }: { params: Promise<{ project: s
 
   return (
     <DynamicBackground>
-      <div className="h-full w-full flex flex-col items-center justify-center overflow-hidden">
-        <div className="h-full w-desktop">
+      <div className="h-full w-full flex flex-col items-center overflow-y-auto lg:overflow-hidden px-4 lg:px-0">
+        <div className="w-full lg:w-desktop flex flex-col h-full">
 
-          <div 
+          <div
             className="
               button
-              px-3 py-2 my-3 rounded-3xl
-              -translate-x-8
+              px-3 py-2 my-4 rounded-3xl
+              self-start lg:-translate-x-8
               inline-block
               bg-th-neutral-50
               text-foreground/65
@@ -80,7 +79,6 @@ export default async function DevPage({ params }: { params: Promise<{ project: s
               hover:text-th-blue-500
               transition-all duration-300
               cursor-pointer
-              
             "
           >
             <InternalLink href="/dev">
@@ -90,55 +88,29 @@ export default async function DevPage({ params }: { params: Promise<{ project: s
             </InternalLink>
           </div>
 
-          <div className="grow flex flex-row gap-12">
+          <div className="flex-grow flex flex-col lg:flex-row gap-6 lg:gap-12 mb-8 lg:mb-0">
 
-            <div className="h-full w-5/12 flex flex-col gap-20 justify-center">
+            <WhatWhyHowCards currentProject={currentProject} />
 
-              <Card className="mt-12 p-6.5 pt-4.5 shadow-th-pink-500 flex flex-col gap-3 relative">
-                <CardLabel label="What" color="pink" className="-top-10" />
-                <ul className="mt-2 flex flex-col gap-1">
-                  {currentProject.whatList.map((item, index) => (
-                    <li key={index} dangerouslySetInnerHTML={{ __html: item }} />
-                  ))}
-                </ul>
-              </Card>
+            <div className="w-full lg:w-7/12 flex flex-col items-center order-1 lg:order-2">
 
-              <Card className="p-6.5 pt-4.5 shadow-th-blue-500 flex flex-col gap-3 relative">
-                <CardLabel label="Why" color="blue" className="-top-10" />
-                <ul className="mt-2 flex flex-col gap-1">
-                  {currentProject.whyList.map((item, index) => (
-                    <li key={index} dangerouslySetInnerHTML={{ __html: item }} />
-                  ))}
-                </ul>
-              </Card>
+              <div className="w-full lg:perspective-normal">
+                <ImageCarousel
+                  project={currentProject}
+                  desktopImagePaths={desktopImagePaths}
+                  mobileImagePaths={mobileImagePaths}
+                  className="lg:-rotate-y-10 lg:-rotate-x-1"
+                />
+              </div>
 
-              <Card className="p-6.5 pt-4.5 shadow-th-yellow-500 flex flex-col gap-3 relative">
-                <CardLabel label="How" color="yellow" className="-top-10" />
-                <ul className="mt-2 flex flex-col gap-1">
-                  {currentProject.howList.map((item, index) => (
-                    <li key={index} dangerouslySetInnerHTML={{ __html: item }} />
-                  ))}
-                </ul>
-              </Card>
-
-            </div>
-
-            <div className="w-7/12 flex flex-col justify-between items-center perspective-normal">
-              
-              <ImageCarousel
-                project={currentProject}
-                desktopImagePaths={desktopImagePaths}
-                mobileImagePaths={mobileImagePaths}
-              />
-
-              <div className="w-full flex-grow flex flex-col justify-center items-center gap-8">
+              <div className="w-full flex flex-col justify-center items-center gap-4 lg:gap-6 py-8 lg:py-0 lg:flex-grow">
                 {currentProject.liveSiteLink && (
                   <Button
                     href={currentProject.liveSiteLink}
                     className="hover:shadow-th-neutral-800"
                     disabled={!currentProject.liveSiteLink}
-                >
-                  <GrLanguage />
+                  >
+                    <GrLanguage />
                     View Live Site
                   </Button>
                 )}
