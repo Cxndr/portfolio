@@ -54,11 +54,11 @@ export default function ImageCarousel({ project, desktopImagePaths, mobileImageP
   return (
     <div className={`w-full h-full flex flex-row justify-center items-center gap-4 lg:gap-8 translate-z-0 ${className}`}>
 
-      <div className="w-full h-full flex flex-col justify-center items-center gap-3 bg-th-neutral-900 px-4 py-3 rounded-xl shadow-th shadow-th-pink-500 relative">
+      <div className="w-full h-full flex flex-col justify-center items-center gap-3 bg-th-neutral-900 px-3 py-3 rounded-xl shadow-th shadow-th-pink-500 relative">
         
         <h3 className="max-md:!text-xl">{project.title}</h3>
 
-        <div className="w-full grow flex flex-row justify-between items-center gap-4">
+        <div className="w-full grow flex flex-row justify-between items-center gap-3">
 
           <div className="">
             <ProjectNavButton
