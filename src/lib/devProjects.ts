@@ -1,7 +1,8 @@
+
+
 export const techColors = {
   "JIMP": " bg-orange-400",
   "Next.js": " bg-blue-400",
-  "DaisyUI": " bg-pink-400",
   "Tailwind": " bg-lime-500",
   "TypeScript": " bg-indigo-700",
   "Python": " bg-teal-500",
@@ -15,6 +16,26 @@ export const techColors = {
   "CSS Animation": " bg-sky-500",
   "Postgres": " bg-fuchsia-500",
   "Windows": " bg-blue-700",
+}
+
+const techIconsPath = "/img/icons/tech/";
+
+export const techIcons = {
+  "JIMP": `${techIconsPath}/jimp.svg`,
+  "Next.js": `${techIconsPath}/nextjs.svg`,
+  "Tailwind": `${techIconsPath}/tailwind.svg`,
+  "TypeScript": `${techIconsPath}/typescript.svg`,
+  "Python": `${techIconsPath}/python.svg`,
+  "Twitch API": `${techIconsPath}/twitch.svg`,
+  "Youtube API": `${techIconsPath}/youtube.svg`,
+  "GameMaker Studio": `${techIconsPath}/gamemaker.svg`,
+  "GML Script": `${techIconsPath}/gml.svg`,
+  "VBA": `${techIconsPath}/visualbasic.svg`,
+  "MS Access": `${techIconsPath}/msaccess.svg`,
+  "Javascript": `${techIconsPath}/javascript.svg`,
+  "CSS Animation": `${techIconsPath}/css3.svg`,
+  "Postgres": `${techIconsPath}/postgres.svg`,
+  "Windows": `${techIconsPath}/windows.svg`,
 }
 
 export type DevProject = {

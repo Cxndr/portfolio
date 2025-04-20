@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useState } from "react";
 import ProjectNavButton from "@/components/ProjectNavButton";
-import { DevProject, techColors } from "@/lib/devProjects"; // Assuming techColors is exported
+import { DevProject } from "@/lib/devProjects";
 
 type ImageCarouselProps = {
   project: DevProject;
@@ -51,7 +51,7 @@ export default function ImageCarousel({ project, desktopImagePaths, mobileImageP
       : undefined;
 
   return (
-    <div className={`md:mt-16 lg:mt-24 w-full flex flex-row justify-center items-center gap-4 lg:gap-8 translate-z-0 ${className}`}>
+    <div className={`w-full flex flex-row justify-center items-center gap-4 lg:gap-8 translate-z-0 ${className}`}>
       <ProjectNavButton
         direction="previous"
         onClick={handlePrevImage}
@@ -111,7 +111,7 @@ export default function ImageCarousel({ project, desktopImagePaths, mobileImageP
         {mobileImagePaths && mobileImagePaths.length > 0 && (
           <>
             {/* 1. Background Element (Sibling) */}
-            <div className="absolute -right-10 -bottom-10 h-2/3 w-auto bg-th-neutral-800 rounded-lg z-10"> {/* Positioned identically, lower z-index */}
+            <div className="absolute -left-10 -bottom-10 h-2/3 w-auto bg-th-neutral-800 rounded-lg z-10"> {/* Positioned identically, lower z-index */}
               {/* Needs a sizer inside *if* w-auto calculation depends on content */}
               {currentMobileImagePath && (
                  <div aria-hidden="true" className="relative w-full h-full"> {/* Need relative parent for sizer */}
@@ -127,7 +127,7 @@ export default function ImageCarousel({ project, desktopImagePaths, mobileImageP
             </div>
 
             {/* 2. Image Container Element (Sibling) */}
-            <div className="absolute -right-10 -bottom-10 h-2/3 w-auto pointer-events-none overflow-hidden z-50"> {/* Changed z-20 to z-50 */}
+            <div className="absolute -left-10 -bottom-10 h-2/3 w-auto pointer-events-none overflow-hidden z-50"> {/* Changed z-20 to z-50 */}
               {/* Inner container for relative positioning */}
               <div className="relative w-full h-full">
                 {/* Sizer Image (still needed if w-auto calc needs it) */}
@@ -157,13 +157,6 @@ export default function ImageCarousel({ project, desktopImagePaths, mobileImageP
           </>
         )}
 
-        <div className="flex flex-row gap-2 relative z-30">
-          {project.technologies.map((technology) => (
-            <div key={technology} className={`badge ${techColors[technology as keyof typeof techColors]}`}>
-              {technology}
-            </div>
-          ))}
-        </div>
       </div>
 
       <ProjectNavButton

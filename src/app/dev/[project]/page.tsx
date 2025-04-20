@@ -1,5 +1,5 @@
 import DynamicBackground from "@/components/DynamicBackground";
-import { devProjects } from "@/lib/devProjects";
+import { devProjects, techIcons } from "@/lib/devProjects";
 import { BsGithub } from "react-icons/bs";
 import { GrLanguage } from "react-icons/gr";
 import Button from "@/components/Button";
@@ -9,7 +9,9 @@ import ImageCarousel from "@/components/ImageCarousel";
 import fs from 'fs';
 import path from 'path';
 import WhatWhyHowCards from "@/components/WhatWhyHowCards";
-
+import Card from "@/components/Card";
+import CardLabel from "@/components/CardLabel";
+import Image from "next/image";
 async function getImagePaths(dirPath: string | undefined): Promise<string[] | undefined> {
   if (!dirPath) return undefined;
 
@@ -64,14 +66,14 @@ export default async function DevPage({ params }: { params: Promise<{ project: s
 
   return (
     <DynamicBackground>
-      <div className="h-full w-full flex flex-col items-center overflow-y-auto lg:overflow-hidden px-4 lg:px-0">
-        <div className="w-full lg:w-desktop flex flex-col h-full">
+      <div className="h-full w-full flex flex-col items-center overflow-y-auto lg:overflow-hidden">
+        <div className="max-w-screen-xl md:mb-4 flex flex-col h-full mx-12">
 
           <div
             className="
               button
               px-3 py-2 my-4 rounded-3xl
-              self-start lg:-translate-x-8
+              self-start lg:-translate-x-4
               inline-block
               bg-th-neutral-50
               text-foreground/65
@@ -88,45 +90,73 @@ export default async function DevPage({ params }: { params: Promise<{ project: s
             </InternalLink>
           </div>
 
-          <div className="flex-grow flex flex-col lg:flex-row gap-6 lg:gap-12 mb-8 lg:mb-0">
+          <div className="flex-grow flex flex-col lg:flex-col mb-10">
 
-            <WhatWhyHowCards currentProject={currentProject} />
+            <div className="w-full grow h-0 flex flex-row items-center">
 
-            <div className="w-full lg:w-7/12 flex flex-col items-center order-1 lg:order-2">
-
-              <div className="w-full lg:perspective-normal">
+              <div className="">
                 <ImageCarousel
                   project={currentProject}
                   desktopImagePaths={desktopImagePaths}
                   mobileImagePaths={mobileImagePaths}
-                  className="lg:-rotate-y-10 lg:-rotate-x-1"
+                  className=""
                 />
               </div>
 
-              <div className="w-full flex flex-col justify-center items-center gap-4 lg:gap-6 py-8 lg:py-0 lg:flex-grow">
-                {currentProject.liveSiteLink && (
-                  <Button
-                    href={currentProject.liveSiteLink}
-                    className="hover:shadow-th-neutral-800"
-                    disabled={!currentProject.liveSiteLink}
-                  >
-                    <GrLanguage />
-                    View Live Site
-                  </Button>
+              <div className="w-full h-full grow flex flex-col justify-start items-center gap-4 lg:gap-6 py-8 lg:py-0">
+
+                {currentProject.technologies.length > 0 && (
+                  <Card className="p-4 pt-5 shadow-th-yellow-500 flex flex-col gap-2 relative mt-18">
+                    <CardLabel label="Tech Stack" color="yellow" className="-top-10 !text-sm" size="small" />
+                    <div className="flex flex-row relative z-30 gap-4 mx-2 mt-2">
+                      {currentProject.technologies.map((technology) => (
+                        <div key={technology} className="flex flex-col items-center gap-2">
+                          <Image
+                            key={technology}
+                            src={techIcons[technology as keyof typeof techIcons]}
+                            alt={technology}
+                            width={64}
+                            height={64}
+                            className="h-16 w-16"
+                          />
+                          <span className="label">{technology}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </Card>
                 )}
 
-                <Button
-                  href={currentProject.githubLink}
-                  className="hover:shadow-th-neutral-800"
-                  disabled={!currentProject.githubLink}
-                >
-                  <BsGithub />
-                  Github Repo
-                </Button>
+                <div className="w-full grow flex flex-col gap-2 justify-evenly items-center">
+
+                  {currentProject.liveSiteLink && (
+                    <Button
+                      href={currentProject.liveSiteLink}
+                      className="hover:shadow-th-neutral-800"
+                      disabled={!currentProject.liveSiteLink}
+                    >
+                      <GrLanguage />
+                      View Live Site
+                    </Button>
+                  )}
+
+                  {currentProject.githubLink && (
+                    <Button
+                      href={currentProject.githubLink}
+                      className="hover:shadow-th-neutral-800"
+                      disabled={!currentProject.githubLink}
+                  >
+                    <BsGithub />
+                      Github Repo
+                    </Button>
+                  )}
+                
+                </div>
 
               </div>
 
             </div>
+
+            <WhatWhyHowCards currentProject={currentProject} />
 
           </div>
         </div>
