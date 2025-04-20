@@ -9,8 +9,8 @@ type ProjectNavButtonProps = {
 };
 
 export default function ProjectNavButton({ direction, onClick, disabled }: ProjectNavButtonProps) {
-  const iconClassName = "text-th-pink-500 text-7xl transition-all duration-200 hover:text-th-pink-600 hover:scale-105 cursor-pointer select-none";
-  const disabledIconClassName = "text-th-neutral-500/50 text-7xl cursor-not-allowed select-none";
+  const iconClassName = "text-th-pink-500 text-5xl transition-all duration-200 hover:text-th-pink-600 hover:scale-105 cursor-pointer select-none";
+  const disabledIconClassName = "text-th-neutral-500/50 text-5xl cursor-not-allowed select-none";
 
   const Icon = direction === "previous" ? FaCircleChevronLeft : FaCircleChevronRight;
 

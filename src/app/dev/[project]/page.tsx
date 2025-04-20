@@ -90,11 +90,11 @@ export default async function DevPage({ params }: { params: Promise<{ project: s
             </InternalLink>
           </div>
 
-          <div className="flex-grow flex flex-col lg:flex-col mb-10">
+          <div className="flex-grow flex flex-col gap-10 lg:flex-col mb-10">
 
-            <div className="w-full grow h-0 flex flex-row items-center">
+            <div className="w-full grow h-0 flex flex-row items-center gap-16">
 
-              <div className="">
+              <div className="w-0 grow h-full">
                 <ImageCarousel
                   project={currentProject}
                   desktopImagePaths={desktopImagePaths}
@@ -103,10 +103,10 @@ export default async function DevPage({ params }: { params: Promise<{ project: s
                 />
               </div>
 
-              <div className="w-full h-full grow flex flex-col justify-start items-center gap-4 lg:gap-6 py-8 lg:py-0">
+              <div className="h-full w-auto flex flex-col justify-start items-center gap-4 lg:gap-6 py-8 lg:py-0">
 
                 {currentProject.technologies.length > 0 && (
-                  <Card className="p-4 pt-5 shadow-th-yellow-500 flex flex-col gap-2 relative mt-18">
+                  <Card className="p-4 pt-5 shadow-th-yellow-500 flex flex-col gap-2 relative mt-12">
                     <CardLabel label="Tech Stack" color="yellow" className="-top-10 !text-sm" size="small" />
                     <div className="flex flex-row relative z-30 gap-4 mx-2 mt-2">
                       {currentProject.technologies.map((technology) => (

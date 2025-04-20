@@ -12,7 +12,7 @@ export default function WhatWhyHowCards({ currentProject }: WhatWhyHowCardsProps
 
       <Card className="flex-1 p-4 pt-5 shadow-th-pink-500 flex flex-col gap-2 relative">
         <CardLabel label="What" color="pink" className="-top-10" />
-        <ul className="mt-2 flex flex-col gap-0">
+        <ul className="mt-4 flex flex-col gap-1">
           {currentProject.whatList.map((item, index) => (
             <li key={index} dangerouslySetInnerHTML={{ __html: item }} />
           ))}
@@ -21,7 +21,7 @@ export default function WhatWhyHowCards({ currentProject }: WhatWhyHowCardsProps
 
       <Card className="flex-1 p-4 pt-5 shadow-th-blue-500 flex flex-col gap-2 relative">
         <CardLabel label="Why" color="blue" className="-top-10" />
-        <ul className="mt-2 flex flex-col gap-0">
+        <ul className="mt-4 flex flex-col gap-1">
           {currentProject.whyList.map((item, index) => (
             <li key={index} dangerouslySetInnerHTML={{ __html: item }} />
           ))}
@@ -30,7 +30,7 @@ export default function WhatWhyHowCards({ currentProject }: WhatWhyHowCardsProps
 
       <Card className="flex-1 p-4 pt-5 shadow-th-yellow-500 flex flex-col gap-2 relative">
         <CardLabel label="How" color="yellow" className="-top-10" />
-        <ul className="mt-2 flex flex-col gap-0">
+        <ul className="mt-4 flex flex-col gap-1">
           {currentProject.howList.map((item, index) => (
             <li key={index} dangerouslySetInnerHTML={{ __html: item }} />
           ))}
