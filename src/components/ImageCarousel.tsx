@@ -61,7 +61,15 @@ export default function ImageCarousel({ project, desktopImagePaths, mobileImageP
       {/* Outer card has px-3 */}
       <div className="w-full h-full flex flex-col justify-center items-center gap-3 bg-th-neutral-900 px-3 py-3 rounded-xl shadow-th shadow-th-pink-500 relative">
         
-        <h3 className="max-md:!text-xl">{project.title}</h3>
+        <h3 
+          className="
+            max-md:!text-xl mt-2 bg-th-pink-500 px-4 py-3
+            rounded-lg shadow-md shadow-th-neutral-950/50
+            absolute -top-10
+          "
+        >
+          {project.title}
+        </h3>
 
         {/* Use Grid, items-center, gap-3 - Apply proportional columns via inline style */}
         <div 
@@ -95,7 +103,7 @@ export default function ImageCarousel({ project, desktopImagePaths, mobileImageP
 
           {/* Grid Item 3: Mobile Image Wrapper (Conditional) - Removed h-full */}
           {mobileImagePaths && totalMobileImages > 0 && (
-             <div>
+            <div>
               <ProjectImageMobile
                 mobileImagePaths={mobileImagePaths}
                 currentImageIndex={currentImageIndex}
@@ -103,7 +111,7 @@ export default function ImageCarousel({ project, desktopImagePaths, mobileImageP
                 project={project}
                 imageTransitionClasses={imageTransitionClasses}
               />
-             </div>
+            </div>
           )}
 
           {/* Grid Item 4: Next Button */}

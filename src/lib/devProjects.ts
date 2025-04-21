@@ -38,6 +38,24 @@ export const techIcons = {
   "Windows": `${techIconsPath}/windows.svg`,
 }
 
+export const techLinks = {
+  "JIMP": "https://jimp-dev.github.io/jimp/",
+  "Next.js": "https://nextjs.org/",
+  "Tailwind": "https://tailwindcss.com/",
+  "TypeScript": "https://www.typescriptlang.org/",
+  "Python": "https://www.python.org/",
+  "Twitch API": "https://dev.twitch.tv/docs/api/",
+  "Youtube API": "https://developers.google.com/youtube/v3",
+  "GameMaker Studio": "https://gamemaker.io/",
+  "GML Script": "https://manual.gamemaker.io/monthly/en/GameMaker_Language/GameMaker_Language_Index.htm",
+  "VBA": "https://learn.microsoft.com/en-us/office/vba/library-reference/concepts/getting-started-with-vba-in-office",
+  "MS Access": "https://www.microsoft.com/en-gb/microsoft-365/access",
+  "Javascript": "https://developer.mozilla.org/en-US/docs/Web/JavaScript",
+  "CSS Animation": "https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Animations",
+  "Postgres": "https://www.postgresql.org/",
+  "Windows": "https://www.microsoft.com/en-us/windows",
+}
+
 export type DevProject = {
   title: string,
   imageDir: string,

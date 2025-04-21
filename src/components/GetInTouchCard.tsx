@@ -31,6 +31,8 @@ export default function GetInTouchCard() {
         <div className="w-full md:w-1/3 flex flex-col gap-6 md:gap-8 justify-center items-center">
           <Button 
             href="#"
+            target="_blank"
+            className=""
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
           >
@@ -39,6 +41,8 @@ export default function GetInTouchCard() {
           </Button>
           <Button
             href="mailto:livewellandmakethings@gmail.com"
+            target="_blank"
+            className=""
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
           >

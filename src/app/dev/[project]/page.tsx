@@ -1,5 +1,5 @@
 import DynamicBackground from "@/components/DynamicBackground";
-import { devProjects, techIcons } from "@/lib/devProjects";
+import { devProjects, techIcons, techLinks } from "@/lib/devProjects";
 import { BsGithub } from "react-icons/bs";
 import { GrLanguage } from "react-icons/gr";
 import Button from "@/components/Button";
@@ -12,6 +12,7 @@ import WhatWhyHowCards from "@/components/WhatWhyHowCards";
 import Card from "@/components/Card";
 import CardLabel from "@/components/CardLabel";
 import Image from "next/image";
+import Link from "next/link";
 async function getImagePaths(dirPath: string | undefined): Promise<string[] | undefined> {
   if (!dirPath) return undefined;
 
@@ -106,33 +107,36 @@ export default async function DevPage({ params }: { params: Promise<{ project: s
               <div className="h-full w-auto flex flex-col justify-start items-center gap-4 lg:gap-6 py-8 lg:py-0">
 
                 {currentProject.technologies.length > 0 && (
-                  <Card className="p-4 pt-5 shadow-th-yellow-500 flex flex-col gap-2 relative mt-12">
+                  <Card className="p-4 pt-5 shadow-th-yellow-500 flex flex-col gap-2 relative mt-12 mb-2">
                     <CardLabel label="Tech Stack" color="yellow" className="-top-10 !text-sm" size="small" />
-                    <div className="flex flex-row relative z-30 gap-4 mx-2 mt-2">
+                    <div className="flex flex-row relative z-30 gap-6 mx-3 mt-4 mb-1">
                       {currentProject.technologies.map((technology) => (
-                        <div key={technology} className="flex flex-col items-center gap-2">
-                          <Image
-                            key={technology}
-                            src={techIcons[technology as keyof typeof techIcons]}
-                            alt={technology}
-                            width={64}
-                            height={64}
-                            className="h-16 w-16"
-                          />
-                          <span className="label">{technology}</span>
-                        </div>
+                        <Link href={techLinks[technology as keyof typeof techLinks]} target="_blank" key={technology}>
+                          <div className="flex flex-col items-center gap-3">
+                            <Image
+                              key={technology}
+                              src={techIcons[technology as keyof typeof techIcons]}
+                              alt={technology}
+                              width={64}
+                              height={64}
+                              className="h-16 w-16 hover:scale-110 transition-all duration-300"
+                            />
+                            <span className="label">{technology}</span>
+                          </div>
+                        </Link>
                       ))}
                     </div>
                   </Card>
                 )}
 
-                <div className="w-full grow flex flex-col gap-2 justify-evenly items-center">
+                <div className="w-full grow flex flex-col gap-2.5 my-5 justify-evenly items-center">
 
                   {currentProject.liveSiteLink && (
                     <Button
                       href={currentProject.liveSiteLink}
-                      className="hover:shadow-th-neutral-800"
+                      className="hover:shadow-th-neutral-800 !bg-th-blue-500"
                       disabled={!currentProject.liveSiteLink}
+                      target="_blank"
                     >
                       <GrLanguage />
                       View Live Site
@@ -142,10 +146,11 @@ export default async function DevPage({ params }: { params: Promise<{ project: s
                   {currentProject.githubLink && (
                     <Button
                       href={currentProject.githubLink}
-                      className="hover:shadow-th-neutral-800"
+                      target="_blank"
+                      className="hover:shadow-th-neutral-800 !bg-th-blue-500"
                       disabled={!currentProject.githubLink}
-                  >
-                    <BsGithub />
+                    >
+                      <BsGithub />
                       Github Repo
                     </Button>
                   )}
