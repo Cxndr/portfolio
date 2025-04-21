@@ -1,48 +1,41 @@
 import Image from "next/image";
 import { DevProject } from "@/lib/devProjects";
 
+// Define dimensions for aspectRatio and next/image
+const MOBILE_WIDTH = 379;
+const MOBILE_HEIGHT = 669;
+
 type ProjectImageMobileProps = {
   mobileImagePaths: string[] | undefined;
   currentImageIndex: number;
-  currentMobileImagePath: string | undefined;
   totalMobileImages: number;
   project: DevProject;
   imageTransitionClasses: string;
 };
 
-export default function ProjectImageMobile({ mobileImagePaths, currentImageIndex, currentMobileImagePath, totalMobileImages, project, imageTransitionClasses }: ProjectImageMobileProps) {
+export default function ProjectImageMobile({ mobileImagePaths, currentImageIndex, totalMobileImages, project, imageTransitionClasses }: ProjectImageMobileProps) {
+
   return (
     mobileImagePaths && mobileImagePaths.length > 0 && (
-      <>
-
-        <div className="w-auto pointer-events-none overflow-hidden z-50">
-          {/* Inner container for relative positioning */}
-          <div className="relative w-full h-full">
-            {/* Sizer Image (still needed if w-auto calc needs it) */}
-            {currentMobileImagePath && (
-              <Image
-                key={currentMobileImagePath + "-sizer-mobile"}
-                src={currentMobileImagePath}
-                alt="" aria-hidden="true" width={375} height={668}
-                className="block h-full w-auto opacity-0 pointer-events-none"
-                
-              />
-            )}
-            {/* Stacked Images */}
-            {mobileImagePaths.map((imagePath, index) => (
-              <Image
-                key={imagePath + "-mobile"}
-                src={imagePath}
-                alt={`Image ${index + 1} of ${totalMobileImages} for ${project.title} on mobile`}
-                width={375}
-                height={668}
-                className={`absolute inset-0 w-full h-full object-contain rounded-xl shadow-md shadow-black/40 ${imageTransitionClasses} ${index === currentImageIndex ? 'opacity-100 z-40' : 'opacity-0 z-0'}`}
-                
-              />
-            ))}
-          </div>
-        </div>
-      </>
+      // Root div controls aspect ratio, width from grid, rounded corners, shadow
+      <div
+        className="w-full relative overflow-hidden rounded-xl shadow-md shadow-black/40 z-50"
+        style={{ aspectRatio: `${MOBILE_WIDTH} / ${MOBILE_HEIGHT}` }}
+      >
+        {/* Map images directly inside */}
+        {mobileImagePaths.map((imagePath, index) => (
+            <Image
+              key={imagePath + "-mobile"} // Keep key on image
+              src={imagePath}
+              alt={`Image ${index + 1} of ${totalMobileImages} for ${project.title} on mobile`}
+              width={MOBILE_WIDTH}   // Still needed for next/image
+              height={MOBILE_HEIGHT} // Still needed for next/image
+              // Image fills the aspect-ratio container. Use object-cover.
+              // Transitions applied here.
+              className={`absolute inset-0 w-full h-full object-cover ${imageTransitionClasses} ${index === currentImageIndex ? 'opacity-100 z-40' : 'opacity-0 z-0'}`}
+            />
+        ))}
+      </div>
     )
   );
 }

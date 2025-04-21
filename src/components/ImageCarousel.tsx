@@ -13,6 +13,12 @@ type ImageCarouselProps = {
   className?: string;
 };
 
+// Re-add fixed dimensions
+const DESKTOP_WIDTH = 1600;
+const DESKTOP_HEIGHT = 927;
+const MOBILE_WIDTH = 379;
+const MOBILE_HEIGHT = 669;
+
 export default function ImageCarousel({ project, desktopImagePaths, mobileImagePaths, className = "" }: ImageCarouselProps) {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
@@ -23,6 +29,10 @@ export default function ImageCarousel({ project, desktopImagePaths, mobileImageP
   const totalImages = mobileImagePaths && totalMobileImages > 0
     ? Math.min(totalDesktopImages, totalMobileImages)
     : totalDesktopImages;
+    
+  // Re-calculate aspect ratios for grid fr units
+  const desktopAspectRatio = DESKTOP_WIDTH / DESKTOP_HEIGHT;
+  const mobileAspectRatio = mobileImagePaths && totalMobileImages > 0 ? MOBILE_WIDTH / MOBILE_HEIGHT : 0;
 
   const handleNextImage = () => {
     const nextIndex = currentImageIndex + 1;
@@ -45,22 +55,26 @@ export default function ImageCarousel({ project, desktopImagePaths, mobileImageP
   // Define base transition classes
   const imageTransitionClasses = "transition-opacity duration-300 ease-in-out";
 
-  // Re-calculate current paths for sizers
-  const currentDesktopImagePath = totalDesktopImages > 0 ? desktopImagePaths[currentImageIndex] : undefined;
-  const currentMobileImagePath = (mobileImagePaths && currentImageIndex < mobileImagePaths.length)
-      ? mobileImagePaths[currentImageIndex]
-      : undefined;
-
   return (
     <div className={`w-full h-full flex flex-row justify-center items-center gap-4 lg:gap-8 translate-z-0 ${className}`}>
 
+      {/* Outer card has px-3 */}
       <div className="w-full h-full flex flex-col justify-center items-center gap-3 bg-th-neutral-900 px-3 py-3 rounded-xl shadow-th shadow-th-pink-500 relative">
         
         <h3 className="max-md:!text-xl">{project.title}</h3>
 
-        <div className="w-full grow flex flex-row justify-between items-center gap-3">
+        {/* Use Grid, items-center, gap-3 - Apply proportional columns via inline style */}
+        <div 
+          className={`w-full grow grid items-center gap-3`}
+          style={{
+            gridTemplateColumns: mobileImagePaths && totalMobileImages > 0 
+              ? `auto minmax(0, ${desktopAspectRatio}fr) minmax(0, ${mobileAspectRatio}fr) auto` 
+              : 'auto minmax(0, 1fr) auto'
+          }}
+        >
 
-          <div className="">
+          {/* Grid Item 1: Prev Button */}
+          <div className="flex justify-center items-center"> {/* No margin */}
             <ProjectNavButton
               direction="previous"
               onClick={handlePrevImage}
@@ -68,29 +82,32 @@ export default function ImageCarousel({ project, desktopImagePaths, mobileImageP
             />
           </div>
 
-          <div className="">
+          {/* Grid Item 2: Desktop Image Wrapper - Removed h-full */}
+          <div>
             <ProjectImageDesktop
               desktopImagePaths={desktopImagePaths}
               currentImageIndex={currentImageIndex}
-              currentDesktopImagePath={currentDesktopImagePath}
               totalDesktopImages={totalDesktopImages}
-              project={project}
-            imageTransitionClasses={imageTransitionClasses}
-            />
-          </div>
-
-          <div className="">
-            <ProjectImageMobile
-              mobileImagePaths={mobileImagePaths}
-              currentImageIndex={currentImageIndex}
-              currentMobileImagePath={currentMobileImagePath}
-              totalMobileImages={totalMobileImages}
               project={project}
               imageTransitionClasses={imageTransitionClasses}
             />
           </div>
 
-          <div className="">
+          {/* Grid Item 3: Mobile Image Wrapper (Conditional) - Removed h-full */}
+          {mobileImagePaths && totalMobileImages > 0 && (
+             <div>
+              <ProjectImageMobile
+                mobileImagePaths={mobileImagePaths}
+                currentImageIndex={currentImageIndex}
+                totalMobileImages={totalMobileImages}
+                project={project}
+                imageTransitionClasses={imageTransitionClasses}
+              />
+             </div>
+          )}
+
+          {/* Grid Item 4: Next Button */}
+          <div className="flex justify-center items-center"> {/* No margin */}
             <ProjectNavButton
               direction="next"
               onClick={handleNextImage}
