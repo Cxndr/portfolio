@@ -5,7 +5,7 @@ import { useRouter, usePathname } from 'next/navigation';
 import { useNavigationState } from '@/lib/navigationState';
 import { findSiteMapKey, Page, siteMap } from '@/lib/navigationUtils';
 
-// *** Removed Page, PageGraph, siteMap, findSiteMapKey, getNavigationDirection definitions (moved to utils) ***
+// *** Removed Page, PageGraph, siteMap, findSiteMapKey, getNavigationDirection definitions (moved to navigationUtils) ***
 
 export default function ScrollNavigator() {
   const router = useRouter();

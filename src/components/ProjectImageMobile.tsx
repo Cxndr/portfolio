@@ -19,7 +19,7 @@ export default function ProjectImageMobile({ mobileImagePaths, currentImageIndex
     mobileImagePaths && mobileImagePaths.length > 0 && (
       // Root div controls aspect ratio, width from grid, rounded corners, shadow
       <div
-        className="w-full relative overflow-hidden rounded-xl shadow-md shadow-black/40 z-50"
+        className="w-full relative overflow-hidden rounded-md md:rounded-xl shadow-md shadow-black/40 z-50"
         style={{ aspectRatio: `${MOBILE_WIDTH} / ${MOBILE_HEIGHT}` }}
       >
         {/* Map images directly inside */}

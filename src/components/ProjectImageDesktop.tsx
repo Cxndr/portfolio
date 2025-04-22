@@ -19,7 +19,7 @@ export default function ProjectImageDesktop({ desktopImagePaths, currentImageInd
     desktopImagePaths.length > 0 ? (
       // Root div controls aspect ratio, width from grid, rounded corners
       <div
-        className="w-full relative overflow-hidden shadow-md shadow-black/40 rounded-xl"
+        className="w-full relative overflow-hidden shadow-md shadow-black/40 rounded-md md:rounded-xl"
         style={{ aspectRatio: `${DESKTOP_WIDTH} / ${DESKTOP_HEIGHT}` }}
       >
         {/* Map images directly inside */}
@@ -40,7 +40,7 @@ export default function ProjectImageDesktop({ desktopImagePaths, currentImageInd
     ) : (
       // Fallback: Apply same structure
       <div
-        className="w-full relative overflow-hidden rounded-xl"
+        className="w-full relative overflow-hidden rounded-md md:rounded-xl"
         style={{ aspectRatio: `${DESKTOP_WIDTH} / ${DESKTOP_HEIGHT}` }}
       >
           <Image

@@ -82,7 +82,7 @@ export default async function DevPage({ params }: { params: Promise<{ project: s
             "
           >
             <InternalLink href="/dev">
-              <span className="flex flex-row items-center gap-2 text-md">
+              <span className="flex flex-row items-center gap-2 text-md mb-4 md:mb-0">
                 <LuArrowLeft size={24}/> All Dev Projects
               </span>
             </InternalLink>
@@ -114,7 +114,7 @@ export default async function DevPage({ params }: { params: Promise<{ project: s
 
                 <TechStackCard currentProject={currentProject} />
 
-                <div className="w-full grow flex flex-row lg:flex-col gap-4 lg:gap-6 my-5 justify-evenly items-center">
+                <div className="w-full grow flex flex-row lg:flex-col gap-0 lg:gap-6 my-5 px-4 md:px-0 justify-evenly items-center">
 
                   {currentProject.liveSiteLink && (
                     <Button
@@ -136,7 +136,7 @@ export default async function DevPage({ params }: { params: Promise<{ project: s
                       disabled={!currentProject.githubLink}
                     >
                       <BsGithub />
-                      Github<span className="hidden md:inline"> Repo</span>
+                      Github <span className="hidden md:inline"> Repo</span>
                     </Button>
                   )}
                 
