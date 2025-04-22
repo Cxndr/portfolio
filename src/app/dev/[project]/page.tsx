@@ -110,7 +110,7 @@ export default async function DevPage({ params }: { params: Promise<{ project: s
                 />
               </div>
 
-              <div className="h-auto lg:h-full w-full lg:w-auto flex flex-col justify-start items-center gap-4 lg:gap-6 py-4 lg:py-0">
+              <div className="h-auto lg:h-full w-full lg:w-auto flex flex-col justify-start items-center gap-4 lg:gap-6 pt-4 lg:py-0">
 
                 <TechStackCard currentProject={currentProject} />
 
