@@ -59,7 +59,7 @@ export default function ImageCarousel({ project, desktopImagePaths, mobileImageP
     <div className={`w-full h-full flex flex-row justify-center items-center gap-4 lg:gap-8 translate-z-0 ${className}`}>
 
       {/* Outer card has px-3 */}
-      <div className="w-full h-full flex flex-col justify-center items-center gap-3 bg-th-neutral-900 px-3 py-3 rounded-xl shadow-th shadow-th-pink-500 relative">
+      <div className="w-full h-full flex flex-col justify-center items-center gap-3 bg-th-neutral-900 px-3 py-3 rounded-xl shadow-th-sm md:shadow-th shadow-th-pink-500 relative">
         
         <h3 
           className="

@@ -1,5 +1,5 @@
 import DynamicBackground from "@/components/DynamicBackground";
-import { devProjects, techIcons, techLinks } from "@/lib/devProjects";
+import { devProjects } from "@/lib/devProjects";
 import { BsGithub } from "react-icons/bs";
 import { GrLanguage } from "react-icons/gr";
 import Button from "@/components/Button";
@@ -9,10 +9,7 @@ import ImageCarousel from "@/components/ImageCarousel";
 import fs from 'fs';
 import path from 'path';
 import WhatWhyHowCards from "@/components/WhatWhyHowCards";
-import Card from "@/components/Card";
-import CardLabel from "@/components/CardLabel";
-import Image from "next/image";
-import Link from "next/link";
+import TechStackCard from "@/components/TechStackCard";
 async function getImagePaths(dirPath: string | undefined): Promise<string[] | undefined> {
   if (!dirPath) return undefined;
 
@@ -68,7 +65,7 @@ export default async function DevPage({ params }: { params: Promise<{ project: s
   return (
     <DynamicBackground>
       <div className="h-full w-full flex flex-col items-center overflow-y-auto lg:overflow-hidden">
-        <div className="max-w-screen-xl md:mb-4 flex flex-col h-full mx-12">
+        <div className="max-w-screen-xl md:mb-4 flex flex-col h-full mx-4 md:mx-12">
 
           <div
             className="
@@ -91,11 +88,20 @@ export default async function DevPage({ params }: { params: Promise<{ project: s
             </InternalLink>
           </div>
 
-          <div className="flex-grow flex flex-col gap-10 lg:flex-col mb-10">
+          <div className="flex-grow flex flex-col gap-0 md:gap-10 lg:flex-col mb-10">
 
-            <div className="w-full grow h-0 flex flex-row items-center gap-16">
+            <div className="block lg:hidden w-full">
+              <ImageCarousel
+                project={currentProject}
+                desktopImagePaths={desktopImagePaths}
+                mobileImagePaths={mobileImagePaths}
+                className=""
+              />
+            </div>
 
-              <div className="w-0 grow h-full">
+            <div className="w-full grow h-auto lg:h-0 flex flex-col lg:flex-row items-center lg:items-start gap-10 lg:gap-16">
+
+              <div className="hidden lg:block w-0 grow h-full">
                 <ImageCarousel
                   project={currentProject}
                   desktopImagePaths={desktopImagePaths}
@@ -104,42 +110,21 @@ export default async function DevPage({ params }: { params: Promise<{ project: s
                 />
               </div>
 
-              <div className="h-full w-auto flex flex-col justify-start items-center gap-4 lg:gap-6 py-8 lg:py-0">
+              <div className="h-auto lg:h-full w-full lg:w-auto flex flex-col justify-start items-center gap-4 lg:gap-6 py-4 lg:py-0">
 
-                {currentProject.technologies.length > 0 && (
-                  <Card className="p-4 pt-5 shadow-th-yellow-500 flex flex-col gap-2 relative mt-12 mb-2">
-                    <CardLabel label="Tech Stack" color="yellow" className="-top-10 !text-sm" size="small" />
-                    <div className="flex flex-row relative z-30 gap-6 mx-3 mt-4 mb-1">
-                      {currentProject.technologies.map((technology) => (
-                        <Link href={techLinks[technology as keyof typeof techLinks]} target="_blank" key={technology}>
-                          <div className="flex flex-col items-center gap-3">
-                            <Image
-                              key={technology}
-                              src={techIcons[technology as keyof typeof techIcons]}
-                              alt={technology}
-                              width={64}
-                              height={64}
-                              className="h-16 w-16 hover:scale-110 transition-all duration-300"
-                            />
-                            <span className="label">{technology}</span>
-                          </div>
-                        </Link>
-                      ))}
-                    </div>
-                  </Card>
-                )}
+                <TechStackCard currentProject={currentProject} />
 
-                <div className="w-full grow flex flex-col gap-2.5 my-5 justify-evenly items-center">
+                <div className="w-full grow flex flex-row lg:flex-col gap-4 lg:gap-2.5 my-5 justify-evenly items-center">
 
                   {currentProject.liveSiteLink && (
                     <Button
                       href={currentProject.liveSiteLink}
-                      className="hover:shadow-th-neutral-800 !bg-th-blue-500"
+                      className="hover:shadow-th-neutral-800 !bg-th-blue-500 max-md:!text-base"
                       disabled={!currentProject.liveSiteLink}
                       target="_blank"
                     >
                       <GrLanguage />
-                      View Live Site
+                      <span className="hidden md:inline">View </span>Live Site
                     </Button>
                   )}
 
@@ -147,11 +132,11 @@ export default async function DevPage({ params }: { params: Promise<{ project: s
                     <Button
                       href={currentProject.githubLink}
                       target="_blank"
-                      className="hover:shadow-th-neutral-800 !bg-th-blue-500"
+                      className="hover:shadow-th-neutral-800 !bg-th-blue-500 max-md:!text-base"
                       disabled={!currentProject.githubLink}
                     >
                       <BsGithub />
-                      Github Repo
+                      Github<span className="hidden md:inline"> Repo</span>
                     </Button>
                   )}
                 
