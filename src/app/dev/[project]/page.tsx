@@ -88,7 +88,7 @@ export default async function DevPage({ params }: { params: Promise<{ project: s
             </InternalLink>
           </div>
 
-          <div className="flex-grow flex flex-col gap-0 md:gap-10 lg:flex-col mb-10">
+          <div className="flex-grow flex flex-col gap-0 md:gap-12 lg:flex-col mb-6">
 
             <div className="block lg:hidden w-full">
               <ImageCarousel
@@ -110,11 +110,11 @@ export default async function DevPage({ params }: { params: Promise<{ project: s
                 />
               </div>
 
-              <div className="h-auto lg:h-full w-full lg:w-auto flex flex-col justify-start items-center gap-4 lg:gap-6 pt-4 lg:py-0">
+              <div className="h-auto lg:h-full w-full lg:w-auto flex flex-col justify-start items-center gap-4 md:gap-6 pt-12 md:pt-4 md:py-0">
 
                 <TechStackCard currentProject={currentProject} />
 
-                <div className="w-full grow flex flex-row lg:flex-col gap-4 lg:gap-2.5 my-5 justify-evenly items-center">
+                <div className="w-full grow flex flex-row lg:flex-col gap-4 lg:gap-6 my-5 justify-evenly items-center">
 
                   {currentProject.liveSiteLink && (
                     <Button
