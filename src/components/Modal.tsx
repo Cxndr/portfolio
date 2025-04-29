@@ -151,8 +151,8 @@ export default function Modal({ contentArray, contentIndex, handleClose, modalOp
             flex flex-col
             w-11/12 
             h-9/12
-            md:mt-20
-            mb-20
+            
+            mb-20 md:mb-0 lg:mb-0
             max-w-xl
             overflow-hidden 
             bg-neutral-50 

@@ -8,7 +8,7 @@ type WhatWhyHowCardsProps = {
 
 export default function WhatWhyHowCards({ currentProject }: WhatWhyHowCardsProps) {
   return (
-    <div className="mt-12 mb-8 md:mb-0 px-4 md:px-0 w-full flex flex-col lg:flex-row gap-18 md:gap-14">
+    <div className="mt-12 pb-8 md:pb-0 px-4 md:px-0 w-full flex flex-col lg:flex-row gap-18 md:gap-14">
 
       <Card className="flex-1 p-4 pt-5 shadow-th-sm md:shadow-th shadow-th-pink-500 flex flex-col gap-2 relative">
         <CardLabel label="What" color="pink" className="-top-10" />

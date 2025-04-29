@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import ProjectNavButton from "@/components/ProjectNavButton";
 import { DevProject } from "@/lib/devProjects";
 import ProjectImageDesktop from "./ProjectImageDesktop";
@@ -8,6 +9,7 @@ import ProjectImageMobile from "./ProjectImageMobile";
 import { AnimatePresence } from "framer-motion";
 import Modal from "./Modal";
 import DynamicBackground from "./DynamicBackground";
+
 type ImageCarouselProps = {
   project: DevProject;
   desktopImagePaths: string[];
@@ -24,9 +26,14 @@ const MOBILE_HEIGHT = 669;
 export default function ImageCarousel({ project, desktopImagePaths, mobileImagePaths, className = "" }: ImageCarouselProps) {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [modalOpen, setModalOpen] = useState(false);
-  const [selectedImageId, setSelectedImageId] = useState<string | null>(null);
+  const [selectedImageSrc, setSelectedImageSrc] = useState<string | null>(null);
+  const [selectedImageType, setSelectedImageType] = useState<'desktop' | 'mobile' | null>(null);
 
-  const closeModal = () => setModalOpen(false);
+  const closeModal = () => {
+    setModalOpen(false);
+    setSelectedImageSrc(null);
+    setSelectedImageType(null);
+  };
   const openModal = () => setModalOpen(true);
 
   const totalDesktopImages = desktopImagePaths.length;
@@ -69,52 +76,12 @@ export default function ImageCarousel({ project, desktopImagePaths, mobileImageP
   const mobileImageCols = mobileImagePaths && totalMobileImages > 0
     ? `minmax(0, ${desktopAspectRatio}fr) minmax(0, ${mobileAspectRatio}fr)`
     : 'minmax(0, 1fr)';
-  const modalImageCols = mobileImagePaths && totalMobileImages > 0
-    ? `minmax(0, ${desktopAspectRatio}fr) minmax(0, ${mobileAspectRatio}fr)`
-    : 'minmax(0, 1fr)';
 
-
-  const modalItems = desktopImagePaths.map(path => ({
-    id: path,
-    content: (
-      <DynamicBackground subtle={true}>
-        <div className="w-full h-full flex flex-col items-center justify-center p-4 pt-0 md:p-8 ">
-
-          <div 
-            className="w-full grid items-center gap-3"
-            style={{ 
-              gridTemplateColumns: modalImageCols
-            }}
-          >
-
-            <ProjectImageDesktop
-              desktopImagePaths={desktopImagePaths}
-              currentImageIndex={currentImageIndex}
-              totalDesktopImages={totalDesktopImages}
-              project={project}
-              imageTransitionClasses={imageTransitionClasses}
-            />
-
-            <ProjectImageMobile
-              mobileImagePaths={mobileImagePaths}
-              currentImageIndex={currentImageIndex}
-              totalMobileImages={totalMobileImages}
-              project={project}
-              imageTransitionClasses={imageTransitionClasses}
-            />
-
-          </div>
-
-        </div>
-      </DynamicBackground>
-    )
-  }))
-
-  const handleImageClick = (id: string) => {
-    setSelectedImageId(id);
+  const handleImageClick = (src: string, type: 'desktop' | 'mobile') => {
+    setSelectedImageSrc(src);
+    setSelectedImageType(type);
     openModal();
   };
-
 
   return (
     <>
@@ -143,7 +110,7 @@ export default function ImageCarousel({ project, desktopImagePaths, mobileImageP
               <ProjectNavButton direction="previous" onClick={handlePrevImage} disabled={isPrevDisabled} />
             </div>
             {/* Desktop Image (LG) */}
-            <div onClick={() => handleImageClick(desktopImagePaths[currentImageIndex])} className="cursor-pointer">
+            <div onClick={() => handleImageClick(desktopImagePaths[currentImageIndex], 'desktop')} className="cursor-pointer">
               <ProjectImageDesktop
                 desktopImagePaths={desktopImagePaths}
                 currentImageIndex={currentImageIndex}
@@ -154,7 +121,7 @@ export default function ImageCarousel({ project, desktopImagePaths, mobileImageP
             </div>
             {/* Mobile Image (Conditional - LG) */}
             {mobileImagePaths && totalMobileImages > 0 && (
-              <div className="cursor-pointer" onClick={() => handleImageClick(desktopImagePaths[currentImageIndex])}>
+              <div className="cursor-pointer" onClick={() => handleImageClick(mobileImagePaths[currentImageIndex], 'mobile')}>
                 <ProjectImageMobile
                     mobileImagePaths={mobileImagePaths}
                     currentImageIndex={currentImageIndex}
@@ -178,7 +145,7 @@ export default function ImageCarousel({ project, desktopImagePaths, mobileImageP
               style={{ gridTemplateColumns: mobileImageCols }}
             >
               {/* Desktop Image (Mobile) */}
-              <div onClick={() => handleImageClick(desktopImagePaths[currentImageIndex])}>
+              <div onClick={() => handleImageClick(desktopImagePaths[currentImageIndex], 'desktop')}>
                 <ProjectImageDesktop
                   desktopImagePaths={desktopImagePaths}
                   currentImageIndex={currentImageIndex}
@@ -189,7 +156,7 @@ export default function ImageCarousel({ project, desktopImagePaths, mobileImageP
               </div>
               {/* Mobile Image (Conditional - Mobile) */}
               {mobileImagePaths && totalMobileImages > 0 && (
-                <div onClick={() => handleImageClick(desktopImagePaths[currentImageIndex])}>
+                <div onClick={() => handleImageClick(mobileImagePaths[currentImageIndex], 'mobile')}>
                   <ProjectImageMobile
                     mobileImagePaths={mobileImagePaths}
                     currentImageIndex={currentImageIndex}
@@ -212,12 +179,34 @@ export default function ImageCarousel({ project, desktopImagePaths, mobileImageP
       </div>
 
       <AnimatePresence>
-        {modalOpen && (
+        {modalOpen && selectedImageSrc && selectedImageType && (
           <Modal
             modalOpen={modalOpen}
             handleClose={closeModal}
-            contentArray={modalItems.map(item => item.content)}
-            contentIndex={modalItems.findIndex(item => item.id === selectedImageId)}
+            contentArray={
+              (selectedImageType === 'desktop' ? desktopImagePaths : mobileImagePaths || [])
+              .map((src) => (
+                <DynamicBackground subtle={true} key={src}>
+                  <div className="w-full h-full flex flex-col items-center justify-center p-4 pt-0 md:p-8 ">
+                    <div className="relative w-11/12 h-5/6 md:w-10/12 md:h-10/12 mb-4">
+                      <Image
+                        src={src}
+                        alt={`${project.title} ${selectedImageType} view`}
+                        className="object-contain drop-shadow-lg"
+                        fill
+                        priority
+                        sizes="(max-width: 768px) 90vw, 80vw"
+                      />
+                    </div>
+                  </div>
+                </DynamicBackground>
+              ))
+            }
+            contentIndex={
+              selectedImageType === 'desktop'
+                ? desktopImagePaths.findIndex(src => src === selectedImageSrc)
+                : mobileImagePaths?.findIndex(src => src === selectedImageSrc) ?? 0
+            }
           />
         )}
       </AnimatePresence>

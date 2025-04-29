@@ -64,7 +64,7 @@ export default async function DevPage({ params }: { params: Promise<{ project: s
 
   return (
     <DynamicBackground>
-      <div className="h-full w-full flex flex-col items-center overflow-y-auto lg:overflow-hidden">
+      <div className="h-full w-full flex flex-col items-center overflow-y-auto">
         <div className="max-w-screen-xl md:mb-4 flex flex-col h-full mx-4 md:mx-12">
 
           <div
@@ -88,7 +88,7 @@ export default async function DevPage({ params }: { params: Promise<{ project: s
             </InternalLink>
           </div>
 
-          <div className="flex-grow flex flex-col gap-0 md:gap-12 lg:flex-col mb-6">
+          <div className="flex-grow h-0 flex flex-col gap-0 md:gap-12 lg:flex-col mb-6">
 
             <div className="block lg:hidden w-full">
               <ImageCarousel
