@@ -30,6 +30,7 @@ export default function RootLayout({
           ${inter.className}
           ${caveat.variable}
           font-sans
+          overflow-y-hidden
         `}
       >
         <Header/>

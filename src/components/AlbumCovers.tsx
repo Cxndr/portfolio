@@ -104,7 +104,7 @@ export default function AlbumCovers() {
   const modalItems = Object.values(albums).map(album => ({
     id: album.id,
     content: (
-      <div className="h-full flex flex-col items-center justify-between overflow-y-hidden">
+      <div className="h-full flex flex-col items-center justify-between overflow-y-hidden p-4 pt-0 md:p-8 ">
         <motion.div
           layoutId={`album-cover-${album.id}`}
           className="grow h-0 max-w-12/12 max-h-7/12 relative aspect-square"

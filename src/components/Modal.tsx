@@ -208,7 +208,6 @@ export default function Modal({ contentArray, contentIndex, handleClose, modalOp
                 }}
                 className="
                   absolute top-0 left-0 w-full h-full 
-                  p-4 pt-0 md:p-8 
                   flex flex-col
                   items-center
                   justify-center

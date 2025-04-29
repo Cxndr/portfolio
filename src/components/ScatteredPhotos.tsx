@@ -153,7 +153,7 @@ export default function ScatteredPhotos() {
   const modalItems = photos.map(photo => ({
     id: photo.src,
     content: (
-      <div className="w-full h-full flex flex-col items-center justify-center">
+      <div className="w-full h-full flex flex-col items-center justify-center p-4 pt-0 md:p-8 ">
         <div className="relative w-10/12 h-4/6 md:h-10/12 mb-4">
           <Image
             src={photo.src}
