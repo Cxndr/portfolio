@@ -6,7 +6,7 @@ import TapeCollection from "@/components/TapeCollection";
 
 export default function MusicPage() {
   return (
-    <DynamicBackground>
+    <DynamicBackground type="music">
       <div className="h-full w-full flex flex-col items-center justify-center overflow-hidden">
         <div className="h-full w-desktop max-w-11/12">
           <div className="h-full w-full flex flex-col items-end">

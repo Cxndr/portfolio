@@ -3,7 +3,7 @@ import GetInTouchCard from "@/components/GetInTouchCard";
 import Image from "next/image";
 export default function ContactPage() {
   return (
-    <DynamicBackground>
+    <DynamicBackground type="contact">
       <div className="h-full w-full flex flex-col items-center justify-center overflow-hidden">
         <div className="h-full w-full md:w-desktop flex flex-col items-center justify-center">
 

@@ -64,7 +64,7 @@ export default async function DevPage({ params }: { params: Promise<{ project: s
   console.log(`Mobile Dir: ${currentProject.imageDirMobile}, Paths:`, mobileImagePaths);
 
   return (
-    <DynamicBackground>
+    <DynamicBackground type="dev">
       <div className="h-full w-full flex flex-col items-center overflow-y-auto">
         <div className="max-w-screen-xl md:mb-4 flex flex-col h-full mx-4 md:mx-12">
 

@@ -4,7 +4,7 @@ import ProjectCard from "@/components/ProjectCard";
 
 export default function DevPage() {
   return (
-    <DynamicBackground>
+    <DynamicBackground type="dev">
       <div className="h-full w-full flex flex-col items-center justify-center overflow-hidden">
         <div className="h-full w-full md:w-desktop md:max-w-11/12">
           <div className="h-full w-full flex flex-col items-center justify-center">

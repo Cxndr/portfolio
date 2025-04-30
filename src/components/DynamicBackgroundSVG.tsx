@@ -5,10 +5,11 @@ import { iconsListDev, generateBg } from "@/lib/generateBg";
 
 export default function DynamicBackground({
   children,
-}: Readonly<{ children: React.ReactNode }>) {
+  subtle = false,
+}: Readonly<{ children: React.ReactNode, subtle?:boolean }>) {
   const [bgSvgDataUri, setBgSvgDataUri] = useState("");
 
-
+  const fadedBgStyle = "linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)),"
 
   useEffect(() => {
     const bgSvg = generateBg(iconsListDev);
@@ -22,7 +23,7 @@ export default function DynamicBackground({
     <div
       className="h-full w-full relative z-0"
       style={{
-        backgroundImage: bgSvgDataUri ? `url("${bgSvgDataUri}")` : 'none',
+        backgroundImage: bgSvgDataUri ? `${subtle ? fadedBgStyle : ''} url("${bgSvgDataUri}")` : 'none',
         backgroundRepeat: "repeat",
         backgroundSize: bgSvgDataUri
           ? `${generateBg(iconsListDev).svgWidth}px ${generateBg(iconsListDev).svgHeight}px`

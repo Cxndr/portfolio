@@ -6,7 +6,7 @@ import Image from "next/image";
 
 export default function HomePage() {
   return (
-    <DynamicBackground>
+    <DynamicBackground type="all">
       <div className="h-full w-full flex flex-col items-center justify-center overflow-hidden">
           <div className="h-full w-full xl:w-desktop">
 
