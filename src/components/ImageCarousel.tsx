@@ -96,10 +96,8 @@ export default function ImageCarousel({ project, desktopImagePaths, mobileImageP
       <div className={`w-full h-full mt-4 flex flex-row justify-center items-center gap-4 lg:gap-8 translate-z-0 ${className}`}>
 
         {/* Outer card */}
-        {/* Added relative positioning for the toggle */}
         <div className="w-full h-full flex flex-col justify-center items-center gap-3 bg-th-neutral-900 px-3 py-3 rounded-xl shadow-th-sm md:shadow-th shadow-th-pink-500 relative">
 
-          {/* Title */}
           <h3
             className="
               max-md:!text-xl mt-2 bg-th-pink-500 px-4 py-3
@@ -110,16 +108,15 @@ export default function ImageCarousel({ project, desktopImagePaths, mobileImageP
             {project.title}
           </h3>
 
-          {/* Toggle Buttons - Placed top-right */}
-          {hasMobileImages && ( // Only show toggle if mobile images exist
-            <DisplayModeToggle
+          {hasMobileImages && (
+            <div className="absolute top-4 right-4 z-20">
+              <DisplayModeToggle
                 currentMode={displayMode}
                 onToggle={handleToggleMode}
                 hasMobile={hasMobileImages}
-                className="absolute top-2 right-2 z-20" // Apply positioning here
-            />
+              />
+            </div>
           )}
-
 
           {/* Single Image Display Area */}
           <div className="w-full grow flex flex-col items-center justify-center pt-8"> {/* Added padding top for toggle space */}

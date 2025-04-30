@@ -224,10 +224,10 @@ export default function Modal({ contentArray, contentIndex, handleClose, modalOp
 
         {/* Right Button Area: Absolute on mobile (below modal), Grid item on desktop */}
         <div className="
-          absolute bottom-4 right-4 z-10 /* Mobile positioning (below modal) */
-          md:relative md:bottom-auto md:right-auto md:z-auto /* Reset for desktop */
-          md:col-start-3 md:self-center md:justify-self-start /* Desktop grid positioning */
-          pointer-events-auto /* Buttons always clickable */
+          absolute bottom-4 right-4 z-10
+          md:relative md:bottom-auto md:right-auto md:z-auto
+          md:col-start-3 md:self-center md:justify-self-start
+          pointer-events-auto
         ">
           {currentIndex < contentArray.length - 1 && (
             <ModalNavButton onClick={handleNext} direction="right" />
