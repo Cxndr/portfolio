@@ -8,7 +8,7 @@ import { FaX } from "react-icons/fa6";
 
 
 import Backdrop from "./Backdrop"
-import ModalNavButton from "./ModalNavButton";
+import NavButton from "./NavButton";
 
 type ModalProps = {
   contentArray: React.ReactNode[]
@@ -141,7 +141,7 @@ export default function Modal({ contentArray, contentIndex, handleClose, modalOp
           pointer-events-auto 
         ">
           {currentIndex > 0 && ( 
-            <ModalNavButton onClick={handlePrev} direction="left" />
+            <NavButton onClick={handlePrev} direction="left" />
           )}
         </div>
 
@@ -230,7 +230,7 @@ export default function Modal({ contentArray, contentIndex, handleClose, modalOp
           pointer-events-auto
         ">
           {currentIndex < contentArray.length - 1 && (
-            <ModalNavButton onClick={handleNext} direction="right" />
+            <NavButton onClick={handleNext} direction="right" />
           )}
         </div>
       </motion.div>

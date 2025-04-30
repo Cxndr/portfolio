@@ -16,6 +16,8 @@
 	--shadow-th-button: 7px 7px 0px;
 	--shadow-th-button-sm: 4px 4px 0px;
 	--shadow-th-button-sm-left: -4px 4px 0px;
+	--shadow-th-button-xs: 3px 3px 0px;
+	--shadow-th-button-xs-left: -3px 3px 0px;
 	--shadow-th-fade: 0px 0px 15px 15px;
 
   /* colors */  

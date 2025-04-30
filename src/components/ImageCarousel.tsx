@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import ProjectNavButton from "@/components/ProjectNavButton";
 import { DevProject } from "@/lib/devProjects";
 import ProjectImage from "./ProjectImage";
 import { AnimatePresence } from "framer-motion";
@@ -10,6 +9,7 @@ import Modal from "./Modal";
 import DynamicBackground from "./DynamicBackground";
 import DisplayModeToggle from './DisplayModeToggle';
 import ImageIndexIndicator from './ImageIndexIndicator';
+import NavButton from "./NavButton";
 
 type ImageCarouselProps = {
   project: DevProject;
@@ -126,7 +126,13 @@ export default function ImageCarousel({ project, desktopImagePaths, mobileImageP
 
                 {/* Prev Button Container (Fixed Size) */}
                 <div className="flex-shrink-0 w-10 md:w-12 flex justify-center">
-                  <ProjectNavButton direction="previous" onClick={handlePrevImage} disabled={isPrevDisabled} />
+                  <NavButton
+                    direction="left"
+                    onClick={handlePrevImage}
+                    disabled={isPrevDisabled}
+                    size="small"
+                    onDark={true}
+                  />
                 </div>
 
                 {/* Conditionally Rendered Image */}
@@ -147,7 +153,13 @@ export default function ImageCarousel({ project, desktopImagePaths, mobileImageP
 
                 {/* Next Button Container (Fixed Size) */}
                 <div className="flex-shrink-0 w-10 md:w-12 flex justify-center">
-                  <ProjectNavButton direction="next" onClick={handleNextImage} disabled={isNextDisabled} />
+                  <NavButton
+                    direction="right"
+                    onClick={handleNextImage}
+                    disabled={isNextDisabled}
+                    size="small"
+                    onDark={true}
+                  />
                 </div>
             </div>
 
