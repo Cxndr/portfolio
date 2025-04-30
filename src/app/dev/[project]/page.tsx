@@ -99,7 +99,7 @@ export default async function DevPage({ params }: { params: Promise<{ project: s
               />
             </div>
 
-            <div className="w-full grow h-auto lg:h-0 flex flex-col lg:flex-row items-center lg:items-start gap-10 lg:gap-16">
+            <div className="w-full grow h-auto lg:h-0 flex flex-col md:flex-row items-center lg:items-start gap-10 lg:gap-16">
 
               <div className="hidden lg:block w-0 grow h-full">
                 <ImageCarousel

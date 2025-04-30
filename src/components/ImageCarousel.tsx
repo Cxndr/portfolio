@@ -18,11 +18,6 @@ type ImageCarouselProps = {
   className?: string;
 };
 
-// Remove unused constants as they are defined in child components
-// const DESKTOP_WIDTH = 1600;
-// const DESKTOP_HEIGHT = 927;
-// const MOBILE_WIDTH = 379;
-// const MOBILE_HEIGHT = 669;
 
 export default function ImageCarousel({ project, desktopImagePaths, mobileImagePaths, className = "" }: ImageCarouselProps) {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -41,18 +36,13 @@ export default function ImageCarousel({ project, desktopImagePaths, mobileImageP
   const totalMobileImages = mobileImagePaths?.length ?? 0;
   const hasMobileImages = totalMobileImages > 0;
 
-  // Determine current set of images and total based on displayMode
   const currentImagePaths = displayMode === 'desktop' ? desktopImagePaths : (mobileImagePaths || []);
   const currentTotalImages = currentImagePaths.length;
 
-  // Calculate aspect ratios - might need these for containers
-  // const desktopAspectRatio = totalDesktopImages > 0 ? DESKTOP_WIDTH / DESKTOP_HEIGHT : 16 / 9; // Default aspect ratio - Unused
-  // const mobileAspectRatio = hasMobileImages ? MOBILE_WIDTH / MOBILE_HEIGHT : 9 / 16; // Default aspect ratio - Unused
 
 
   const handleNextImage = () => {
     const nextIndex = currentImageIndex + 1;
-    // Use currentTotalImages based on displayMode
     if (nextIndex < currentTotalImages) {
       setCurrentImageIndex(nextIndex);
     }
@@ -105,11 +95,11 @@ export default function ImageCarousel({ project, desktopImagePaths, mobileImageP
               absolute -top-10 left-1/2 -translate-x-1/2 whitespace-nowrap // Centered title
             "
           >
-            {project.title}
+            {project.title}  
           </h3>
 
           {hasMobileImages && (
-            <div className="absolute top-4 right-4 z-20">
+            <div className="absolute max-md:bottom-2.5 right-2.5 md:top-4 md:right-4 z-20">
               <DisplayModeToggle
                 currentMode={displayMode}
                 onToggle={handleToggleMode}
@@ -119,13 +109,13 @@ export default function ImageCarousel({ project, desktopImagePaths, mobileImageP
           )}
 
           {/* Single Image Display Area */}
-          <div className="w-full grow flex flex-col items-center justify-center pt-8"> {/* Added padding top for toggle space */}
+          <div className="w-full min-h-56 grow flex flex-col items-center justify-center pt-6 md:pt-12"> {/* Added padding top for toggle space */}
 
             {/* Image Container - Central flex row */}
-            <div className="w-full max-w-6xl flex items-center justify-center gap-3 md:gap-4 h-full"> {/* Added h-full */}
+            <div className="w-full max-w-6xl flex items-center justify-center h-full"> {/* Added h-full */}
 
                 {/* Prev Button Container (Fixed Size) */}
-                <div className="flex-shrink-0 w-10 md:w-12 flex justify-center">
+                <div className="flex-shrink-0 w-10 md:w-12 flex justify-center m-1">
                   <NavButton
                     direction="left"
                     onClick={handlePrevImage}
@@ -137,7 +127,7 @@ export default function ImageCarousel({ project, desktopImagePaths, mobileImageP
 
                 {/* Conditionally Rendered Image */}
                 <div
-                    className="cursor-pointer w-full h-full flex flex-col items-center justify-center"
+                    className="cursor-pointer w-full h-full flex flex-col items-center justify-center m-2.5"
                     onClick={handleImageClick}
                 >
                   {/* Render the consolidated ProjectImage component */}
@@ -152,7 +142,7 @@ export default function ImageCarousel({ project, desktopImagePaths, mobileImageP
                 </div>
 
                 {/* Next Button Container (Fixed Size) */}
-                <div className="flex-shrink-0 w-10 md:w-12 flex justify-center">
+                <div className="flex-shrink-0 w-10 md:w-12 flex justify-center m-1">
                   <NavButton
                     direction="right"
                     onClick={handleNextImage}
@@ -167,7 +157,7 @@ export default function ImageCarousel({ project, desktopImagePaths, mobileImageP
             <ImageIndexIndicator
               totalImages={currentTotalImages}
               currentIndex={currentImageIndex}
-              className="mb-1 mt-3.5"
+              className="mb-1 mt-3.5 md:mb-2 md:mt-4.5"
             />
           </div>
 

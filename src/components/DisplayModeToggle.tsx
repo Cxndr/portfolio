@@ -26,7 +26,7 @@ type DisplayModeToggleProps = {
       aria-label={`Switch to ${currentMode === 'desktop' ? 'mobile' : 'desktop'} view`}
       onClick={handleToggleClick}
       className={`
-        !relative !flex !items-center !justify-start !h-9 !w-20 !p-1
+        !relative !flex !items-center !justify-start !h-8 md:!h-9 !w-16 md:!w-20 !p-1
         !bg-th-pink-500 inset-shadow-sm inset-shadow-th-pink-900 rounded-full cursor-pointer 
         transition-colors duration-200 ease-in-out 
         focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-th-pink-500 focus-visible:ring-offset-th-neutral-900 
@@ -48,8 +48,8 @@ type DisplayModeToggleProps = {
       {/* Labels inside the track */}
       <span 
         className="
-          absolute left-2 top-1/2 -translate-y-1/2 z-10 p-1
-          text-[1.2rem] text-th-neutral-100 
+          absolute left-2 top-1/2 -translate-y-1/2 z-10 p-0.5 md:p-1
+          text-[1rem] md:text-[1.2rem] text-th-neutral-100 
           flex items-center justify-center
         " 
         aria-hidden="true" aria-label="Desktop"
@@ -59,8 +59,8 @@ type DisplayModeToggleProps = {
 
       <span
         className="
-          absolute right-2 top-1/2 -translate-y-1/2 z-10 p-1
-          text-[1.2rem] text-th-neutral-100 
+          absolute right-2 top-1/2 -translate-y-1/2 z-10 md:p-1
+          text-[1rem] md:text-[1.2rem] text-th-neutral-100 
           flex items-center justify-center
         " 
         aria-hidden="true" aria-label="Mobile"
