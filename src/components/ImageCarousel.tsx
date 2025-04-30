@@ -153,7 +153,7 @@ export default function ImageCarousel({ project, desktopImagePaths, mobileImageP
                 </div>
             </div>
 
-            {/* Image Index Indicator (Optional) */}
+            {/* Image Index Indicator */}
             <ImageIndexIndicator
               totalImages={currentTotalImages}
               currentIndex={currentImageIndex}
@@ -161,11 +161,11 @@ export default function ImageCarousel({ project, desktopImagePaths, mobileImageP
             />
           </div>
 
-        </div> {/* End Outer Card */}
+        </div>
 
-      </div> {/* End Container */}
+      </div>
 
-      {/* Modal remains largely the same, but props need adjustment */}
+      {/* Modal */}
       <AnimatePresence>
         {modalOpen && selectedImageSrc && selectedImageType && (
           <Modal
@@ -185,7 +185,7 @@ export default function ImageCarousel({ project, desktopImagePaths, mobileImageP
                         className="object-contain drop-shadow-lg"
                         fill
                         priority
-                        sizes={selectedImageType === 'desktop' ? "(max-width: 768px) 90vw, 80vw" : "(max-width: 768px) 90vw, 40vw"} // Adjust sizes
+                        sizes={selectedImageType === 'desktop' ? "(max-width: 768px) 90vw, 80vw" : "(max-width: 768px) 90vw, 40vw"}
                       />
                     </div>
                   </div>

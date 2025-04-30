@@ -47,13 +47,14 @@ async function getImagePaths(dirPath: string | undefined): Promise<string[] | un
 }
 
 export default async function DevPage({ params }: { params: Promise<{ project: string }> }) {
-  const { project } = await params;
-  const projectId = Number(project);
-  if (isNaN(projectId) || projectId < 0 || projectId >= devProjects.length) {
-    console.error("Invalid project ID:", project);
+  const { project: projectSlug } = await params;
+  
+  const currentProject = devProjects.find(p => p.slug === projectSlug);
+
+  if (!currentProject) {
+    console.error("Project not found for slug:", projectSlug);
     return <div>Project not found</div>;
   }
-  const currentProject = devProjects[projectId];
 
   const desktopImagePaths = await getImagePaths(currentProject.imageDir) ?? [];
   const mobileImagePaths = await getImagePaths(currentProject.imageDirMobile);

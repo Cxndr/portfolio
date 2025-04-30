@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { DevProject } from "@/lib/devProjects";
 import { motion, AnimatePresence } from "framer-motion";
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 
 // No fixed dimensions needed - size comes from parent container
 
@@ -67,6 +67,7 @@ export default function ProjectImage({
   className = "",
 }: ProjectImageProps) {
 
+  const [isInitialLoad, setIsInitialLoad] = useState(true);
   const currentImagePath = imagePaths[currentImageIndex];
   const prevIndexRef = useRef(currentImageIndex);
   const direction = currentImageIndex > prevIndexRef.current ? 1 : -1;
@@ -74,6 +75,10 @@ export default function ProjectImage({
   useEffect(() => {
     prevIndexRef.current = currentImageIndex;
   }, [currentImageIndex]);
+
+  useEffect(() => {
+    setIsInitialLoad(false);
+  }, []);
 
   // Root container provides relative context for absolutely positioned motion.div
   return (
@@ -84,7 +89,7 @@ export default function ProjectImage({
           className="absolute inset-0 w-full h-full"
           custom={viewType}
           variants={verticalToggleVariants}
-          initial="hidden"
+          initial={isInitialLoad ? "visible" : "hidden"}
           animate="visible"
           exit="exit"
         >

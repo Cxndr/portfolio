@@ -11,9 +11,11 @@ const ImageIndexIndicator: React.FC<ImageIndexIndicatorProps> = ({
   currentIndex,
   className = '',
 }) => {
-  // Don't render if there's only one image (or none)
+  // render gap if 0 or 1 images to keep consistent layout
   if (totalImages <= 1) {
-    return null;
+    return (
+      <span className="w-2 h-6" aria-hidden="true" />
+    )
   }
 
   return (

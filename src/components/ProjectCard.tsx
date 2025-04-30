@@ -20,7 +20,7 @@ export default function ProjectCard({ project, index }: { project: typeof devPro
   const setDirection = useNavigationState((state) => state.setDirection);
 
   const handleClick = () => {
-    const targetHref = `/dev/${index}`;
+    const targetHref = `/dev/${project.slug}`;
     const currentPathKey = findSiteMapKey(pathname, siteMap);
     const targetPathKey = findSiteMapKey(targetHref, siteMap);
 

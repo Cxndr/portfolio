@@ -1,5 +1,3 @@
-
-
 export const techColors = {
   "JIMP": " bg-orange-400",
   "Next.js": " bg-blue-400",
@@ -58,6 +56,7 @@ export const techLinks = {
 
 export type DevProject = {
   title: string,
+  slug: string,
   imageDir: string,
   imageDirMobile?: string,
   whatList: string[],
@@ -72,10 +71,18 @@ export type DevProject = {
   thumbnailSrc: string,
 }
 
+// Helper function to generate slugs
+const generateSlug = (title: string): string => {
+  return title
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-') // Replace non-alphanumeric chars with hyphens
+    .replace(/^-+|-+$/g, ''); // Remove leading/trailing hyphens
+};
 
 export const devProjects: DevProject[] = [
   {
     title: "OPTCG Sim Themer",
+    slug: generateSlug("OPTCG Sim Themer"),
     imageDir: "/img/dev/optcgsimthemer",
     imageDirMobile: "/img/dev/optcgsimthemer/mobile",
     thumbnailSrc: "/img/dev/optcgsimthemer.png",
@@ -110,6 +117,7 @@ export const devProjects: DevProject[] = [
 
   {
     title: "Twich Auto-Clipper",
+    slug: generateSlug("Twich Auto-Clipper"),
     imageDir: "/img/dev/twitchclips",
     imageDirMobile: "/img/dev/twitchclips/mobile",
     thumbnailSrc: "/img/dev/twitchclips.png",
@@ -143,6 +151,7 @@ export const devProjects: DevProject[] = [
 
   {
     title: "Twitch-Tok",
+    slug: generateSlug("Twitch-Tok"),
     imageDir: "/img/dev/twitchtok",
     imageDirMobile: "/img/dev/twitchtok/mobile",
     thumbnailSrc: "/img/dev/twitchtok.png",
@@ -172,6 +181,7 @@ export const devProjects: DevProject[] = [
 
   {
     title: "Promptr",
+    slug: generateSlug("Promptr"),
     imageDir: "/img/dev/promptr",
     imageDirMobile: "/img/dev/promptr/mobile",
     thumbnailSrc: "/img/dev/promptr.png",
@@ -200,6 +210,7 @@ export const devProjects: DevProject[] = [
 
   {
     title: "clouds&waves",
+    slug: generateSlug("clouds&waves"),
     imageDir: "/img/dev/cloudsandwaves",
     imageDirMobile: "/img/dev/cloudsandwaves/mobile",
     thumbnailSrc: "/img/dev/cloudsandwaves.png",
@@ -228,6 +239,7 @@ export const devProjects: DevProject[] = [
 
   {
     title: "PokeRogue",
+    slug: generateSlug("PokeRogue"),
     imageDir: "/img/dev/poke-rogue",
     imageDirMobile: "/img/dev/poke-rogue/mobile",
     thumbnailSrc: "/img/dev/poke-rogue.png",
@@ -255,6 +267,7 @@ export const devProjects: DevProject[] = [
 
   {
     title: "Pomodoro Timer",
+    slug: generateSlug("Pomodoro Timer"),
     imageDir: "/img/dev/pomodoro",
     imageDirMobile: "/img/dev/pomodoro/mobile",
     thumbnailSrc: "/img/dev/pomodoro.gif",
@@ -282,6 +295,7 @@ export const devProjects: DevProject[] = [
   
   {
     title: "MAHS Auction House",
+    slug: generateSlug("MAHS Auction House"),
     imageDir: "/img/dev/mahs",
     imageDirMobile: "/img/dev/mahs/mobile",
     thumbnailSrc: "/img/dev/mahs.gif",
@@ -309,6 +323,7 @@ export const devProjects: DevProject[] = [
 
   {
     title: "Item Shop Game",
+    slug: generateSlug("Item Shop Game"),
     imageDir: "/img/dev/itemshop",
     imageDirMobile: "/img/dev/itemshop/mobile",
     thumbnailSrc: "/img/dev/itemshop.png",
