@@ -75,20 +75,20 @@ export default function AlbumCovers() {
       id: "feelgoodbad",
       title: "feelgoodbad",
       image: "/img/albumcover-fgb.png",
-      description: "A blend of electronic beats and ambient textures, exploring the duality of emotions through sound. Released in 2023, this album features 8 tracks that take listeners on a journey through contrasting moods.",
-      releaseDate: "2023",
+      description: "A hazy blend of electronic hip-hop beats, ambient textures and sample-based production exploring the complexity of emotions through sound. Feelgoodbad takes listeners on an intricate journey highlighting music's unique strength in conveying and describing emotion.",
+      releaseDate: "2016",
       spotifyLink: "https://open.spotify.com",
-      soundcloudLink: "https://soundcloud.com",
-      bandcampLink: "https://bandcamp.com"
+      soundcloudLink: "https://soundcloud.com/d-u_u-b/sets/feelgoodbad-1",
+      bandcampLink: "https://d-x-u-b.bandcamp.com/album/feelgoodbad"
     },
     trxsh: {
       id: "trxsh",
       title: "trxsh",
       image: "/img/albumcover-trash.png",
-      description: "An experimental collection that transforms discarded sounds into beautiful compositions. This 2022 release challenges perceptions of what music can be, creating harmony from chaos.",
-      releaseDate: "2022",
-      spotifyLink: "https://open.spotify.com",
-      soundcloudLink: "https://soundcloud.com",
+      description: "An experimental collection of distorted, sample-based, hip-hop instrumentals. Trxsh uses heavy handed audio processing, unconventional song structure, and unique manipulations of tension and release to challenge perceptions of sonic quality and purity in music production.",
+      releaseDate: "2017",
+      spotifyLink: "#",
+      soundcloudLink: "#",
       bandcampLink: "https://bandcamp.com"
     }
   };
