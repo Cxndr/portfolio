@@ -5,7 +5,7 @@ const nextConfig: NextConfig = {
     viewTransition: true,
   },
   images: {
-    unoptimized: false,
+    unoptimized: true, // Disable image optimization until usage reset
   }
 };
 
