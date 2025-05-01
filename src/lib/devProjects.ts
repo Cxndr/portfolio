@@ -288,6 +288,7 @@ export const devProjects: DevProject[] = [
     technologies: ["Javascript", "CSS Animation", "Youtube API"],
     skillsGained: [],
     githubLink: "https://github.com/Cxndr/PomodoroTimer",
+    liveSiteLink: "https://cxndr.github.io/PomodoroTimer/",
     shortDescription: "Simple and aethetically focused Pomodoro Timer web application.",
     longDescription: "",
   },
