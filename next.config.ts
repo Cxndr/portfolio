@@ -5,7 +5,7 @@ const nextConfig: NextConfig = {
     viewTransition: true,
   },
   images: {
-    unoptimized: true, // disable image optimization temporarily until next month kek
+    unoptimized: false,
   }
 };
 
