@@ -179,6 +179,34 @@ export const devProjects: DevProject[] = [
   },
 
   {
+    title: "MAHS Auction House",
+    slug: generateSlug("MAHS Auction House"),
+    imageDir: "/img/dev/mahs",
+    imageDirMobile: "/img/dev/mahs/mobile",
+    thumbnailSrc: "/img/dev/mahs.png",
+    whatList: [
+      "All-in-one software for all aspects of running an auction house business.",
+      "Manage items, catalogues, vendors and buyers.",
+      "Track payments, generate reports and analytics.",
+    ],
+    whyList: [
+      "Existing solutions have complex UI/UX that isn't focused on usability.",
+      "I was using existing solutions on daily basis.",
+      "All in one offline solution works best for fixed location small auction houses.",
+    ],
+    howList: [
+      "Heavily customized MS Access database.",
+      "Stylized frontend form views focused on usability and UX.",
+      "Deployed using on site windows server for offline uptime in remote locations.",
+    ],
+    technologies: ["VBA", "MS Access", "Windows"],
+    skillsGained: [],
+    githubLink: "https://github.com/Cxndr/MAHS",
+    shortDescription: "All-in-one software for managing all aspects of an auction house.",
+    longDescription: "",
+  },
+
+  {
     title: "Promptr",
     slug: generateSlug("Promptr"),
     imageDir: "/img/dev/promptr",
@@ -201,7 +229,7 @@ export const devProjects: DevProject[] = [
     ],
     technologies: ["Next.js", "Tailwind", "TypeScript", "Postgres"],
     skillsGained: [],
-    liveSiteLink: "promptr.com",
+    liveSiteLink: "https://promptr-omega.vercel.app",
     githubLink: "https://github.com/Cxndr/promptr",
     shortDescription: "Word game web app inspired by <b>Ransom Notes</b> and <b>Dark Souls</b>.",
     longDescription: "",
@@ -259,6 +287,7 @@ export const devProjects: DevProject[] = [
     ],
     technologies: ["Next.js", "Tailwind", "TypeScript", "Postgres"],
     skillsGained: [],
+    liveSiteLink: "https://poke-rogue-gules.vercel.app/",
     githubLink: "https://github.com/Cxndr/poke-rogue",
     shortDescription: "Web roguelike game that doesn't use canvas, webgl or similar technologies.",
     longDescription: "",
@@ -292,34 +321,6 @@ export const devProjects: DevProject[] = [
     shortDescription: "Simple and aethetically focused Pomodoro Timer web application.",
     longDescription: "",
   },
-  
-  {
-    title: "MAHS Auction House",
-    slug: generateSlug("MAHS Auction House"),
-    imageDir: "/img/dev/mahs",
-    imageDirMobile: "/img/dev/mahs/mobile",
-    thumbnailSrc: "/img/dev/mahs.gif",
-    whatList: [
-      "All-in-one software for all aspects of running an auction house business.",
-      "Manage items, catalogues, vendors and buyers.",
-      "Track payments, generate reports and analytics.",
-    ],
-    whyList: [
-      "Existing solutions have complex UI/UX that isn't focused on usability.",
-      "I was using existing solutions on daily basis.",
-      "All in one offline solution works best for fixed location small auction houses.",
-    ],
-    howList: [
-      "Heavily customized MS Access database.",
-      "Stylized frontend form views focused on usability and UX.",
-      "Deployed using on site windows server for offline uptime in remote locations.",
-    ],
-    technologies: ["VBA", "MS Access", "Windows"],
-    skillsGained: [],
-    githubLink: "",
-    shortDescription: "All-in-one software for managing all aspects of an auction house.",
-    longDescription: "",
-  },
 
   {
     title: "Item Shop Game",
@@ -343,7 +344,7 @@ export const devProjects: DevProject[] = [
     ],
     technologies: ["GameMaker Studio", "GML Script"],
     skillsGained: [],
-    githubLink: "",
+    githubLink: "https://github.com/Cxndr/ItemShop",
     shortDescription: "Item shop game loosely inspired by <b>Recettear</b> in a 2D pixel art style.",
     longDescription: "",
   }
