@@ -229,11 +229,7 @@ export const devProjects: DevProject[] = [
     ],
     technologies: ["Next.js", "Tailwind", "TypeScript", "Postgres"],
     skillsGained: [],
-<<<<<<< HEAD
     liveSiteLink: "https://promptr-omega.vercel.app/",
-=======
-    liveSiteLink: "https://promptr-omega.vercel.app",
->>>>>>> 7997c184df4a0614999920070cf9730e3c1ce327
     githubLink: "https://github.com/Cxndr/promptr",
     shortDescription: "Word game web app inspired by <b>Ransom Notes</b> and <b>Dark Souls</b>.",
     longDescription: "",
