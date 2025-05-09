@@ -12,6 +12,7 @@ export default function IconButton({ children, href, className, onMouseEnter, on
   return (
     <Link 
       href={href} 
+      target="_blank"
       className={`rounded-lg p-2 bg-th-neutral-50 shadow-th-sm hover:shadow-th-sm-hover hover:-translate-x-[4px] hover:-translate-y-[4px] transition-all duration-300 ${className}`}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}

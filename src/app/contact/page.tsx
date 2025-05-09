@@ -19,7 +19,7 @@ export default function ContactPage() {
                   "
               />
 
-            <div className="h-fit w-full flex justify-center mb-12">
+            <div className="h-full w-full flex justify-center mb-12">
               <GetInTouchCard />
             </div>
           </div>

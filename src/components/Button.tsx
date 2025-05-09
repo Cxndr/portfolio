@@ -8,9 +8,10 @@ type ButtonProps = {
   onMouseLeave?: () => void;
   disabled?: boolean;
   target?: string;
+  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
-export default function Button({ children, href, className, onMouseEnter, onMouseLeave, disabled, target = "_self" }: ButtonProps) {
+export default function Button({ children, href, className, onMouseEnter, onMouseLeave, disabled, target = "_self", onClick }: ButtonProps) {
 
   const baseClasses = "button shadow-th-pink-50 transition-all duration-300";
   const enabledClasses = "hover:shadow-th-button hover:-translate-x-[4px] hover:-translate-y-[4px] cursor-pointer";
@@ -36,16 +37,16 @@ export default function Button({ children, href, className, onMouseEnter, onMous
       onMouseEnter={!disabled ? onMouseEnter : undefined}
       onMouseLeave={!disabled ? onMouseLeave : undefined}
       disabled={disabled}
+      onClick={!disabled ? onClick : undefined}
     >
-      <WrapperElement
-        href={!disabled ? href : undefined}
-        target={target}
-        onClick={handleAnchorClick}
-        className="flex flex-row gap-2 items-center"
-      >
-        {children}
-      </WrapperElement>
-
+        <WrapperElement
+          href={href ? href : undefined}
+          target={href ? target : undefined}
+          onClick={handleAnchorClick}
+          className="flex flex-row gap-2 items-center"
+        >
+          {children}
+        </WrapperElement>
     </button>
   )
 }
