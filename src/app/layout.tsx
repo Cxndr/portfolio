@@ -5,6 +5,7 @@ import Header from "@/components/Header";
 import PageNavigator from "@/components/PageNavigator";
 import ViewTransitionWrapper from "@/components/ViewTransitionWrapper";
 import "./globals.css";
+import { Analytics } from "@vercel/analytics/next"
 
 const inter = Inter({ subsets: ['latin']})
 const caveat = Caveat({ 
@@ -39,6 +40,7 @@ export default function RootLayout({
         <ViewTransitionWrapper>
           {children}
         </ViewTransitionWrapper>
+        <Analytics />
       </body>
     </html>
   );
