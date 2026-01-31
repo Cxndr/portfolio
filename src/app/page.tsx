@@ -1,6 +1,6 @@
 import Card from "@/components/Card";
 import DynamicBackground from "@/components/DynamicBackground";
-import ProfileImage from "@/components/ProfileImage";
+// import ProfileImage from "@/components/ProfileImage";
 import SubtitleAnim from "@/components/SubtitleAnim";
 import Image from "next/image";
 
