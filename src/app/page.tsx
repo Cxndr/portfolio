@@ -10,7 +10,7 @@ export default function HomePage() {
       <div className="h-full w-full flex flex-col items-center justify-center overflow-hidden">
           <div className="h-full w-full xl:w-desktop">
 
-            <ProfileImage />
+            {/* <ProfileImage /> */}
 
             <div className="h-full flex flex-col gap-6 md:gap-12 relative z-10">
 
